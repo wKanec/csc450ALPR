@@ -26,6 +26,7 @@
 #include <fstream> 
 #include <stdint.h>
 #include <opencv2/core/core.hpp>
+//#include <alpr_impl.h>
 
 
 #ifdef WIN32
@@ -161,8 +162,9 @@ namespace alpr
 	  // Recognize from byte data representing an encoded image (e.g., BMP, PNG, JPG, GIF etc).
 	  AlprResults recognize(std::vector<char> imageBytes, std::vector<AlprRegionOfInterest> regionsOfInterest);
 
-      // Recognize from raw pixel data.  
+      // Recognize from raw pixel data.  from AlprResults to SplitReturn
       AlprResults recognize(unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight, std::vector<AlprRegionOfInterest> regionsOfInterest);
+
 
 
       static std::string toJson(const AlprResults results);

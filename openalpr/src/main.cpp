@@ -35,7 +35,6 @@
 #include "alpr.h"
 #include "alpr_impl.h"
 
-#include "alpr_impl.h"
 
 
 using namespace alpr;
@@ -51,8 +50,8 @@ bool do_motiondetection = true;
 /** Function Headers */
 //split headers
 std::vector<AlprRegionOfInterest> getROI(Alpr* alpr, cv::Mat frame, std::string region, bool writeJson);
-AlprResults split1 ( Alpr* alpr, cv::Mat frame, std::string region, bool writeJson);
-//AlprResults split2 (SplitReturn split1return);
+SplitReturn split1 ( Alpr* alpr, cv::Mat frame, std::string region, bool writeJson, AlprImpl* impl);
+AlprResults split2 (SplitReturn split1return, AlprImpl* impl);
 
 
 bool detectandshow( AlprResults results);
@@ -134,6 +133,7 @@ int main( int argc, const char** argv )
   cv::Mat frame;
 
   Alpr alpr(country, configFile);
+  AlprImpl* impl = new AlprImpl(country, configFile);
   alpr.setTopN(topn);
   
   if (debug_mode)
@@ -168,17 +168,14 @@ int main( int argc, const char** argv )
 		std::cout << "==========================FIRST SPLIT===============================" <<std::endl;
 		std::cout << "Find regions of interest and edit image." <<std::endl;
 		std::cout << "=====================================================================" <<std::endl;
-		//SplitReturn split1return = split1(&alpr, frame, "", outputJson);
 		
-		//void alpr->splittest();
+		//SplitReturn sr;
+		//sr.testsplit();
 
-		AlprResults results = split1(&alpr, frame, "", outputJson);
-		//move to above function
-		//std::vector<AlprRegionOfInterest> returnedInterest = getROI(alpr, frame, region, writeJson);
-		//AlprResults results = split2(alpr, frame,"",writeJson,returnedInterest);
-  		
+		SplitReturn split1return = split1(&alpr, frame, "", outputJson,  impl);
 		std::cout << "==================================Second SPLIT===================================" <<std::endl;
-		//ALPRResults results = split2(split1return);
+  		
+		AlprResults results = split2(split1return, impl);
   		
 		
 		std::cout << "==================================Third SPLIT===================================" <<std::endl;
@@ -207,27 +204,25 @@ int main( int argc, const char** argv )
   return 0;
 }
 
-AlprResults split1 ( Alpr* alpr, cv::Mat frame, std::string region, bool writeJson){
+SplitReturn split1 ( Alpr* alpr, cv::Mat frame, std::string region, bool writeJson,AlprImpl* impl){
 	
-	AlprResults results;
-	//SplitReturn split1return
-	
+	SplitReturn split1return;
+
 	std::vector<AlprRegionOfInterest> regionsOfInterest = getROI(alpr, frame, region, writeJson);
 	//first call to alpr_Impl
-	//return impl->recognize(pixelData, bytesPerPixel, imgWidth, imgHeight, regionsOfInterest);
-	//if (regionsOfInterest.size()>0) split1return = alpr->recognize(frame.data, frame.elemSize(), frame.cols, frame.rows, regionsOfInterest);
-	if (regionsOfInterest.size()>0) results = alpr->recognize(frame.data, frame.elemSize(), frame.cols, frame.rows, regionsOfInterest);
+	if (regionsOfInterest.size()>0) split1return = impl->recognize(frame.data, frame.elemSize(), frame.cols, frame.rows, regionsOfInterest);
 
-	//above call will be split for all the nodes
-	return results;
-	//return split1return;
+	return split1return;
 }
 
-//ALPRResults split2 (split1return){
-	//AlprResults results;
-	//results = alpr-> recognize(split1return);
-	//return results
-//}
+AlprResults split2 (SplitReturn split1return,AlprImpl* impl){
+	AlprResults results;
+	AlprFullDetails details;
+	
+	details = impl->split2impl(split1return);
+	results = details.results;
+	return results;
+}
 
 bool is_supported_image(std::string image_file)
 {

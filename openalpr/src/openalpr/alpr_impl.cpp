@@ -29,22 +29,44 @@ using namespace cv;
 
 namespace alpr
 {
-  SplitReturn::SplitReturn(cv::Mat passedimg, std::vector<cv::Rect> passedregion)
+  SplitReturn::SplitReturn(cv::Mat passedimg, std::vector<cv::Rect> passedwarpedregion, 
+  AlprFullDetails passedresponse, std::vector<cv::Rect>passedregion)
   {
 	img = passedimg;
-	convertedRegions = passedregion;
+	region = passedregion;
+	warpedRegion = passedwarpedregion;
+	response = passedresponse;
 	//country_aggregator = passedaggregator
   }
+  SplitReturn::SplitReturn(){
+	  
+  }
+  
+  //Add a function to call split 1
+  /*SplitReturn SplitReturn::split1( unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight, std::vector<AlprRegionOfInterest> regionsOfInterest )
+  {
+	  
+	SplitReturn split1return = AlprImpl.recognize(pixelData, bytesPerPixel, imgWidth, imgHeight, regionsOfInterest);
+	return split1return;
+  }*/
+  AlprFullDetails SplitReturn::getResponse(){
+	  return response;
+  }
+
   cv::Mat SplitReturn::getImage(){
 	return img;
   }
-  std::vector<cv::Rect> SplitReturn::getRegion(){
-	return convertedRegions;
+  std::vector<cv::Rect> SplitReturn::getWarpedRegion(){
+	return warpedRegion;
   }
   
-  void SplitReturn::splittest(){
-	  std::cout<<"Test Split"<<std::endl;
+  std::vector<cv::Rect> SplitReturn::getRegion(){
+	  return region;
   }
+  
+  //void SplitReturn::testsplit(){
+  //	std::cout<<"Test Split"<<std::endl;
+  //}
 
   AlprImpl::AlprImpl(const std::string country, const std::string configFile, const std::string runtimeDir)
   {
@@ -101,7 +123,7 @@ namespace alpr
   }
 
 
-  AlprFullDetails AlprImpl::recognizeFullDetails(cv::Mat img, std::vector<cv::Rect> regionsOfInterest)
+  SplitReturn AlprImpl::recognizeFullDetails(cv::Mat img, std::vector<cv::Rect> regionsOfInterest)
   {
 
     timespec startTime;
@@ -122,14 +144,14 @@ namespace alpr
               regionsOfInterest[i].width, regionsOfInterest[i].height));
     }
 
-    if (!img.data)
+    /*if (!img.data)
     {
       // Invalid image
       if (this->config->debugGeneral)
         std::cerr << "Invalid image" << std::endl;
 
       return response;
-    }
+    }*/
 
     // Convert image to grayscale if required
     Mat grayImg = img;
@@ -147,22 +169,43 @@ namespace alpr
     // and aggregate the results if necessary
 	//std::cout<<"	create ResultAggregator country_agregator(MERGE_PICK_BEST, topN,config)"<<std::endl;
 
-	SplitReturn split1return(img,warpedRegionsOfInterest);
+	SplitReturn split1return(grayImg, warpedRegionsOfInterest, response, regionsOfInterest);
+	
+	timespec endTime;
+    getTimeMonotonic(&endTime);
+    if (config->debugTiming)
+    {
+      cout << "Total Time to process split1: " << diffclock(startTime, endTime) << "ms." << endl;
+    }
 
-	//return split1return;
-  //}
+
 	std::cout<<"============================Split 1 END================================"<<std::endl;
 	std::cout<<"===== RETURN IMG AND WARPED REGION OF INTEREST =====" <<std::endl;
 	std::cout << "   " <<std::endl;
 	std::cout << "   " <<std::endl;
 	std::cout << "   " <<std::endl;
 	
-  //AlprResult AlprImpl::split2alpr(SplitReturn split1return);
-  //{
+	return split1return;
+  }
+  
+  AlprFullDetails AlprImpl::split2impl(SplitReturn split1return)
+  {
 	std::cout<<"==============================SPLIT 2================================"<<std::endl;
 	std::cout<<"Locate possible plates in Regions of Interst and load country info"<<std::endl;
 	std::cout<<"====================================================================="<<std::endl;
+	timespec startTime;
+    getTimeMonotonic(&startTime);
+	int64_t start_time = getEpochTimeMs();
 
+	
+	cv::Mat img = split1return.getImage();
+	cv:: Mat grayImg = img;
+	
+	std::vector<cv::Rect> warpedRegionsOfInterest = split1return.getWarpedRegion();
+	AlprFullDetails response = split1return.getResponse();
+	std::vector<cv::Rect> regionsOfInterest = split1return.getRegion();
+
+	
 	ResultAggregator country_aggregator(MERGE_PICK_BEST, topN, config);
 	for (unsigned int i = 0; i < config->loaded_countries.size(); i++)
     {
@@ -176,6 +219,8 @@ namespace alpr
 	  
 	  for (unsigned int iteration = 0; iteration < config->analysis_count; iteration++)
       {
+		std::cout << "config analysis_count" <<std::endl;
+		std::cout << config->analysis_count <<std::endl;
         Mat iteration_image = iter_aggregator.applyImperceptibleChange(grayImg, iteration);
         //drawAndWait(iteration_image);
 		//----------------------------------------------------------------
@@ -280,8 +325,6 @@ namespace alpr
 	AlprFullDetails response;
     
     AlprRecognizers country_recognizers = recognizers[config->country];
-    timespec startTime;
-    getTimeMonotonic(&startTime);
 
     vector<PlateRegion> warpedPlateRegions;
     // Find all the candidate regions
@@ -306,18 +349,30 @@ namespace alpr
     for (unsigned int i = 0; i < warpedPlateRegions.size(); i++)
       plateQueue.push(warpedPlateRegions[i]);
 	  
+	
+	  
 	std::cout << "==========================split 2 END==============================" << std::endl;
 	std::cout << "===============Return PlateQueue of possible plates================" << std::endl;
 	std::cout << "   " <<std::endl;
 	std::cout << "   " <<std::endl;
 	std::cout << "   " <<std::endl;
+	AlprFullDetails results = AlprImpl::split3impl(colorImg, grayImg, plateQueue, country_recognizers, warpedPlateRegions);
+	return results;
+  }	
 	
-	
+ AlprFullDetails AlprImpl::split3impl(cv::Mat colorImg,cv::Mat grayImg, std::queue<PlateRegion> plateQueue,
+	AlprRecognizers country_recognizers, std::vector<PlateRegion> warpedPlateRegions)
+  {
+	  
 	std::cout << "==========================split 3 Start=============================" << std::endl;
 	std::cout << "=========================Input PlateQueue===========================" << std::endl;
 	std::cout << "check for possible characters in plates" << std::endl;
 	std::cout << "====================================================================" << std::endl;
+ 	AlprFullDetails response;
 
+	timespec startTime;
+    getTimeMonotonic(&startTime);
+	
 	int platecount = 0;
     while(!plateQueue.empty())
     {
@@ -547,8 +602,9 @@ namespace alpr
       cv::Mat img = cv::imdecode(cv::Mat(imageBytes), 1);
 
       std::vector<cv::Rect> rois = convertRects(regionsOfInterest);
-
-      AlprFullDetails fullDetails = recognizeFullDetails(img, rois);
+	  SplitReturn splitDetails = recognizeFullDetails(img,rois);
+	  AlprFullDetails fullDetails = split2impl(splitDetails);
+      //AlprFullDetails fullDetails = recognizeFullDetails(img, rois);
       return fullDetails.results;
     }
     catch (cv::Exception& e)
@@ -559,10 +615,8 @@ namespace alpr
     }
   }
 
-  AlprResults AlprImpl::recognize( unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight, std::vector<AlprRegionOfInterest> regionsOfInterest)
+  SplitReturn AlprImpl::recognize( unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight, std::vector<AlprRegionOfInterest> regionsOfInterest)
   {
-	try
-    {
 	std::cout<<"reshape image"<<std::endl;
       int arraySize = imgWidth * imgHeight * bytesPerPixel;
       cv::Mat imgData = cv::Mat(arraySize, 1, CV_8U, pixelData);
@@ -574,14 +628,9 @@ namespace alpr
 
         regionsOfInterest.push_back(fullFrame);
       }
-	return this->recognize(img, this->convertRects(regionsOfInterest));
-    }
-    catch (cv::Exception& e)
-    {
-      std::cerr << "Caught exception in OpenALPR recognize: " << e.msg << std::endl;
-      AlprResults emptyresults;
-      return emptyresults;
-    }
+	  SplitReturn splitresults = this->recognize(img, this->convertRects(regionsOfInterest));
+		
+	return splitresults;
   }
 
   AlprResults AlprImpl::recognize(cv::Mat img)
@@ -590,14 +639,18 @@ namespace alpr
     std::vector<cv::Rect> regionsOfInterest;
     regionsOfInterest.push_back(cv::Rect(0, 0, img.cols, img.rows));
 	std::cout << "++++++++++++++++++++ALPR_IMPL 15 recognize END+++++++++++++++++++++" <<std::endl;
-    return this->recognize(img, regionsOfInterest);
+    SplitReturn splitresults = recognize(img, regionsOfInterest);
+	AlprFullDetails fullDetails = split2impl(splitresults);
+	return fullDetails.results;
   }
-
-  AlprResults AlprImpl::recognize(cv::Mat img, std::vector<cv::Rect> regionsOfInterest)
+	
+  SplitReturn AlprImpl::recognize(cv::Mat img, std::vector<cv::Rect> regionsOfInterest)
   {
 
-    AlprFullDetails fullDetails = recognizeFullDetails(img, regionsOfInterest);
-	return fullDetails.results;
+    SplitReturn splitreturn = recognizeFullDetails(img, regionsOfInterest);
+	return splitreturn;
+	//AlprFullDetails fullDetails = split2impl(splitreturn);
+	//return fullDetails.results;
   }
 
 

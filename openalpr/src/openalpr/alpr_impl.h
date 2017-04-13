@@ -82,31 +82,57 @@ namespace alpr
 	
     private:
 	cv::Mat img;
-	std::vector<cv::Rect> convertedRegions;
+	std::vector<cv::Rect> warpedRegion;
+	AlprFullDetails response;
+	std::vector<cv::Rect> region;
+
     public:
-	SplitReturn(cv::Mat, std::vector<cv::Rect>);
+	SplitReturn(cv::Mat, std::vector<cv::Rect>, AlprFullDetails, std::vector<cv::Rect>);
+	SplitReturn();
 	bool MainToImpl();
-	void splittest();
+	void testsplit();
+
+	AlprFullDetails getResponse();
 	cv::Mat getImage();
+	std::vector<cv::Rect> getWarpedRegion();
 	std::vector<cv::Rect> getRegion();
   };
+
+  class SplitReturn2{
+    private:
+	cv::Mat colorImg;
+	cv::Mat grayImg;
+	std::queue<PlateRegion> plateQueue;
+	AlprRecognizers country_recognizers;
+	std::vector<PlateRegion> warpedPlateRegions;
+
+    public:
+  };
+
 
 
   class AlprImpl
   {
 
     public:
+      AlprImpl* impl;
       AlprImpl(const std::string country, const std::string configFile = "", const std::string runtimeDir = "");
+      //AlprImpl();
       virtual ~AlprImpl();
 
-      AlprFullDetails recognizeFullDetails(cv::Mat img, std::vector<cv::Rect> regionsOfInterest);
+      /*was AlprResults*/
+      SplitReturn recognizeFullDetails(cv::Mat img, std::vector<cv::Rect> regionsOfInterest);
 
       AlprResults recognize( std::vector<char> imageBytes );
 
       AlprResults recognize( std::vector<char> imageBytes, std::vector<AlprRegionOfInterest> regionsOfInterest );
-      AlprResults recognize( unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight, std::vector<AlprRegionOfInterest> regionsOfInterest );
+      SplitReturn recognize( unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight, std::vector<AlprRegionOfInterest> regionsOfInterest );
+      
+      AlprFullDetails split2impl(SplitReturn split1return);
+      AlprFullDetails split3impl(cv::Mat colorImg, cv::Mat grayImg, std::queue<PlateRegion> plateQueue, AlprRecognizers country_recognizers, std::vector<PlateRegion> warpedPlateRegions);
 
-      AlprResults recognize( cv::Mat img, std::vector<cv::Rect> regionsOfInterest);
+
+      SplitReturn recognize( cv::Mat img, std::vector<cv::Rect> regionsOfInterest);
 
       AlprResults recognize( cv::Mat img);	
       
