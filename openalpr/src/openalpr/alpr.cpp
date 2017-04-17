@@ -94,7 +94,8 @@ namespace alpr
   {
 	std::cout << "Split 1 ALPR" <<std::endl;
 	SplitReturn splitreturn = impl->recognize(pixelData, bytesPerPixel, imgWidth, imgHeight, regionsOfInterest);
-	AlprFullDetails details = impl->split2impl(splitreturn);
+	SplitReturn2 split2return = impl->split2impl(splitreturn);
+	AlprFullDetails details = impl->split3impl(split2return);
 	AlprResults results = details.results;
 	//sr.testsplit();
 	return results;

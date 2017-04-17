@@ -30,7 +30,7 @@ using namespace cv;
 namespace alpr
 {
   SplitReturn::SplitReturn(cv::Mat passedimg, std::vector<cv::Rect> passedwarpedregion, 
-  AlprFullDetails passedresponse, std::vector<cv::Rect>passedregion)
+	AlprFullDetails passedresponse, std::vector<cv::Rect>passedregion)
   {
 	img = passedimg;
 	region = passedregion;
@@ -42,31 +42,61 @@ namespace alpr
 	  
   }
   
-  //Add a function to call split 1
-  /*SplitReturn SplitReturn::split1( unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight, std::vector<AlprRegionOfInterest> regionsOfInterest )
-  {
-	  
-	SplitReturn split1return = AlprImpl.recognize(pixelData, bytesPerPixel, imgWidth, imgHeight, regionsOfInterest);
-	return split1return;
-  }*/
-  AlprFullDetails SplitReturn::getResponse(){
+  AlprFullDetails SplitReturn::get_response(){
 	  return response;
   }
 
-  cv::Mat SplitReturn::getImage(){
+  cv::Mat SplitReturn::get_image(){
 	return img;
   }
-  std::vector<cv::Rect> SplitReturn::getWarpedRegion(){
+  std::vector<cv::Rect> SplitReturn::get_warped_region(){
 	return warpedRegion;
   }
   
-  std::vector<cv::Rect> SplitReturn::getRegion(){
+  std::vector<cv::Rect> SplitReturn::get_region(){
 	  return region;
   }
+  SplitReturn2::SplitReturn2(cv::Mat passedGrayImg, std::queue<PlateRegion> passedQueue,
+  AlprRecognizers passedCountryRecognizers, std::vector<PlateRegion> passedWarpedRegions){
+	
+	grayImg = passedGrayImg;
+	plateQueue = passedQueue;
+	country_recognizers = passedCountryRecognizers;
+	warpedPlateRegions = passedWarpedRegions;
+	  
+  }
+  SplitReturn2::SplitReturn2(){
+		
+  }
+  cv::Mat SplitReturn2::get_image(){
+	  return grayImg;
+  }
+  std::queue<PlateRegion> SplitReturn2::get_queue(){
+	  return plateQueue;
+  }
+  AlprRecognizers SplitReturn2::get_country_recognizers(){
+	  return country_recognizers;
+  }
+  std::vector<PlateRegion> SplitReturn2::get_warped_regions(){
+	  return warpedPlateRegions;
+  }
+    /*class SplitReturn3{
+    private:
+	PipelineData pipeline_data;
+	bool plateDetected;
+
+    public:
+	SplitReturn3(PipelineData passedPipelineData, bool passedPlateDetected){
+		pipeline_data = passedPipelineData;
+		plateDetected = passedPlateDetected;
+	}
+	SplitReturn3();
+	
+	PipelineData get_pipeline_data();
+	bool get_plate_detected();
+	
+  };*/
   
-  //void SplitReturn::testsplit(){
-  //	std::cout<<"Test Split"<<std::endl;
-  //}
 
   AlprImpl::AlprImpl(const std::string country, const std::string configFile, const std::string runtimeDir)
   {
@@ -188,54 +218,75 @@ namespace alpr
 	return split1return;
   }
   
-  AlprFullDetails AlprImpl::split2impl(SplitReturn split1return)
+  SplitReturn2 AlprImpl::split2impl(SplitReturn split1return)
   {
-	std::cout<<"==============================SPLIT 2================================"<<std::endl;
-	std::cout<<"Locate possible plates in Regions of Interst and load country info"<<std::endl;
-	std::cout<<"====================================================================="<<std::endl;
 	timespec startTime;
     getTimeMonotonic(&startTime);
 	int64_t start_time = getEpochTimeMs();
-
 	
-	cv::Mat img = split1return.getImage();
+	
+	cv::Mat img = split1return.get_image();
 	cv:: Mat grayImg = img;
 	
-	std::vector<cv::Rect> warpedRegionsOfInterest = split1return.getWarpedRegion();
-	AlprFullDetails response = split1return.getResponse();
-	std::vector<cv::Rect> regionsOfInterest = split1return.getRegion();
+	std::vector<cv::Rect> warpedRegionsOfInterest = split1return.get_warped_region();
+	AlprFullDetails response = split1return.get_response();
+	std::vector<cv::Rect> regionsOfInterest = split1return.get_region();
 
 	
-	ResultAggregator country_aggregator(MERGE_PICK_BEST, topN, config);
-	for (unsigned int i = 0; i < config->loaded_countries.size(); i++)
-    {
+	//ResultAggregator country_aggregator(MERGE_PICK_BEST, topN, config);
+	int countrysize = config->loaded_countries.size();
+	std::cout<<"countrysize*************************************************************"<<std::endl;
+	std::cout<<countrysize<<std::endl;
+	//for (unsigned int i = 0; i < config->loaded_countries.size(); i++)
+    //{
       if (config->debugGeneral)
-        cout << "Analyzing: " << config->loaded_countries[i] << endl;
+        cout << "Analyzing: " << config->loaded_countries[0] << endl;
 
-      config->setCountry(config->loaded_countries[i]);
+      config->setCountry(config->loaded_countries[0]);
       // Reapply analysis for each multiple analysis value set in the config,
       // make a minor imperceptible tweak to the input image each time
-      ResultAggregator iter_aggregator(MERGE_COMBINE, topN, config);      
-	  
-	  for (unsigned int iteration = 0; iteration < config->analysis_count; iteration++)
-      {
+      ResultAggregator iter_aggregator(MERGE_COMBINE, topN, config); 
+	  std::cout<<"analysis count*************************************************************"<<std::endl;
+     
+	  int ancount = config->analysis_count;
+	  std::cout<<ancount<<std::endl;
+	  //for (unsigned int iteration = 0; iteration < config->analysis_count; iteration++)
+      //{
 		std::cout << "config analysis_count" <<std::endl;
 		std::cout << config->analysis_count <<std::endl;
-        Mat iteration_image = iter_aggregator.applyImperceptibleChange(grayImg, iteration);
-        //drawAndWait(iteration_image);
-		//----------------------------------------------------------------
-		//----------------------------------------------------------------
-		//Everything is in the line below---------------------------------
-		//----------------------------------------------------------------
-		//---------------------------------------------------------------
-		//---------------------------------------------------------------
+        Mat iteration_image = iter_aggregator.applyImperceptibleChange(grayImg, 0);
+        SplitReturn2 split2return = analyzeSingleCountry(iteration_image, warpedRegionsOfInterest);
+		
+		timespec endTime;
+		getTimeMonotonic(&endTime);
+		cout << "Total Time to process split 2 " << diffclock(startTime, endTime) << "ms." << endl;
+		std::cout << "==========================split 2 END==============================" << std::endl;
+		std::cout << "===============Return PlateQueue of possible plates================" << std::endl;
+		std::cout << "   " <<std::endl;
+		std::cout << "   " <<std::endl;
+		std::cout << "   " <<std::endl;
+	  
+		return split2return;
+  }
+		//end split 2
+  AlprFullDetails AlprImpl::split6impl(AlprFullDetails iter_results, SplitReturn split1return)
+  {		
+	    AlprFullDetails response;
 
-        AlprFullDetails iter_results = analyzeSingleCountry(img, iteration_image, warpedRegionsOfInterest);
+		std::vector<cv::Rect> regionsOfInterest = split1return.get_region();
+	    cv::Mat img = split1return.get_image();
+		
+	  	timespec startTime;
+		getTimeMonotonic(&startTime);
+		int64_t start_time = getEpochTimeMs();
+		//AlprFullDetails iter_results = analyzeSingleCountry(iteration_image, warpedRegionsOfInterest);
 		//iter_results is the end of split 4 which returns a plate que
 		//call 5-7 to receive results
 		//Split 8 begins here.
+		ResultAggregator iter_aggregator(MERGE_COMBINE, topN, config); 
+		ResultAggregator country_aggregator(MERGE_PICK_BEST, topN, config);
 		iter_aggregator.addResults(iter_results);
-      }
+      //}
 		std::cout << "   " <<std::endl;
 		std::cout << "   " <<std::endl;
 		std::cout << "   " <<std::endl;
@@ -248,7 +299,7 @@ namespace alpr
       sub_results.results.img_height = img.rows;
       
       country_aggregator.addResults(sub_results);
-    }
+    //}
     response = country_aggregator.getAggregateResults();
 
     timespec endTime;
@@ -318,7 +369,8 @@ namespace alpr
 	//----------------------------------------------------------------
 	//---------------------------------------------------------------
 	//---------------------------------------------------------------
-  AlprFullDetails AlprImpl::analyzeSingleCountry(cv::Mat colorImg, cv::Mat grayImg, std::vector<cv::Rect> warpedRegionsOfInterest)
+  //AlprFullDetails AlprImpl::analyzeSingleCountry(cv::Mat grayImg, std::vector<cv::Rect> warpedRegionsOfInterest)
+  SplitReturn2 AlprImpl::analyzeSingleCountry(cv::Mat grayImg, std::vector<cv::Rect> warpedRegionsOfInterest)
   {
 	//std::cout << "ALPR_IMPL 6 analyzeSingleCountry (colorImg,grayImg,warpedRegionofInterest" << std::endl;
 	//std::cout << "-----------Create a que of the plate regions----------------------" << std::endl;
@@ -348,22 +400,20 @@ namespace alpr
     queue<PlateRegion> plateQueue;
     for (unsigned int i = 0; i < warpedPlateRegions.size(); i++)
       plateQueue.push(warpedPlateRegions[i]);
-	  
 	
-	  
-	std::cout << "==========================split 2 END==============================" << std::endl;
-	std::cout << "===============Return PlateQueue of possible plates================" << std::endl;
-	std::cout << "   " <<std::endl;
-	std::cout << "   " <<std::endl;
-	std::cout << "   " <<std::endl;
-	AlprFullDetails results = AlprImpl::split3impl(colorImg, grayImg, plateQueue, country_recognizers, warpedPlateRegions);
-	return results;
+ 
+	SplitReturn2 split2return(grayImg, plateQueue, country_recognizers, warpedPlateRegions);
+	return split2return;
+	
+	//AlprFullDetails results = AlprImpl::split3impl(split2return);
+	
+	//return results;
   }	
 	
- AlprFullDetails AlprImpl::split3impl(cv::Mat colorImg,cv::Mat grayImg, std::queue<PlateRegion> plateQueue,
-	AlprRecognizers country_recognizers, std::vector<PlateRegion> warpedPlateRegions)
+ //AlprFullDetails AlprImpl::split3impl(cv::Mat grayImg, std::queue<PlateRegion> plateQueue,
+	//AlprRecognizers country_recognizers, std::vector<PlateRegion> warpedPlateRegions)
+  AlprFullDetails AlprImpl::split3impl(SplitReturn2 split2return)
   {
-	  
 	std::cout << "==========================split 3 Start=============================" << std::endl;
 	std::cout << "=========================Input PlateQueue===========================" << std::endl;
 	std::cout << "check for possible characters in plates" << std::endl;
@@ -371,42 +421,64 @@ namespace alpr
  	AlprFullDetails response;
 
 	timespec startTime;
+	timespec platestarttime;
     getTimeMonotonic(&startTime);
 	
+	
+	cv::Mat grayImg = split2return.get_image();
+	std::queue<PlateRegion> plateQueue = split2return.get_queue();
+	AlprRecognizers country_recognizers = split2return.get_country_recognizers();
+	std::vector<PlateRegion> warpedPlateRegions = split2return.get_warped_regions();
+	
+	int pqsize = plateQueue.size();
+	std::cout<<"PlateQueue size **********************************************************"<<std::endl;
+	std::cout<<pqsize<<std::endl;
 	int platecount = 0;
+	
     while(!plateQueue.empty())
     {
       PlateRegion plateRegion = plateQueue.front();
       plateQueue.pop();
-      PipelineData pipeline_data(colorImg, grayImg, plateRegion.rect, config);
+      cv::Mat colorImg = grayImg;
+	  PipelineData pipeline_data(colorImg, grayImg, plateRegion.rect, config);
       pipeline_data.prewarp = prewarp;
-      timespec platestarttime;
-      getTimeMonotonic(&platestarttime);
       LicensePlateCandidate lp(&pipeline_data);
-	  //std::cout << "-----------------------split?--------------------------------------" << std::endl;
       lp.recognize();
-	  //std::cout << "-----------------------split end?--------------------------------------" << std::endl;
       bool plateDetected = false;
       if (pipeline_data.disqualified && config->debugGeneral)
       {
         cout << "Disqualify reason: " << pipeline_data.disqualify_reason << endl;
       }
 	  
+	  //if (!pipeline_data.disqualified){
+		  
+	  //}
+	//}
+  
+	  
 	  //check if pipeline data in disqualified if it is then stop 
 	  //if pipeline data not disqualified then add data here to 
 	  //send pipeline_data to the zookeepers and back to below code.
+	  timespec endTime;
+	  getTimeMonotonic(&endTime);
+      cout << "Total Time to process split 3 " << diffclock(startTime, endTime) << "ms." << endl;
 	  std::cout << "=======================Split 3 END================================"<< std::endl;
 	  std::cout << "=================Return pipeline_data==================" << std::endl;
 	  std::cout << "   " <<std::endl;
 	  std::cout << "   " <<std::endl;
 	  std::cout << "   " <<std::endl;
-	
-	
-	std::cout << "=======================split 4 Start============================" << std::endl;
-	std::cout << "====================Input pipeline_data=========================" << std::endl;
-	std::cout << "Run character analysis" << std::endl;
-	std::cout << "================================================================" << std::endl;
+  //}
+	//AlprFullDetails AlprImpl::split4impl(){
+		
 
+	  std::cout << "=======================split 4 Start============================" << std::endl;
+	  std::cout << "====================Input pipeline_data=========================" << std::endl;
+	  std::cout << "Run character analysis" << std::endl;
+	  std::cout << "================================================================" << std::endl;
+	  
+	  timespec startTime;
+	  timespec platestarttime;
+      getTimeMonotonic(&startTime);
 	  
 	  if (!pipeline_data.disqualified)
       {
@@ -467,6 +539,10 @@ namespace alpr
 
         std::cout << "		char transform matrix" << std::endl;
 		std::cout << "		is best plate selected" << std::endl;
+		timespec endTime;
+	    getTimeMonotonic(&endTime);
+        cout << "Total Time to process split 4 " << diffclock(startTime, endTime) << "ms." << endl;
+	  
 		std::cout << "===========================Split 4 END========================================" << std::endl;
 		std::cout << "======================Return pipeline_data and ppResults===============================" << std::endl;
 		std::cout << "   " <<std::endl;
@@ -476,7 +552,10 @@ namespace alpr
 	
 		std::cout << "==========================split 5 Start===========================================" << std::endl;
 		std::cout << "==================Input pipeline_data and ppResults===================" << std::endl;
-	
+		timespec startTime;
+	    timespec platestarttime;
+        getTimeMonotonic(&startTime);
+	  
 
         int bestPlateIndex = 0;
 
@@ -565,16 +644,14 @@ namespace alpr
 
     timespec endTime;
     getTimeMonotonic(&endTime);
+	cout << "Total Time to process split 5 " << diffclock(startTime, endTime) << "ms." << endl;
+	  
     response.results.total_processing_time_ms = diffclock(startTime, endTime);
 	std::cout << "===========================Split 5 END========================================" << std::endl;
 	std::cout << "=========================Return response===============================" << std::endl;
 	std::cout << "   " <<std::endl;
 	std::cout << "   " <<std::endl;
 	std::cout << "   " <<std::endl;
-
-	std::cout << "==========================split 6 Start===========================================" << std::endl;
-	std::cout << "=======================Input response===================" << std::endl;
-	
     return response;
   }
 
@@ -596,15 +673,17 @@ namespace alpr
 
   AlprResults AlprImpl::recognize(std::vector<char> imageBytes, std::vector<AlprRegionOfInterest> regionsOfInterest)
   {
-	std::cout << "ALPR_IMPL 13" << std::endl;
+
     try
     {
       cv::Mat img = cv::imdecode(cv::Mat(imageBytes), 1);
 
       std::vector<cv::Rect> rois = convertRects(regionsOfInterest);
 	  SplitReturn splitDetails = recognizeFullDetails(img,rois);
-	  AlprFullDetails fullDetails = split2impl(splitDetails);
+	  SplitReturn2 split2return = split2impl(splitDetails);
+	  AlprFullDetails fullDetails = split3impl(split2return);
       //AlprFullDetails fullDetails = recognizeFullDetails(img, rois);
+
       return fullDetails.results;
     }
     catch (cv::Exception& e)
@@ -617,6 +696,9 @@ namespace alpr
 
   SplitReturn AlprImpl::recognize( unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight, std::vector<AlprRegionOfInterest> regionsOfInterest)
   {
+	timespec startTime;
+    getTimeMonotonic(&startTime);
+
 	std::cout<<"reshape image"<<std::endl;
       int arraySize = imgWidth * imgHeight * bytesPerPixel;
       cv::Mat imgData = cv::Mat(arraySize, 1, CV_8U, pixelData);
@@ -629,6 +711,9 @@ namespace alpr
         regionsOfInterest.push_back(fullFrame);
       }
 	  SplitReturn splitresults = this->recognize(img, this->convertRects(regionsOfInterest));
+	timespec endTime;
+	getTimeMonotonic(&endTime);
+	cout << "Total Time to process split 1 " << diffclock(startTime, endTime) << "ms." << endl;
 		
 	return splitresults;
   }
@@ -640,7 +725,8 @@ namespace alpr
     regionsOfInterest.push_back(cv::Rect(0, 0, img.cols, img.rows));
 	std::cout << "++++++++++++++++++++ALPR_IMPL 15 recognize END+++++++++++++++++++++" <<std::endl;
     SplitReturn splitresults = recognize(img, regionsOfInterest);
-	AlprFullDetails fullDetails = split2impl(splitresults);
+	SplitReturn2 split2return = split2impl(splitresults);
+	AlprFullDetails fullDetails = split3impl(split2return);
 	return fullDetails.results;
   }
 	

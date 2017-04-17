@@ -89,27 +89,43 @@ namespace alpr
     public:
 	SplitReturn(cv::Mat, std::vector<cv::Rect>, AlprFullDetails, std::vector<cv::Rect>);
 	SplitReturn();
-	bool MainToImpl();
-	void testsplit();
 
-	AlprFullDetails getResponse();
-	cv::Mat getImage();
-	std::vector<cv::Rect> getWarpedRegion();
-	std::vector<cv::Rect> getRegion();
+	AlprFullDetails get_response();
+	cv::Mat get_image();
+	std::vector<cv::Rect> get_warped_region();
+	std::vector<cv::Rect> get_region();
   };
 
   class SplitReturn2{
     private:
-	cv::Mat colorImg;
 	cv::Mat grayImg;
 	std::queue<PlateRegion> plateQueue;
 	AlprRecognizers country_recognizers;
 	std::vector<PlateRegion> warpedPlateRegions;
 
     public:
+	SplitReturn2(cv::Mat, std::queue<PlateRegion>, AlprRecognizers, std::vector<PlateRegion>);
+	SplitReturn2();
+	
+	cv::Mat get_image();
+	std::queue<PlateRegion> get_queue();
+	AlprRecognizers get_country_recognizers();
+	std::vector<PlateRegion> get_warped_regions();
   };
+  
+  class SplitReturn3{
+    private:
+	PipelineData pipeline_data;
+	bool plateDetected;
 
-
+    public:
+	SplitReturn3(PipelineData, bool);
+	SplitReturn3();
+	
+	PipelineData get_pipeline_data();
+	bool get_plate_detected();
+	
+  };
 
   class AlprImpl
   {
@@ -128,15 +144,17 @@ namespace alpr
       AlprResults recognize( std::vector<char> imageBytes, std::vector<AlprRegionOfInterest> regionsOfInterest );
       SplitReturn recognize( unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight, std::vector<AlprRegionOfInterest> regionsOfInterest );
       
-      AlprFullDetails split2impl(SplitReturn split1return);
-      AlprFullDetails split3impl(cv::Mat colorImg, cv::Mat grayImg, std::queue<PlateRegion> plateQueue, AlprRecognizers country_recognizers, std::vector<PlateRegion> warpedPlateRegions);
-
+      SplitReturn2 split2impl(SplitReturn split1return);
+	  //AlprFullDetails split3impl(cv::Mat grayImg, std::queue<PlateRegion> plateQueue, AlprRecognizers country_recognizers, std::vector<PlateRegion> warpedPlateRegions);
+	  AlprFullDetails split3impl(SplitReturn2 split2return);
+	  //AlprFullDetails split4impl();
+	  AlprFullDetails split6impl(AlprFullDetails iter_results, SplitReturn split1return);
 
       SplitReturn recognize( cv::Mat img, std::vector<cv::Rect> regionsOfInterest);
 
       AlprResults recognize( cv::Mat img);	
       
-      AlprFullDetails analyzeSingleCountry(cv::Mat colorImg, cv::Mat grayImg, std::vector<cv::Rect> regionsOfInterest);
+      SplitReturn2 analyzeSingleCountry(cv::Mat grayImg, std::vector<cv::Rect> regionsOfInterest);
 
       void setCountry(std::string country);
       void setPrewarp(std::string prewarp_config);

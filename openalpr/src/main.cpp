@@ -51,7 +51,9 @@ bool do_motiondetection = true;
 //split headers
 std::vector<AlprRegionOfInterest> getROI(Alpr* alpr, cv::Mat frame, std::string region, bool writeJson);
 SplitReturn split1 ( Alpr* alpr, cv::Mat frame, std::string region, bool writeJson, AlprImpl* impl);
-AlprResults split2 (SplitReturn split1return, AlprImpl* impl);
+SplitReturn2 split2 (SplitReturn split1return, AlprImpl* impl);
+AlprFullDetails split3 (SplitReturn2 split2return, AlprImpl* impl);
+AlprResults split6 (AlprFullDetails details, AlprImpl* impl, SplitReturn split1return);
 
 
 bool detectandshow( AlprResults results);
@@ -168,18 +170,19 @@ int main( int argc, const char** argv )
 		std::cout << "==========================FIRST SPLIT===============================" <<std::endl;
 		std::cout << "Find regions of interest and edit image." <<std::endl;
 		std::cout << "=====================================================================" <<std::endl;
-		
-		//SplitReturn sr;
-		//sr.testsplit();
 
 		SplitReturn split1return = split1(&alpr, frame, "", outputJson,  impl);
-		std::cout << "==================================Second SPLIT===================================" <<std::endl;
-  		
-		AlprResults results = split2(split1return, impl);
-  		
+		std::cout<<"==============================SPLIT 2================================"<<std::endl;
+		std::cout<<"Locate possible plates in Regions of Interst and load country info"<<std::endl;
+		std::cout<<"====================================================================="<<std::endl;
+		SplitReturn2 split2return = split2(split1return,impl);
 		
 		std::cout << "==================================Third SPLIT===================================" <<std::endl;
-
+		AlprFullDetails details = split3(split2return,impl);
+		std::cout << "==========================split 6 Start===========================================" << std::endl;
+	    std::cout << "=======================Input response===================" << std::endl;
+	
+		AlprResults results = split6(details, impl, split1return);
 		bool plate_found = detectandshow(results);
 	    std::cout << "===============End of Splits===========" << std::endl;
 	
@@ -215,11 +218,29 @@ SplitReturn split1 ( Alpr* alpr, cv::Mat frame, std::string region, bool writeJs
 	return split1return;
 }
 
-AlprResults split2 (SplitReturn split1return,AlprImpl* impl){
+SplitReturn2 split2 (SplitReturn split1return, AlprImpl* impl){
+	SplitReturn2 split2return;
+	
+	split2return = impl->split2impl(split1return);
+	return split2return;
+}
+AlprFullDetails split3 (SplitReturn2 split2return, AlprImpl* impl){
 	AlprResults results;
 	AlprFullDetails details;
 	
-	details = impl->split2impl(split1return);
+	details = impl->split3impl(split2return);
+	
+	//results = details.results;
+	return details;
+}
+//AlprFullDetails split4
+
+
+AlprResults split6 (AlprFullDetails details, AlprImpl* impl, SplitReturn split1return){
+	
+	AlprResults results;
+	
+	details = impl->split6impl(details, split1return);
 	results = details.results;
 	return results;
 }

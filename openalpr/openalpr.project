@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="openalpr" Version="10.0.0" InternalType="">
+  <VirtualDirectory Name="src">
+    <VirtualDirectory Name="openalpr">
+      <VirtualDirectory Name="support">
+        <VirtualDirectory Name="re2">
+          <VirtualDirectory Name="util">
+            <File Name="src/openalpr/support/re2/util/stringprintf.cc"/>
+            <File Name="src/openalpr/support/re2/util/sparse_array.h"/>
+            <File Name="src/openalpr/support/re2/util/util.h"/>
+            <File Name="src/openalpr/support/re2/util/logging.h"/>
+            <File Name="src/openalpr/support/re2/util/valgrind.h"/>
+            <File Name="src/openalpr/support/re2/util/test.h"/>
+            <File Name="src/openalpr/support/re2/util/mutex.h"/>
+            <File Name="src/openalpr/support/re2/util/random.h"/>
+            <File Name="src/openalpr/support/re2/util/valgrind.cc"/>
+            <File Name="src/openalpr/support/re2/util/thread.h"/>
+            <File Name="src/openalpr/support/re2/util/hash.cc"/>
+            <File Name="src/openalpr/support/re2/util/utf.h"/>
+            <File Name="src/openalpr/support/re2/util/rune.cc"/>
+            <File Name="src/openalpr/support/re2/util/benchmark.h"/>
+            <File Name="src/openalpr/support/re2/util/flags.h"/>
+            <File Name="src/openalpr/support/re2/util/strutil.cc"/>
+            <File Name="src/openalpr/support/re2/util/sparse_set.h"/>
+            <File Name="src/openalpr/support/re2/util/pcre.h"/>
+            <File Name="src/openalpr/support/re2/util/atomicops.h"/>
+          </VirtualDirectory>
+          <File Name="src/openalpr/support/re2/prefilter_tree.h"/>
+          <File Name="src/openalpr/support/re2/walker-inl.h"/>
+          <File Name="src/openalpr/support/re2/mimics_pcre.cc"/>
+          <File Name="src/openalpr/support/re2/prefilter.cc"/>
+          <File Name="src/openalpr/support/re2/prog.h"/>
+          <File Name="src/openalpr/support/re2/filtered_re2.h"/>
+          <File Name="src/openalpr/support/re2/regexp.cc"/>
+          <File Name="src/openalpr/support/re2/unicode_casefold.h"/>
+          <File Name="src/openalpr/support/re2/prefilter_tree.cc"/>
+          <File Name="src/openalpr/support/re2/stringpiece.h"/>
+          <File Name="src/openalpr/support/re2/set.h"/>
+          <File Name="src/openalpr/support/re2/simplify.cc"/>
+          <File Name="src/openalpr/support/re2/dfa.cc"/>
+          <File Name="src/openalpr/support/re2/prog.cc"/>
+          <File Name="src/openalpr/support/re2/perl_groups.cc"/>
+          <File Name="src/openalpr/support/re2/variadic_function.h"/>
+          <File Name="src/openalpr/support/re2/re2.cc"/>
+          <File Name="src/openalpr/support/re2/set.cc"/>
+          <File Name="src/openalpr/support/re2/unicode_groups.cc"/>
+          <File Name="src/openalpr/support/re2/bitstate.cc"/>
+          <File Name="src/openalpr/support/re2/prefilter.h"/>
+          <File Name="src/openalpr/support/re2/nfa.cc"/>
+          <File Name="src/openalpr/support/re2/filtered_re2.cc"/>
+          <File Name="src/openalpr/support/re2/regexp.h"/>
+          <File Name="src/openalpr/support/re2/tostring.cc"/>
+          <File Name="src/openalpr/support/re2/onepass.cc"/>
+          <File Name="src/openalpr/support/re2/unicode_casefold.cc"/>
+          <File Name="src/openalpr/support/re2/stringpiece.cc"/>
+          <File Name="src/openalpr/support/re2/unicode_groups.h"/>
+          <File Name="src/openalpr/support/re2/compile.cc"/>
+          <File Name="src/openalpr/support/re2/parse.cc"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="utf8">
+          <File Name="src/openalpr/support/utf8/checked.h"/>
+          <File Name="src/openalpr/support/utf8/core.h"/>
+          <File Name="src/openalpr/support/utf8/unchecked.h"/>
+        </VirtualDirectory>
+        <File Name="src/openalpr/support/tinydir.h"/>
+        <File Name="src/openalpr/support/filesystem.cpp"/>
+        <File Name="src/openalpr/support/re2.h"/>
+        <File Name="src/openalpr/support/utf8.h"/>
+        <File Name="src/openalpr/support/timing.cpp"/>
+        <File Name="src/openalpr/support/utf8.cpp"/>
+        <File Name="src/openalpr/support/version.h"/>
+        <File Name="src/openalpr/support/tinythread.h"/>
+        <File Name="src/openalpr/support/timing.h"/>
+        <File Name="src/openalpr/support/version.cpp"/>
+        <File Name="src/openalpr/support/platform.cpp"/>
+        <File Name="src/openalpr/support/platform.h"/>
+        <File Name="src/openalpr/support/tinythread.cpp"/>
+        <File Name="src/openalpr/support/filesystem.h"/>
+        <File Name="src/openalpr/support/fast_mutex.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="ocr">
+        <VirtualDirectory Name="segmentation">
+          <File Name="src/openalpr/ocr/segmentation/histogramvertical.cpp"/>
+          <File Name="src/openalpr/ocr/segmentation/charactersegmenter.cpp"/>
+          <File Name="src/openalpr/ocr/segmentation/histogramhorizontal.h"/>
+          <File Name="src/openalpr/ocr/segmentation/charactersegmenter.h"/>
+          <File Name="src/openalpr/ocr/segmentation/segment.h"/>
+          <File Name="src/openalpr/ocr/segmentation/segment.cpp"/>
+          <File Name="src/openalpr/ocr/segmentation/histogram.h"/>
+          <File Name="src/openalpr/ocr/segmentation/segmentationgroup.cpp"/>
+          <File Name="src/openalpr/ocr/segmentation/segmentationgroup.h"/>
+          <File Name="src/openalpr/ocr/segmentation/histogramvertical.h"/>
+          <File Name="src/openalpr/ocr/segmentation/histogramhorizontal.cpp"/>
+          <File Name="src/openalpr/ocr/segmentation/histogram.cpp"/>
+        </VirtualDirectory>
+        <File Name="src/openalpr/ocr/ocr.h"/>
+        <File Name="src/openalpr/ocr/ocrfactory.h"/>
+        <File Name="src/openalpr/ocr/ocrfactory.cpp"/>
+        <File Name="src/openalpr/ocr/ocr.cpp"/>
+        <File Name="src/openalpr/ocr/tesseract_ocr.cpp"/>
+        <File Name="src/openalpr/ocr/tesseract_ocr.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="postprocess">
+        <File Name="src/openalpr/postprocess/regexrule.h"/>
+        <File Name="src/openalpr/postprocess/postprocess.cpp"/>
+        <File Name="src/openalpr/postprocess/postprocess.h"/>
+        <File Name="src/openalpr/postprocess/regexrule.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="textdetection">
+        <File Name="src/openalpr/textdetection/textline.cpp"/>
+        <File Name="src/openalpr/textdetection/textcontours.cpp"/>
+        <File Name="src/openalpr/textdetection/platemask.h"/>
+        <File Name="src/openalpr/textdetection/linefinder.h"/>
+        <File Name="src/openalpr/textdetection/textcontours.h"/>
+        <File Name="src/openalpr/textdetection/linefinder.cpp"/>
+        <File Name="src/openalpr/textdetection/textline.h"/>
+        <File Name="src/openalpr/textdetection/characteranalysis.h"/>
+        <File Name="src/openalpr/textdetection/characteranalysis.cpp"/>
+        <File Name="src/openalpr/textdetection/platemask.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="detection">
+        <File Name="src/openalpr/detection/detectorocl.cpp"/>
+        <File Name="src/openalpr/detection/detectorocl.h"/>
+        <File Name="src/openalpr/detection/detectormorph.cpp"/>
+        <File Name="src/openalpr/detection/detectorcpu.cpp"/>
+        <File Name="src/openalpr/detection/detectorcuda.h"/>
+        <File Name="src/openalpr/detection/detector.h"/>
+        <File Name="src/openalpr/detection/detectormask.h"/>
+        <File Name="src/openalpr/detection/detectorfactory.cpp"/>
+        <File Name="src/openalpr/detection/detectormorph.h"/>
+        <File Name="src/openalpr/detection/detectormask.cpp"/>
+        <File Name="src/openalpr/detection/detector_types.h"/>
+        <File Name="src/openalpr/detection/detectorcpu.h"/>
+        <File Name="src/openalpr/detection/detectorcuda.cpp"/>
+        <File Name="src/openalpr/detection/detectorfactory.h"/>
+        <File Name="src/openalpr/detection/detector.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="edges">
+        <File Name="src/openalpr/edges/platelines.cpp"/>
+        <File Name="src/openalpr/edges/platelines.h"/>
+        <File Name="src/openalpr/edges/textlinecollection.h"/>
+        <File Name="src/openalpr/edges/edgefinder.cpp"/>
+        <File Name="src/openalpr/edges/scorekeeper.h"/>
+        <File Name="src/openalpr/edges/textlinecollection.cpp"/>
+        <File Name="src/openalpr/edges/edgefinder.h"/>
+        <File Name="src/openalpr/edges/scorekeeper.cpp"/>
+        <File Name="src/openalpr/edges/platecorners.cpp"/>
+        <File Name="src/openalpr/edges/platecorners.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="simpleini">
+        <File Name="src/openalpr/simpleini/ConvertUTF.h"/>
+        <File Name="src/openalpr/simpleini/snippets.cpp"/>
+        <File Name="src/openalpr/simpleini/ConvertUTF.c"/>
+        <File Name="src/openalpr/simpleini/simpleini.h"/>
+      </VirtualDirectory>
+      <File Name="src/openalpr/binarize_wolf.cpp"/>
+      <File Name="src/openalpr/config_helper.cpp"/>
+      <File Name="src/openalpr/licenseplatecandidate.cpp"/>
+      <File Name="src/openalpr/transformation.cpp"/>
+      <File Name="src/openalpr/cjson.c"/>
+      <File Name="src/openalpr/colorfilter.cpp"/>
+      <File Name="src/openalpr/binarize_wolf.h"/>
+      <File Name="src/openalpr/config_helper.h"/>
+      <File Name="src/openalpr/config.h"/>
+      <File Name="src/openalpr/utility.h"/>
+      <File Name="src/openalpr/motiondetector.h"/>
+      <File Name="src/openalpr/constants.h"/>
+      <File Name="src/openalpr/result_aggregator.h"/>
+      <File Name="src/openalpr/alpr.cpp"/>
+      <File Name="src/openalpr/prewarp.h"/>
+      <File Name="src/openalpr/pipeline_data.cpp"/>
+      <File Name="src/openalpr/alpr_impl.h"/>
+      <File Name="src/openalpr/alpr_impl.cpp"/>
+      <File Name="src/openalpr/result_aggregator.cpp"/>
+      <File Name="src/openalpr/config.cpp"/>
+      <File Name="src/openalpr/utility.cpp"/>
+      <File Name="src/openalpr/pipeline_data.h"/>
+      <File Name="src/openalpr/cjson.h"/>
+      <File Name="src/openalpr/alpr.h"/>
+      <File Name="src/openalpr/motiondetector.cpp"/>
+      <File Name="src/openalpr/transformation.h"/>
+      <File Name="src/openalpr/prewarp.cpp"/>
+      <File Name="src/openalpr/licenseplatecandidate.h"/>
+      <File Name="src/openalpr/colorfilter.h"/>
+      <File Name="src/openalpr/TRexpp.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="bindings">
+      <VirtualDirectory Name="go">
+        <File Name="src/bindings/go/openalprgo.h"/>
+        <File Name="src/bindings/go/openalprgo.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="c">
+        <File Name="src/bindings/c/alpr_c.h"/>
+        <File Name="src/bindings/c/alpr_c.cpp"/>
+        <File Name="src/bindings/c/alprc_test.c"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="python">
+        <File Name="src/bindings/python/openalprpy.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="java">
+        <File Name="src/bindings/java/com_openalpr_jni_Alpr.h"/>
+        <File Name="src/bindings/java/openalprjni.cpp"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="build">
+      <VirtualDirectory Name="CMakeFiles">
+        <VirtualDirectory Name="3.5.1">
+          <VirtualDirectory Name="CompilerIdC">
+            <File Name="src/build/CMakeFiles/3.5.1/CompilerIdC/CMakeCCompilerId.c"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="CompilerIdCXX">
+            <File Name="src/build/CMakeFiles/3.5.1/CompilerIdCXX/CMakeCXXCompilerId.cpp"/>
+          </VirtualDirectory>
+        </VirtualDirectory>
+        <File Name="src/build/CMakeFiles/feature_tests.cxx"/>
+        <File Name="src/build/CMakeFiles/feature_tests.c"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="video">
+      <File Name="src/video/videobuffer.h"/>
+      <File Name="src/video/logging_videobuffer.h"/>
+      <File Name="src/video/videobuffer.cpp"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="daemon">
+      <File Name="src/daemon/beanstalk.hpp"/>
+      <File Name="src/daemon/beanstalk.h"/>
+      <File Name="src/daemon/daemonconfig.h"/>
+      <File Name="src/daemon/daemonconfig.cpp"/>
+      <File Name="src/daemon/beanstalk.c"/>
+      <File Name="src/daemon/beanstalk.cc"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="tests">
+      <File Name="src/tests/test_api.cpp"/>
+      <File Name="src/tests/test_config.cpp"/>
+      <File Name="src/tests/catch.hpp"/>
+      <File Name="src/tests/test_utility.cpp"/>
+      <File Name="src/tests/test_regex.cpp"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="statedetection">
+      <File Name="src/statedetection/featurematcher.cpp"/>
+      <File Name="src/statedetection/state_detector.h"/>
+      <File Name="src/statedetection/state_detector_impl.cpp"/>
+      <File Name="src/statedetection/featurematcher.h"/>
+      <File Name="src/statedetection/state_detector.cpp"/>
+      <File Name="src/statedetection/line_segment.h"/>
+      <File Name="src/statedetection/line_segment.cpp"/>
+      <File Name="src/statedetection/state_detector_impl.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="misc_utilities">
+      <File Name="src/misc_utilities/sortstate.cpp"/>
+      <File Name="src/misc_utilities/prepcharsfortraining.cpp"/>
+      <File Name="src/misc_utilities/tagplates.cpp"/>
+      <File Name="src/misc_utilities/binarizefontsheet.cpp"/>
+      <File Name="src/misc_utilities/calibrate.cpp"/>
+      <File Name="src/misc_utilities/classifychars.cpp"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="tclap">
+      <File Name="src/tclap/XorHandler.h"/>
+      <File Name="src/tclap/MultiSwitchArg.h"/>
+      <File Name="src/tclap/Visitor.h"/>
+      <File Name="src/tclap/StandardTraits.h"/>
+      <File Name="src/tclap/Arg.h"/>
+      <File Name="src/tclap/IgnoreRestVisitor.h"/>
+      <File Name="src/tclap/HelpVisitor.h"/>
+      <File Name="src/tclap/CmdLineInterface.h"/>
+      <File Name="src/tclap/ValuesConstraint.h"/>
+      <File Name="src/tclap/ArgTraits.h"/>
+      <File Name="src/tclap/DocBookOutput.h"/>
+      <File Name="src/tclap/MultiArg.h"/>
+      <File Name="src/tclap/OptionalUnlabeledTracker.h"/>
+      <File Name="src/tclap/ArgException.h"/>
+      <File Name="src/tclap/SwitchArg.h"/>
+      <File Name="src/tclap/StdOutput.h"/>
+      <File Name="src/tclap/UnlabeledValueArg.h"/>
+      <File Name="src/tclap/Constraint.h"/>
+      <File Name="src/tclap/VersionVisitor.h"/>
+      <File Name="src/tclap/ZshCompletionOutput.h"/>
+      <File Name="src/tclap/CmdLine.h"/>
+      <File Name="src/tclap/ValueArg.h"/>
+      <File Name="src/tclap/CmdLineOutput.h"/>
+      <File Name="src/tclap/UnlabeledMultiArg.h"/>
+    </VirtualDirectory>
+    <File Name="src/main.cpp"/>
+    <File Name="src/daemon.cpp"/>
+  </VirtualDirectory>
+  <Description/>
+  <Dependencies/>
+  <Settings Type="Executable">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="" Assembler="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g -Wall" C_Options="" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="-O0" Required="yes">
+        <LibraryPath Value="."/>
+        <LibraryPath Value="Debug"/>
+      </Linker>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Debug" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="./Debug" PauseExecWhenProcTerminates="no" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Workspace Settings&gt;" DbgSetName="&lt;Use Global Settings&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName/>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+  </Settings>
+</CodeLite_Project>
