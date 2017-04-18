@@ -65,7 +65,11 @@ namespace alpr
 
   vector<PlateRegion> Detector::detect(Mat frame, std::vector<cv::Rect> regionsOfInterest)
   {
-	cout<<"detector 2 detect(frame, regionofInterest"<<endl;
+	//cout<<"detector 2 detect(frame, regionofInterest"<<endl;
+	//timespec startTime1;
+    //getTimeMonotonic(&startTime1);
+	
+
     Mat frame_gray;
     
     if (frame.channels() > 2)
@@ -91,9 +95,14 @@ namespace alpr
       cvtColor(frame_gray, mask_debug_img, CV_GRAY2BGR);
     }
     
-    vector<PlateRegion> detectedRegions;   
+    vector<PlateRegion> detectedRegions;
+	cout<<"regions of interest size ========================="<<endl;
+	cout<<regionsOfInterest.size()<<endl;
     for (int i = 0; i < regionsOfInterest.size(); i++)
     {
+	  //timespec startTime2;
+      //getTimeMonotonic(&startTime2);
+	
       Rect roi = regionsOfInterest[i];
       
       // Adjust the ROI to be inside the detection mask (if it exists)
@@ -113,6 +122,12 @@ namespace alpr
 		cout<<"		if ROI width or height is less than minium plate size then skip"<<endl;
         continue;
 		  }
+	  //timespec endTime2;
+	  //getTimeMonotonic(&endTime2);
+	  //cout << "Total Time to process warpedRegions 2 " << diffclock(startTime2, endTime2) << "ms." << endl;
+	 
+
+	 
       Mat cropped = frame_gray(roi);
 
       int w = cropped.size().width;
@@ -130,8 +145,18 @@ namespace alpr
       Size minPlateSize(config->minPlateSizeWidthPx, config->minPlateSizeHeightPx);
       Size maxPlateSize(maxWidth, maxHeight);
     
+	  timespec startTime3;
+      getTimeMonotonic(&startTime3);
+	  cout << "splits-------------------------------------------------------." << endl;
+
+	  
       vector<Rect> allRegions = find_plates(cropped, minPlateSize, maxPlateSize);
       
+	  timespec endTime3;
+	  getTimeMonotonic(&endTime3);
+	  cout << "Total Time to process warpedRegions 3 " << diffclock(startTime3, endTime3) << "ms." << endl;
+	 
+	
       // Aggregate the Rect regions into a hierarchical representation
       for( unsigned int i = 0; i < allRegions.size(); i++ )
       {
@@ -169,6 +194,11 @@ namespace alpr
       for (unsigned int j = 0; j < orderedRegions.size(); j++)
         detectedRegions.push_back(orderedRegions[j]);
     }
+	
+	//timespec endTime1;
+	//getTimeMonotonic(&endTime1);
+	//cout << "Total Time to process warpedRegions for loop 1" << diffclock(startTime1, endTime1) << "ms." << endl;
+	 
 
     // Show debug mask image
     if (detector_mask.mask_loaded && config->debugDetector && config->debugShowImages)

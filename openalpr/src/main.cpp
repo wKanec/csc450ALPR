@@ -54,9 +54,9 @@ std::vector<AlprRegionOfInterest> getROI(cv::Mat frame);
 SplitReturn split1 (cv::Mat frame, AlprImpl* impl);
 //SplitReturn split1 (SplitSettings splitSettings);
 SplitReturn2 split2 (SplitReturn split1return, AlprImpl* impl);
-SplitReturn3 split3 (SplitReturn2 split2return, AlprImpl* impl);
-SplitReturn4 split4 (SplitReturn2 split2return, SplitReturn3 split3return, AlprImpl* impl);
-AlprFullDetails split5 (SplitReturn2 split2return, SplitReturn4 split4return, AlprImpl* impl);
+AlprFullDetails split3 (SplitReturn2 split2return, AlprImpl* impl);
+//SplitReturn4 split4 (SplitReturn2 split2return, SplitReturn3 split3return, AlprImpl* impl);
+//AlprFullDetails split5 (SplitReturn2 split2return, SplitReturn4 split4return, AlprImpl* impl);
 AlprResults split6 (AlprFullDetails details, AlprImpl* impl, SplitReturn split1return);
 //splitSettings attempt
 //SplitSettings splitSetup( int argc, const char** argv);
@@ -101,6 +101,10 @@ AlprImpl* SplitSettings::get_impl(){
 */
 int main( int argc, const char** argv )
 {
+  timespec startTime;
+  getTimeMonotonic(&startTime);
+  SplitReturn split1return;
+  
   //SplitSettings attempt
   std::vector<std::string> filenames;
   std::string configFile = "";
@@ -110,7 +114,7 @@ int main( int argc, const char** argv )
   std::string country;
   int topn;
   bool debug_mode = false;
-  std::cout << "Main 1" <<std::endl;
+  //std::cout << "Main 1" <<std::endl;
   
 
   TCLAP::CmdLine cmd("OpenAlpr Command Line Utility", ' ', Alpr::getVersion());
@@ -199,6 +203,11 @@ int main( int argc, const char** argv )
         frame = cv::imread(filename);
 		//SplitSettings splitSettings(frame, impl);
 	//Add code for seperation of functions
+		timespec endTime;
+	    getTimeMonotonic(&endTime);
+		double totalProcessingTime = diffclock(startTime, endTime);
+		std::cout << "Total Time to process setup: " << totalProcessingTime << "ms." << std::endl;  
+
 	
 		std::cout << "=============================FIRST SPLIT===============================" <<std::endl;
 		std::cout << "Find regions of interest and edit image." <<std::endl;
@@ -208,13 +217,15 @@ int main( int argc, const char** argv )
 		std::cout<<"Locate possible plates in Regions of Interst and load country info"<<std::endl;
 		std::cout<<"====================================================================="<<std::endl;
 		SplitReturn2 split2return = split2(split1return,impl);
+		
+		
 		std::cout << "===============================SPLIT 3===================================" <<std::endl;
-		SplitReturn3 split3return = split3(split2return,impl);
-		std::cout << "===============================SPLIT 4===================================" <<std::endl;
-		SplitReturn4 split4return = split4(split2return, split3return,impl);
-		std::cout << "===============================SPLIT 5===================================" <<std::endl;
-		AlprFullDetails details = split5(split2return, split4return,impl);
-		std::cout << "==========================+++++Split 6======================================" << std::endl;
+		AlprFullDetails details = split3(split2return,impl);
+		//std::cout << "===============================SPLIT 4===================================" <<std::endl;
+		//SplitReturn4 split4return = split4(split2return, split3return,impl);
+		//std::cout << "===============================SPLIT 5===================================" <<std::endl;
+		//AlprFullDetails details = split5(split2return, split4return,impl);
+		std::cout << "===============================Split 6======================================" << std::endl;
 		AlprResults results = split6(details, impl, split1return);
 		std::cout << "==================================SPLIT Results===================================" <<std::endl;
 		bool plate_found = detectandshow(results);
@@ -275,23 +286,26 @@ SplitReturn2 split2 (SplitReturn split1return, AlprImpl* impl){
   
 	return split2return;
 }
-SplitReturn3 split3 (SplitReturn2 split2return, AlprImpl* impl){
+AlprFullDetails split3 (SplitReturn2 split2return, AlprImpl* impl){
 	timespec startTime;
 	getTimeMonotonic(&startTime);
 	SplitReturn split1return;
 	
-	SplitReturn3 split3return;
-	//add code to call split3-5 a second time for a second plate
-	split3return = impl->split3impl(split2return);
+	//split3return = impl->split3impl(split2return);
+	AlprResults results;
+	AlprFullDetails details;
+	
+	details = impl->split3impl(split2return);
+	
 	
 	timespec endTime;
 	getTimeMonotonic(&endTime);
 	double totalProcessingTime = diffclock(startTime, endTime);
 	std::cout << "Total Time to process split 3: " << totalProcessingTime << "ms." << std::endl;  
   
-	return split3return;
+	return details;
 }
-SplitReturn4 split4 (SplitReturn2 split2return, SplitReturn3 split3return, AlprImpl* impl){
+/*SplitReturn4 split4 (SplitReturn2 split2return, SplitReturn3 split3return, AlprImpl* impl){
 	std::cout << "Run character analysis" << std::endl;
 	timespec startTime;
 	getTimeMonotonic(&startTime);
@@ -306,8 +320,8 @@ SplitReturn4 split4 (SplitReturn2 split2return, SplitReturn3 split3return, AlprI
 	std::cout << "Total Time to process split 4: " << totalProcessingTime << "ms." << std::endl;  
   
 	return split4return;
-}
-AlprFullDetails split5 (SplitReturn2 split2return, SplitReturn4 split4return, AlprImpl* impl){
+}*/
+/*AlprFullDetails split5 (SplitReturn2 split2return, SplitReturn4 split4return, AlprImpl* impl){
 	timespec startTime;
 	getTimeMonotonic(&startTime);
 	SplitReturn split1return;
@@ -323,7 +337,7 @@ AlprFullDetails split5 (SplitReturn2 split2return, SplitReturn4 split4return, Al
 	std::cout << "Total Time to process split 5: " << totalProcessingTime << "ms." << std::endl;  
   
 	return details;
-}
+}*/
 //AlprFullDetails split4
 
 

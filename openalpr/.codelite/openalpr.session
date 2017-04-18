@@ -1,33 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Session Name="/home/kane/csc450ALPR/openalpr/openalpr.workspace">
-  <int Value="0" Name="m_selectedTab"/>
+  <int Value="1" Name="m_selectedTab"/>
   <wxString Value="/home/kane/csc450ALPR/openalpr/openalpr.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
       <wxString Value="/home/kane/csc450ALPR/openalpr/src/main.cpp" Name="FileName"/>
-      <int Value="10" Name="FirstVisibleLine"/>
-      <int Value="369" Name="CurrentLine"/>
+      <int Value="189" Name="FirstVisibleLine"/>
+      <int Value="191" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="/home/kane/csc450ALPR/openalpr/src/openalpr/alpr_impl.cpp" Name="FileName"/>
-      <int Value="79" Name="FirstVisibleLine"/>
-      <int Value="577" Name="CurrentLine"/>
+      <int Value="365" Name="FirstVisibleLine"/>
+      <int Value="302" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="/home/kane/csc450ALPR/openalpr/src/openalpr/alpr_impl.h" Name="FileName"/>
-      <int Value="103" Name="FirstVisibleLine"/>
-      <int Value="115" Name="CurrentLine"/>
+      <int Value="149" Name="FirstVisibleLine"/>
+      <int Value="173" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="/home/kane/csc450ALPR/openalpr/src/openalpr/alpr.cpp" Name="FileName"/>
-      <int Value="76" Name="FirstVisibleLine"/>
-      <int Value="98" Name="CurrentLine"/>
+      <int Value="79" Name="FirstVisibleLine"/>
+      <int Value="88" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/kane/csc450ALPR/openalpr/src/openalpr/detection/detector.cpp" Name="FileName"/>
+      <int Value="116" Name="FirstVisibleLine"/>
+      <int Value="162" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>

@@ -113,7 +113,7 @@ namespace alpr
 	std::vector<PlateRegion> get_warped_regions();
   };
   
-  class SplitReturn3{
+  /*class SplitReturn3{
     private:
 	PipelineData pipeline_data;
 	bool plateDetected;
@@ -142,7 +142,7 @@ namespace alpr
 	PipelineData get_pipeline_data();
 	bool get_plate_detected();
 	
-  };
+  };*/
 
   class AlprImpl
   {
@@ -162,9 +162,9 @@ namespace alpr
       SplitReturn recognize( unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight, std::vector<AlprRegionOfInterest> regionsOfInterest );
       
       SplitReturn2 split2impl(SplitReturn split1return);
-	  SplitReturn3 split3impl(SplitReturn2 split2return);
-	  SplitReturn4 split4impl(SplitReturn3 split3return, SplitReturn2 split2return);
-	  AlprFullDetails split5impl(SplitReturn4 split4return, SplitReturn2 split2return);
+	  AlprFullDetails split3impl(SplitReturn2 split2return);
+	  //SplitReturn4 split4impl(SplitReturn3 split3return, SplitReturn2 split2return);
+	  //AlprFullDetails split5impl(SplitReturn4 split4return, SplitReturn2 split2return);
 
 	  AlprFullDetails split6impl(AlprFullDetails iter_results, SplitReturn split1return);
 

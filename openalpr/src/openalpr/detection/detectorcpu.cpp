@@ -65,12 +65,10 @@ namespace alpr
                                       min_plate_size, max_plate_size );
 
 
-    if (config->debugTiming)
-    {
-      timespec endTime;
-      getTimeMonotonic(&endTime);
-      cout << "LBP Time: " << diffclock(startTime, endTime) << "ms." << endl;
-    }
+
+	timespec endTime;
+	getTimeMonotonic(&endTime);
+	cout << "Find_plate: " << diffclock(startTime, endTime) << "ms." << endl;
 
     return plates;
 
