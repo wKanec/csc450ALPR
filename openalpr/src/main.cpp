@@ -49,12 +49,17 @@ bool do_motiondetection = true;
 
 /** Function Headers */
 //split headers
-std::vector<AlprRegionOfInterest> getROI(Alpr* alpr, cv::Mat frame, std::string region, bool writeJson);
-SplitReturn split1 ( Alpr* alpr, cv::Mat frame, std::string region, bool writeJson, AlprImpl* impl);
+
+std::vector<AlprRegionOfInterest> getROI(cv::Mat frame);
+SplitReturn split1 (cv::Mat frame, AlprImpl* impl);
+//SplitReturn split1 (SplitSettings splitSettings);
 SplitReturn2 split2 (SplitReturn split1return, AlprImpl* impl);
 SplitReturn3 split3 (SplitReturn2 split2return, AlprImpl* impl);
-AlprFullDetails split4 (SplitReturn2 split2return, SplitReturn3 split3return, AlprImpl* impl);
+SplitReturn4 split4 (SplitReturn2 split2return, SplitReturn3 split3return, AlprImpl* impl);
+AlprFullDetails split5 (SplitReturn2 split2return, SplitReturn4 split4return, AlprImpl* impl);
 AlprResults split6 (AlprFullDetails details, AlprImpl* impl, SplitReturn split1return);
+//splitSettings attempt
+//SplitSettings splitSetup( int argc, const char** argv);
 
 
 bool detectandshow( AlprResults results);
@@ -66,10 +71,37 @@ std::string templatePattern;
 // This boolean is set to false when the user hits terminates (e.g., CTRL+C )
 // so we can end infinite loops for things like video processing.
 bool program_active = true;
+ /*
+class SplitSettings{
+    private:
+	cv::Mat frame;
+	AlprImpl* impl;
 
+    public:
+	SplitSettings(cv::Mat, AlprImpl*);
+	SplitSettings();
+	
+	cv::Mat get_frame();
+	AlprImpl* get_impl();
+};
 
+SplitSettings::SplitSettings(cv::Mat passedFrame, AlprImpl* passedimpl){
+	  frame = passedFrame;
+	  impl = passedimpl;
+}
+SplitSettings::SplitSettings(){
+	
+}
+cv::Mat SplitSettings::get_frame(){
+	  return frame;
+}
+AlprImpl* SplitSettings::get_impl(){
+	  return impl;
+}
+*/
 int main( int argc, const char** argv )
 {
+  //SplitSettings attempt
   std::vector<std::string> filenames;
   std::string configFile = "";
   bool outputJson = false;
@@ -165,36 +197,31 @@ int main( int argc, const char** argv )
       if (fileExists(filename.c_str()))
       {
         frame = cv::imread(filename);
-
+		//SplitSettings splitSettings(frame, impl);
 	//Add code for seperation of functions
 	
-		std::cout << "==========================FIRST SPLIT===============================" <<std::endl;
+		std::cout << "=============================FIRST SPLIT===============================" <<std::endl;
 		std::cout << "Find regions of interest and edit image." <<std::endl;
 		std::cout << "=====================================================================" <<std::endl;
-
-		SplitReturn split1return = split1(&alpr, frame, "", outputJson,  impl);
-		std::cout<<"==============================SPLIT 2================================"<<std::endl;
+		SplitReturn split1return = split1(frame, impl);
+		std::cout<<"================================SPLIT 2================================"<<std::endl;
 		std::cout<<"Locate possible plates in Regions of Interst and load country info"<<std::endl;
 		std::cout<<"====================================================================="<<std::endl;
 		SplitReturn2 split2return = split2(split1return,impl);
-		
-		std::cout << "==================================SPLIT 3===================================" <<std::endl;
+		std::cout << "===============================SPLIT 3===================================" <<std::endl;
 		SplitReturn3 split3return = split3(split2return,impl);
-		
-		std::cout << "==================================SPLIT 4===================================" <<std::endl;
-		AlprFullDetails details = split4(split2return, split3return,impl);
-		
-		std::cout << "==========================split 6 Start===========================================" << std::endl;
-	    std::cout << "=======================Input response===================" << std::endl;
-	
+		std::cout << "===============================SPLIT 4===================================" <<std::endl;
+		SplitReturn4 split4return = split4(split2return, split3return,impl);
+		std::cout << "===============================SPLIT 5===================================" <<std::endl;
+		AlprFullDetails details = split5(split2return, split4return,impl);
+		std::cout << "==========================+++++Split 6======================================" << std::endl;
 		AlprResults results = split6(details, impl, split1return);
+		std::cout << "==================================SPLIT Results===================================" <<std::endl;
 		bool plate_found = detectandshow(results);
 	    std::cout << "===============End of Splits===========" << std::endl;
-	
-
-
 		
-		if (!plate_found && !outputJson)
+	/*SplitSettings attempt*/
+	   if (!plate_found && !outputJson)
           std::cout << "No license plates found." << std::endl;
       }
       else
@@ -208,51 +235,112 @@ int main( int argc, const char** argv )
       return 1;
     }
   }
+	
 
   return 0;
 }
 
-SplitReturn split1 ( Alpr* alpr, cv::Mat frame, std::string region, bool writeJson,AlprImpl* impl){
-	
+/*SplitReturn splitSetup( int argc, const char** argv){
+  
+}*/
+
+SplitReturn split1 (cv::Mat frame, AlprImpl* impl){
+	timespec startTime;
+	getTimeMonotonic(&startTime);
 	SplitReturn split1return;
-
-	std::vector<AlprRegionOfInterest> regionsOfInterest = getROI(alpr, frame, region, writeJson);
-	//first call to alpr_Impl
+	
+    std::vector<AlprRegionOfInterest> regionsOfInterest = getROI(frame);
 	if (regionsOfInterest.size()>0) split1return = impl->recognize(frame.data, frame.elemSize(), frame.cols, frame.rows, regionsOfInterest);
-
+	
+	timespec endTime;
+	getTimeMonotonic(&endTime);
+	double totalProcessingTime = diffclock(startTime, endTime);
+	std::cout << "Total Time to process split 1: " << totalProcessingTime << "ms." << std::endl;  
+  
 	return split1return;
 }
 
 SplitReturn2 split2 (SplitReturn split1return, AlprImpl* impl){
+	timespec startTime;
+	getTimeMonotonic(&startTime);
+
 	SplitReturn2 split2return;
 	
 	split2return = impl->split2impl(split1return);
+	
+	timespec endTime;
+	getTimeMonotonic(&endTime);
+	double totalProcessingTime = diffclock(startTime, endTime);
+	std::cout << "Total Time to process split 2: " << totalProcessingTime << "ms." << std::endl;  
+  
 	return split2return;
 }
 SplitReturn3 split3 (SplitReturn2 split2return, AlprImpl* impl){
+	timespec startTime;
+	getTimeMonotonic(&startTime);
+	SplitReturn split1return;
+	
 	SplitReturn3 split3return;
 	//add code to call split3-5 a second time for a second plate
 	split3return = impl->split3impl(split2return);
+	
+	timespec endTime;
+	getTimeMonotonic(&endTime);
+	double totalProcessingTime = diffclock(startTime, endTime);
+	std::cout << "Total Time to process split 3: " << totalProcessingTime << "ms." << std::endl;  
+  
 	return split3return;
 }
-AlprFullDetails split4 (SplitReturn2 split2return, SplitReturn3 split3return, AlprImpl* impl){
+SplitReturn4 split4 (SplitReturn2 split2return, SplitReturn3 split3return, AlprImpl* impl){
+	std::cout << "Run character analysis" << std::endl;
+	timespec startTime;
+	getTimeMonotonic(&startTime);
+	
+	SplitReturn4 split4return;
+	
+	split4return = impl->split4impl(split3return, split2return);
+	
+	timespec endTime;
+	getTimeMonotonic(&endTime);
+	double totalProcessingTime = diffclock(startTime, endTime);
+	std::cout << "Total Time to process split 4: " << totalProcessingTime << "ms." << std::endl;  
+  
+	return split4return;
+}
+AlprFullDetails split5 (SplitReturn2 split2return, SplitReturn4 split4return, AlprImpl* impl){
+	timespec startTime;
+	getTimeMonotonic(&startTime);
+	SplitReturn split1return;
+	
 	AlprResults results;
 	AlprFullDetails details;
 	
-	details = impl->split4impl(split3return, split2return);
+	details = impl->split5impl(split4return, split2return);
 	
-	//results = details.results;
+	timespec endTime;
+	getTimeMonotonic(&endTime);
+	double totalProcessingTime = diffclock(startTime, endTime);
+	std::cout << "Total Time to process split 5: " << totalProcessingTime << "ms." << std::endl;  
+  
 	return details;
 }
 //AlprFullDetails split4
 
 
 AlprResults split6 (AlprFullDetails details, AlprImpl* impl, SplitReturn split1return){
-	
+	timespec startTime;
+	getTimeMonotonic(&startTime);
+		
 	AlprResults results;
 	
 	details = impl->split6impl(details, split1return);
 	results = details.results;
+	
+	timespec endTime;
+	getTimeMonotonic(&endTime);
+	double totalProcessingTime = diffclock(startTime, endTime);
+	std::cout << "Total Time to process split 6: " << totalProcessingTime << "ms." << std::endl;  
+  
 	return results;
 }
 
@@ -264,9 +352,10 @@ bool is_supported_image(std::string image_file)
 }
 
 
-std::vector<AlprRegionOfInterest> getROI( Alpr* alpr, cv::Mat frame, std::string region, bool writeJson)
+//std::vector<AlprRegionOfInterest> getROI( Alpr* alpr, cv::Mat frame, std::string region, bool writeJson)
+std::vector<AlprRegionOfInterest> getROI(cv::Mat frame)
 {
-
+  std::string region = "";
   std::vector<AlprRegionOfInterest> regionsOfInterest;
   if (do_motiondetection)
   {
@@ -292,19 +381,9 @@ bool detectandshow(AlprResults results)
 
   timespec startTime;
   getTimeMonotonic(&startTime);
-  //split 2 in
-  ///move this to split 2.....
-  //if (regionsOfInterest.size()>0) results = alpr->recognize(frame.data, frame.elemSize(), frame.cols, frame.rows, regionsOfInterest);
-  
-  
-  //split 8 out
   std::cout<<"Receive recognize response from 8"<<std::endl;
   timespec endTime;
-  getTimeMonotonic(&endTime);
-  double totalProcessingTime = diffclock(startTime, endTime);
-  if (measureProcessingTime)
-    std::cout << "Total Time to process image: " << totalProcessingTime << "ms." << std::endl;  
-  
+ 
   //if (writeJson)
   //{
   //  std::cout << alpr->toJson( results ) << std::endl;
@@ -314,9 +393,6 @@ bool detectandshow(AlprResults results)
 for (int i = 0; i < results.plates.size(); i++)
 {
 	std::cout << "plate" << i << ": " << results.plates[i].topNPlates.size() << " results";
-	if (measureProcessingTime)
-	std::cout << " -- Processing Time = " << results.plates[i].processing_time_ms << "ms.";
-	std::cout << std::endl;
 
 	if (results.plates[i].regionConfidence > 0)
 	std::cout << "State ID: " << results.plates[i].region << " (" << results.plates[i].regionConfidence << "% confidence)" << std::endl;
@@ -336,7 +412,10 @@ for (int i = 0; i < results.plates.size(); i++)
 }
   //}
 
-
+  getTimeMonotonic(&endTime);
+  double totalProcessingTime = diffclock(startTime, endTime);
+  std::cout << "Total Time to process detectandshow(results) " << totalProcessingTime << "ms." << std::endl;  
+  
   return results.plates.size() > 0;
 }
 

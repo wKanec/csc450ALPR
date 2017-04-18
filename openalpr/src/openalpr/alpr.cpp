@@ -96,7 +96,8 @@ namespace alpr
 	SplitReturn splitreturn = impl->recognize(pixelData, bytesPerPixel, imgWidth, imgHeight, regionsOfInterest);
 	SplitReturn2 split2return = impl->split2impl(splitreturn);
 	SplitReturn3 split3return = impl->split3impl(split2return);
-	AlprFullDetails details = impl->split4impl(split3return, split2return);
+	SplitReturn4 split4return = impl->split4impl(split3return, split2return);
+	AlprFullDetails details = impl->split5impl(split4return, split2return);
 	AlprResults results = details.results;
 	//sr.testsplit();
 	return results;

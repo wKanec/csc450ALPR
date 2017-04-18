@@ -100,12 +100,34 @@ namespace alpr
   bool SplitReturn3::get_plate_detected(){
 		return plateDetected;
   }
+  //split4-------------------------------------------------------------------------
+  SplitReturn4::SplitReturn4(std::vector<PPResult> passedPPResults, AlprPlateResult passedPlateResult, PipelineData passedPipelineData, bool passedPlateDetected){
+	  PPResults = passedPPResults;
+	  plateResult = passedPlateResult;
+	  pipeline_data = passedPipelineData;
+	  plateDetected = passedPlateDetected;
+  }
+  SplitReturn4::SplitReturn4(){
+		
+  }
+	
+  std::vector<PPResult> SplitReturn4::get_ppresults(){
+		return PPResults;
+  }
+  AlprPlateResult SplitReturn4::get_plate_results(){
+		return plateResult;
+  }
+    PipelineData SplitReturn4::get_pipeline_data(){
+		return pipeline_data;
+  }
+  bool SplitReturn4::get_plate_detected(){
+		return plateDetected;
+  }
   
 
   AlprImpl::AlprImpl(const std::string country, const std::string configFile, const std::string runtimeDir)
   {
 	  
-    std::cout << "ALPR_IMPL 1" << std::endl;
     timespec startTime;
     getTimeMonotonic(&startTime);
     
@@ -137,7 +159,6 @@ namespace alpr
 
   AlprImpl::~AlprImpl()
   {
-	std::cout << "ALPR_IMPL 2" << std::endl;
     delete config;
 
     typedef std::map<std::string, AlprRecognizers>::iterator it_type;
@@ -212,13 +233,6 @@ namespace alpr
       cout << "Total Time to process split1: " << diffclock(startTime, endTime) << "ms." << endl;
     }
 
-
-	std::cout<<"============================Split 1 END================================"<<std::endl;
-	std::cout<<"===== RETURN IMG AND WARPED REGION OF INTEREST =====" <<std::endl;
-	std::cout << "   " <<std::endl;
-	std::cout << "   " <<std::endl;
-	std::cout << "   " <<std::endl;
-	
 	return split1return;
   }
   
@@ -238,11 +252,6 @@ namespace alpr
 
 	
 	//ResultAggregator country_aggregator(MERGE_PICK_BEST, topN, config);
-	int countrysize = config->loaded_countries.size();
-	std::cout<<"countrysize*************************************************************"<<std::endl;
-	std::cout<<countrysize<<std::endl;
-	//for (unsigned int i = 0; i < config->loaded_countries.size(); i++)
-    //{
       if (config->debugGeneral)
         cout << "Analyzing: " << config->loaded_countries[0] << endl;
 
@@ -250,25 +259,15 @@ namespace alpr
       // Reapply analysis for each multiple analysis value set in the config,
       // make a minor imperceptible tweak to the input image each time
       ResultAggregator iter_aggregator(MERGE_COMBINE, topN, config); 
-	  std::cout<<"analysis count*************************************************************"<<std::endl;
-     
-	  int ancount = config->analysis_count;
-	  std::cout<<ancount<<std::endl;
-	  //for (unsigned int iteration = 0; iteration < config->analysis_count; iteration++)
+      //for (unsigned int iteration = 0; iteration < config->analysis_count; iteration++)
       //{
-		std::cout << "config analysis_count" <<std::endl;
-		std::cout << config->analysis_count <<std::endl;
+		//std::cout << "config analysis_count" <<std::endl;
+		//std::cout << config->analysis_count <<std::endl;
         Mat iteration_image = iter_aggregator.applyImperceptibleChange(grayImg, 0);
         SplitReturn2 split2return = analyzeSingleCountry(iteration_image, warpedRegionsOfInterest);
 		
 		timespec endTime;
 		getTimeMonotonic(&endTime);
-		cout << "Total Time to process split 2 " << diffclock(startTime, endTime) << "ms." << endl;
-		std::cout << "==========================split 2 END==============================" << std::endl;
-		std::cout << "===============Return PlateQueue of possible plates================" << std::endl;
-		std::cout << "   " <<std::endl;
-		std::cout << "   " <<std::endl;
-		std::cout << "   " <<std::endl;
 	  
 		return split2return;
   }
@@ -291,12 +290,7 @@ namespace alpr
 		ResultAggregator country_aggregator(MERGE_PICK_BEST, topN, config);
 		iter_aggregator.addResults(iter_results);
       //}
-		std::cout << "   " <<std::endl;
-		std::cout << "   " <<std::endl;
-		std::cout << "   " <<std::endl;
-		std::cout << "==================receive response===========================================" << std::endl;
-		std::cout << "==================iter_aggregator.addResults(response)===================" << std::endl;
-	
+
       AlprFullDetails sub_results = iter_aggregator.getAggregateResults();
       sub_results.results.epoch_time = start_time;
       sub_results.results.img_width = img.cols;
@@ -328,11 +322,11 @@ namespace alpr
 
       for (unsigned int i = 0; i < response.results.plates.size(); i++)
       {
-		std::cout<<"		draw boxes around plate and charaters"<<std::endl;
+		//std::cout<<"		draw boxes around plate and charaters"<<std::endl;
         // Draw a box around the license plate 
         for (int z = 0; z < 4; z++)
         {
-			std::cout << "		draw a box around the license plate" << std::endl;
+			//std::cout << "		draw a box around the license plate" << std::endl;
           AlprCoordinate* coords = response.results.plates[i].plate_points;
           Point p1(coords[z].x, coords[z].y);
           Point p2(coords[(z + 1) % 4].x, coords[(z + 1) % 4].y);
@@ -365,7 +359,6 @@ namespace alpr
       while ((char) cv::waitKey(50) == -1)
       {}
     }
-		std::cout << "======================return edited response to =========================" << std::endl;
 
     return response;
   }
@@ -386,12 +379,10 @@ namespace alpr
     // Find all the candidate regions
     if (config->skipDetection == false)
     {
-	  std::cout << "ALPR_IMPL 8 skipDetection == False" << std::endl;
       warpedPlateRegions = country_recognizers.plateDetector->detect(grayImg, warpedRegionsOfInterest);
     }
     else
     {
-	  std::cout << "ALPR_IMPL 9 skipDetection == True" << std::endl;
       // They have elected to skip plate detection.  Instead, return a list of plate regions
       // based on their regions of interest
       for (unsigned int i = 0; i < warpedRegionsOfInterest.size(); i++)
@@ -418,10 +409,7 @@ namespace alpr
 	//AlprRecognizers country_recognizers, std::vector<PlateRegion> warpedPlateRegions)
   SplitReturn3 AlprImpl::split3impl(SplitReturn2 split2return)
   {
-	std::cout << "==========================split 3 Start=============================" << std::endl;
-	std::cout << "check for possible characters in plates" << std::endl;
-	std::cout << "====================================================================" << std::endl;
- 	AlprFullDetails response;
+	AlprFullDetails response;
 
 	timespec startTime;
 	timespec platestarttime;
@@ -430,8 +418,8 @@ namespace alpr
 	
 	cv::Mat grayImg = split2return.get_image();
 	std::queue<PlateRegion> plateQueue = split2return.get_queue();
-	AlprRecognizers country_recognizers = split2return.get_country_recognizers();
-	std::vector<PlateRegion> warpedPlateRegions = split2return.get_warped_regions();
+	//AlprRecognizers country_recognizers = split2return.get_country_recognizers();
+	//std::vector<PlateRegion> warpedPlateRegions = split2return.get_warped_regions();
 	
 	int pqsize = plateQueue.size();
 	std::cout<<"PlateQueue size **********************************************************"<<std::endl;
@@ -453,52 +441,34 @@ namespace alpr
         cout << "Disqualify reason: " << pipeline_data.disqualify_reason << endl;
       }
 	  
-	  if (!pipeline_data.disqualified){
-		  
-	  }
 	//}
   
 	  
 	  //check if pipeline data in disqualified if it is then stop 
 	  //if pipeline data not disqualified then add data here to 
 	  //send pipeline_data to the zookeepers and back to below code.
-	  timespec endTime;
-	  getTimeMonotonic(&endTime);
-      cout << "Total Time to process split 3 " << diffclock(startTime, endTime) << "ms." << endl;
-	  std::cout << "=======================Split 3 END================================"<< std::endl;
-	  std::cout << "=================Return pipeline_data==================" << std::endl;
-	  std::cout << "   " <<std::endl;
-	  std::cout << "   " <<std::endl;
-	  std::cout << "   " <<std::endl;
-	  
+
 	  SplitReturn3 split3return(pipeline_data, plateDetected);
 	  //AlprFullDetails details = AlprImpl::split4impl(split3return, split2return);
 	  
 	  return split3return;
   }
   
-	AlprFullDetails AlprImpl::split4impl(SplitReturn3 split3return, SplitReturn2 split2return){
+	SplitReturn4 AlprImpl::split4impl(SplitReturn3 split3return, SplitReturn2 split2return){
 		
-
-	  std::cout << "=======================split 4 Start============================" << std::endl;
-	  std::cout << "====================Input pipeline_data=========================" << std::endl;
-	  std::cout << "Run character analysis" << std::endl;
-	  std::cout << "================================================================" << std::endl;
-	  
 	  timespec startTime;
 	  timespec platestarttime;
       getTimeMonotonic(&startTime);
 	  int platecount = 0;
-	  AlprFullDetails response;
 	  
 	  PipelineData pipeline_data = split3return.get_pipeline_data();
 	  bool plateDetected = split3return.get_plate_detected();
 		
-	  cv::Mat grayImg = split2return.get_image();
-	  std::queue<PlateRegion> plateQueue = split2return.get_queue();
+	  //cv::Mat grayImg = split2return.get_image();
+	  //std::queue<PlateRegion> plateQueue = split2return.get_queue();
 	  AlprRecognizers country_recognizers = split2return.get_country_recognizers();
-	  std::vector<PlateRegion> warpedPlateRegions = split2return.get_warped_regions();
-	  PlateRegion plateRegion = plateQueue.front();
+	  //std::vector<PlateRegion> warpedPlateRegions = split2return.get_warped_regions();
+	  //PlateRegion plateRegion = plateQueue.front();
 
 
 	  
@@ -532,7 +502,6 @@ namespace alpr
 
         
         #ifndef SKIP_STATE_DETECTION
-		std::cout << "ALPR_IMPL 10.3" << std::endl;
         if (detectRegion && country_recognizers.stateDetector->isLoaded())
         {
           std::vector<StateCandidate> state_candidates = country_recognizers.stateDetector->detect(pipeline_data.color_deskewed.data,
@@ -553,33 +522,47 @@ namespace alpr
           std::cerr << "Invalid pattern provided: " << plateResult.region << std::endl;
           std::cerr << "Valid patterns are located in the " << config->country << ".patterns file" << std::endl;
         }
-        std::cout << "------------perform ocr and postProcessor.analyze---------------" << std::endl;
+        //std::cout << "------------perform ocr and postProcessor.analyze---------------" << std::endl;
 		country_recognizers.ocr->performOCR(&pipeline_data);
-		std::cout << "-----------------------test--------------------------------------" << std::endl;
-        country_recognizers.ocr->postProcessor.analyze(plateResult.region, topN);
-        timespec resultsStartTime;
-        getTimeMonotonic(&resultsStartTime);
+		//std::cout << "-----------------------test--------------------------------------" << std::endl;
+        country_recognizers.ocr->postProcessor.analyze(plateResult.region, topN);;
         const vector<PPResult> ppResults = country_recognizers.ocr->postProcessor.getResults();
 
-        std::cout << "		char transform matrix" << std::endl;
-		std::cout << "		is best plate selected" << std::endl;
+        //std::cout << "		char transform matrix" << std::endl;
+		//std::cout << "		is best plate selected" << std::endl;
 		timespec endTime;
 	    getTimeMonotonic(&endTime);
-        cout << "Total Time to process split 4 " << diffclock(startTime, endTime) << "ms." << endl;
+        //cout << "Total Time to process split 4 " << diffclock(startTime, endTime) << "ms." << endl;
 	  
-		std::cout << "===========================Split 4 END========================================" << std::endl;
-		std::cout << "======================Return pipeline_data and ppResults===============================" << std::endl;
-		std::cout << "   " <<std::endl;
-		std::cout << "   " <<std::endl;
-		std::cout << "   " <<std::endl;
-	
-	
+		SplitReturn4 split4return(ppResults, plateResult, pipeline_data, plateDetected);
+		//AlprFullDetails details = split5impl(split4return, split2return);
+		
+	    return split4return;
+	  }
+	}
+	AlprFullDetails AlprImpl::split5impl(SplitReturn4 split4return, SplitReturn2 split2return){
 		std::cout << "==========================split 5 Start===========================================" << std::endl;
 		std::cout << "==================Input pipeline_data and ppResults===================" << std::endl;
+		
 		timespec startTime;
 	    timespec platestarttime;
-        getTimeMonotonic(&startTime);
-	  
+		timespec resultsStartTime;
+		getTimeMonotonic(&startTime);
+        getTimeMonotonic(&resultsStartTime);
+		AlprFullDetails response;
+		
+	    cv::Mat grayImg = split2return.get_image();
+	    std::queue<PlateRegion> plateQueue = split2return.get_queue();
+	    //AlprRecognizers country_recognizers = split2return.get_country_recognizers();
+	    std::vector<PlateRegion> warpedPlateRegions = split2return.get_warped_regions();
+	    PlateRegion plateRegion = plateQueue.front();
+		
+	    PipelineData pipeline_data = split4return.get_pipeline_data();
+	    bool plateDetected = split4return.get_plate_detected();	
+		std::vector<PPResult> ppResults = split4return.get_ppresults();
+	    AlprPlateResult plateResult = split4return.get_plate_results();
+		
+		
 
         int bestPlateIndex = 0;
 
@@ -620,7 +603,7 @@ namespace alpr
           }
           plateResult.topNPlates.push_back(aplate);
         }
-		std::cout << "ALPR_IMPL 10.8 Create BestPlate" << std::endl;
+		//std::cout << "ALPR_IMPL 10.8 Create BestPlate" << std::endl;
         if (plateResult.topNPlates.size() > bestPlateIndex)
         {
           AlprPlate bestPlate;
@@ -645,11 +628,10 @@ namespace alpr
           plateDetected = true;
           response.results.plates.push_back(plateResult);
         }
-      }
 
       if (!plateDetected)
       {
-		std::cout << "ALPR_IMPL 10.9 not a valid plate. check for children" << std::endl;
+		//std::cout << "ALPR_IMPL 10.9 not a valid plate. check for children" << std::endl;
         // Not a valid plate
         // Check if this plate has any children, if so, send them back up for processing
         for (unsigned int childidx = 0; childidx < plateRegion.children.size(); childidx++)
@@ -659,7 +641,7 @@ namespace alpr
       }
 
 	
-	std::cout << "ALPR_IMPL 11" << std::endl;
+	//std::cout << "ALPR_IMPL 11" << std::endl;
 
     // Unwarp plate regions if necessary
     prewarp->projectPlateRegions(warpedPlateRegions, grayImg.cols, grayImg.rows, true);
@@ -667,20 +649,15 @@ namespace alpr
 
     timespec endTime;
     getTimeMonotonic(&endTime);
-	cout << "Total Time to process split 5 " << diffclock(startTime, endTime) << "ms." << endl;
+	//cout << "Total Time to process split 5 " << diffclock(startTime, endTime) << "ms." << endl;
 	  
     response.results.total_processing_time_ms = diffclock(startTime, endTime);
-	std::cout << "===========================Split 5 END========================================" << std::endl;
-	std::cout << "=========================Return response===============================" << std::endl;
-	std::cout << "   " <<std::endl;
-	std::cout << "   " <<std::endl;
-	std::cout << "   " <<std::endl;
     return response;
   }
 
   AlprResults AlprImpl::recognize( std::vector<char> imageBytes)
   {
-	std::cout << "ALPR_IMPL 12" << std::endl;
+	//std::cout << "ALPR_IMPL 12" << std::endl;
     try
     {
       cv::Mat img = cv::imdecode(cv::Mat(imageBytes), 1);
@@ -705,7 +682,8 @@ namespace alpr
 	  SplitReturn splitDetails = recognizeFullDetails(img,rois);
 	  SplitReturn2 split2return = split2impl(splitDetails);
 	  SplitReturn3 split3return = split3impl(split2return);
-	  AlprFullDetails fullDetails = split4impl(split3return, split2return);
+	  SplitReturn4 split4return = split4impl(split3return, split2return);
+	  AlprFullDetails fullDetails = split5impl(split4return, split2return);
       //AlprFullDetails fullDetails = recognizeFullDetails(img, rois);
 
       return fullDetails.results;
@@ -723,7 +701,7 @@ namespace alpr
 	timespec startTime;
     getTimeMonotonic(&startTime);
 
-	std::cout<<"reshape image"<<std::endl;
+	//std::cout<<"reshape image"<<std::endl;
       int arraySize = imgWidth * imgHeight * bytesPerPixel;
       cv::Mat imgData = cv::Mat(arraySize, 1, CV_8U, pixelData);
       cv::Mat img = imgData.reshape(bytesPerPixel, imgHeight);
@@ -737,21 +715,20 @@ namespace alpr
 	  SplitReturn splitresults = this->recognize(img, this->convertRects(regionsOfInterest));
 	timespec endTime;
 	getTimeMonotonic(&endTime);
-	cout << "Total Time to process split 1 " << diffclock(startTime, endTime) << "ms." << endl;
+	//cout << "Total Time to process split 1 " << diffclock(startTime, endTime) << "ms." << endl;
 		
 	return splitresults;
   }
 
   AlprResults AlprImpl::recognize(cv::Mat img)
   {
-	std::cout << "ALPR_IMPL 15 recognize(Mat img)" << std::endl;
     std::vector<cv::Rect> regionsOfInterest;
     regionsOfInterest.push_back(cv::Rect(0, 0, img.cols, img.rows));
-	std::cout << "++++++++++++++++++++ALPR_IMPL 15 recognize END+++++++++++++++++++++" <<std::endl;
     SplitReturn splitresults = recognize(img, regionsOfInterest);
 	SplitReturn2 split2return = split2impl(splitresults);
 	SplitReturn3 split3return = split3impl(split2return);
-	AlprFullDetails fullDetails = split4impl(split3return, split2return);
+	SplitReturn4 split4return = split4impl(split3return, split2return);
+	AlprFullDetails fullDetails = split5impl(split4return, split2return);
 	return fullDetails.results;
   }
 	
@@ -767,19 +744,18 @@ namespace alpr
 
    std::vector<cv::Rect> AlprImpl::convertRects(std::vector<AlprRegionOfInterest> regionsOfInterest)
    {
-	 std::cout<< "ALPR_IMPL 17 convertRect(RegionofInterest)" << std::endl;
+	 //std::cout<< "ALPR_IMPL 17 convertRect(RegionofInterest)" << std::endl;
      std::vector<cv::Rect> rectRegions;
      for (unsigned int i = 0; i < regionsOfInterest.size(); i++)
      {
        rectRegions.push_back(cv::Rect(regionsOfInterest[i].x, regionsOfInterest[i].y, regionsOfInterest[i].width, regionsOfInterest[i].height));
      }
-	 std::cout << "ALPR_IMPL 17 convert Rect END" <<std::endl;
      return rectRegions;
    }
 
   string AlprImpl::toJson( const AlprResults results )
   {
-	std::cout << "ALPR_IMPL 18" << std::endl;
+	//std::cout << "ALPR_IMPL 18" << std::endl;
     cJSON *root, *jsonResults;
     root = cJSON_CreateObject();
 
@@ -797,7 +773,7 @@ namespace alpr
     cJSON_AddItemToObject(root, "regions_of_interest", 		rois=cJSON_CreateArray());
     for (unsigned int i=0;i<results.regionsOfInterest.size();i++)
     {
-	  std::cout << "ALPR_IMPL 18.1" << std::endl;
+	  //std::cout << "ALPR_IMPL 18.1" << std::endl;
       cJSON *roi_object;
       roi_object = cJSON_CreateObject();
       cJSON_AddNumberToObject(roi_object, "x",  results.regionsOfInterest[i].x);
@@ -812,7 +788,7 @@ namespace alpr
     cJSON_AddItemToObject(root, "results", 		jsonResults=cJSON_CreateArray());
     for (unsigned int i = 0; i < results.plates.size(); i++)
     {
-	  std::cout << "ALPR_IMPL 18.2" << std::endl;
+	  //std::cout << "ALPR_IMPL 18.2" << std::endl;
       cJSON *resultObj = createJsonObj( &results.plates[i] );
       cJSON_AddItemToArray(jsonResults, resultObj);
     }
@@ -833,7 +809,7 @@ namespace alpr
 
   std::string AlprImpl::toJson( const AlprPlateResult result )
   {
-	std::cout << "ALPR_IMPL 19" << std::endl;
+	//std::cout << "ALPR_IMPL 19" << std::endl;
     cJSON *resultObj = createJsonObj( &result );
     
     char *out;
@@ -849,7 +825,7 @@ namespace alpr
   }
   cJSON* AlprImpl::createJsonObj(const AlprPlateResult* result)
   {
-	std::cout << "ALPR_IMPL 20" << std::endl;
+	//std::cout << "ALPR_IMPL 20" << std::endl;
     cJSON *root, *coords, *candidates;
 
     root=cJSON_CreateObject();
@@ -881,7 +857,7 @@ namespace alpr
     cJSON_AddItemToObject(root, "candidates", 		candidates=cJSON_CreateArray());
     for (unsigned int i = 0; i < result->topNPlates.size(); i++)
     {
-	  std::cout << "ALPR_IMPL 21" << std::endl;
+	  //std::cout << "ALPR_IMPL 21" << std::endl;
       cJSON *candidate_object;
       candidate_object = cJSON_CreateObject();
       cJSON_AddStringToObject(candidate_object, "plate",  result->topNPlates[i].characters.c_str());
@@ -895,7 +871,7 @@ namespace alpr
   }
 
   AlprResults AlprImpl::fromJson(std::string json) {
-	std::cout << "ALPR_IMPL 22" << std::endl;
+	//std::cout << "ALPR_IMPL 22" << std::endl;
     AlprResults allResults;
 
     cJSON* root = cJSON_Parse(json.c_str());
@@ -911,7 +887,7 @@ namespace alpr
     int numRois = cJSON_GetArraySize(rois);
     for (int c = 0; c < numRois; c++)
     {
-	  std::cout << "ALPR_IMPL 23" << std::endl;
+	  //std::cout << "ALPR_IMPL 23" << std::endl;
       cJSON* roi = cJSON_GetArrayItem(rois, c);
       int x = cJSON_GetObjectItem(roi, "x")->valueint;
       int y = cJSON_GetObjectItem(roi, "y")->valueint;
@@ -927,7 +903,7 @@ namespace alpr
 
     for (int i = 0; i < resultsSize; i++)
     {
-	  std::cout << "ALPR_IMPL 24" << std::endl;
+	  //std::cout << "ALPR_IMPL 24" << std::endl;
       cJSON* item = cJSON_GetArrayItem(resultsArray, i);
       AlprPlateResult plate;
 
@@ -992,7 +968,7 @@ namespace alpr
   }
   
   void AlprImpl::setMask(unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight) {
-	std::cout << "ALPR_IMPL 25" << std::endl;
+	//std::cout << "ALPR_IMPL 25" << std::endl;
 
     try
     {
@@ -1038,7 +1014,7 @@ namespace alpr
   
   
   void AlprImpl::loadRecognizers() {
-	std::cout << "ALPR_IMPL 26" << std::endl;
+	//std::cout << "ALPR_IMPL 26" << std::endl;
     for (unsigned int i = 0; i < config->loaded_countries.size(); i++)
     {
       config->setCountry(config->loaded_countries[i]);

@@ -126,6 +126,23 @@ namespace alpr
 	bool get_plate_detected();
 	
   };
+  	  
+  class SplitReturn4{
+	private:
+	  std::vector<PPResult> PPResults;
+	  AlprPlateResult plateResult;
+	  PipelineData pipeline_data;
+	  bool plateDetected;
+	public:
+	SplitReturn4(std::vector<PPResult>, AlprPlateResult, PipelineData pipeline_data, bool plateDetected);
+	SplitReturn4();
+	
+	std::vector<PPResult> get_ppresults();
+	AlprPlateResult get_plate_results();
+	PipelineData get_pipeline_data();
+	bool get_plate_detected();
+	
+  };
 
   class AlprImpl
   {
@@ -145,9 +162,10 @@ namespace alpr
       SplitReturn recognize( unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight, std::vector<AlprRegionOfInterest> regionsOfInterest );
       
       SplitReturn2 split2impl(SplitReturn split1return);
-	  //AlprFullDetails split3impl(cv::Mat grayImg, std::queue<PlateRegion> plateQueue, AlprRecognizers country_recognizers, std::vector<PlateRegion> warpedPlateRegions);
 	  SplitReturn3 split3impl(SplitReturn2 split2return);
-	  AlprFullDetails split4impl(SplitReturn3 split3return, SplitReturn2 split2return);
+	  SplitReturn4 split4impl(SplitReturn3 split3return, SplitReturn2 split2return);
+	  AlprFullDetails split5impl(SplitReturn4 split4return, SplitReturn2 split2return);
+
 	  AlprFullDetails split6impl(AlprFullDetails iter_results, SplitReturn split1return);
 
       SplitReturn recognize( cv::Mat img, std::vector<cv::Rect> regionsOfInterest);
