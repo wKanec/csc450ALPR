@@ -146,8 +146,8 @@ namespace alpr
       
       SplitReturn2 split2impl(SplitReturn split1return);
 	  //AlprFullDetails split3impl(cv::Mat grayImg, std::queue<PlateRegion> plateQueue, AlprRecognizers country_recognizers, std::vector<PlateRegion> warpedPlateRegions);
-	  AlprFullDetails split3impl(SplitReturn2 split2return);
-	  //AlprFullDetails split4impl();
+	  SplitReturn3 split3impl(SplitReturn2 split2return);
+	  AlprFullDetails split4impl(SplitReturn3 split3return, SplitReturn2 split2return);
 	  AlprFullDetails split6impl(AlprFullDetails iter_results, SplitReturn split1return);
 
       SplitReturn recognize( cv::Mat img, std::vector<cv::Rect> regionsOfInterest);

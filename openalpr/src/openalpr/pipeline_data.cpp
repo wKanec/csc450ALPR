@@ -28,6 +28,9 @@ namespace alpr
 	  cout<<"init pipeline_data(colorImage,GrayImage,regionOfInterest,config"<<endl;
     this->init(colorImage, grayImg, regionOfInterest, config);
   }
+  PipelineData::PipelineData(){
+	  
+  }
 
   PipelineData::~PipelineData()
   {

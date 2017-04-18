@@ -18,7 +18,8 @@ namespace alpr
     public:
       PipelineData(cv::Mat colorImage, cv::Rect regionOfInterest, Config* config);
       PipelineData(cv::Mat colorImage, cv::Mat grayImage, cv::Rect regionOfInterest, Config* config);
-      virtual ~PipelineData();
+      PipelineData();
+	  virtual ~PipelineData();
 
       void init(cv::Mat colorImage, cv::Mat grayImage, cv::Rect regionOfInterest, Config* config);
       void clearThresholds();

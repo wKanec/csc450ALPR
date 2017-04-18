@@ -29,6 +29,7 @@ using namespace cv;
 
 namespace alpr
 {
+//split1-------------------------------------------------------------------------------
   SplitReturn::SplitReturn(cv::Mat passedimg, std::vector<cv::Rect> passedwarpedregion, 
 	AlprFullDetails passedresponse, std::vector<cv::Rect>passedregion)
   {
@@ -56,6 +57,8 @@ namespace alpr
   std::vector<cv::Rect> SplitReturn::get_region(){
 	  return region;
   }
+  
+  //split2-----------------------------------------------------------------------------
   SplitReturn2::SplitReturn2(cv::Mat passedGrayImg, std::queue<PlateRegion> passedQueue,
   AlprRecognizers passedCountryRecognizers, std::vector<PlateRegion> passedWarpedRegions){
 	
@@ -80,22 +83,23 @@ namespace alpr
   std::vector<PlateRegion> SplitReturn2::get_warped_regions(){
 	  return warpedPlateRegions;
   }
-    /*class SplitReturn3{
-    private:
-	PipelineData pipeline_data;
-	bool plateDetected;
-
-    public:
-	SplitReturn3(PipelineData passedPipelineData, bool passedPlateDetected){
+  
+  //split3-----------------------------------------------------------------------------
+	
+  SplitReturn3::SplitReturn3(PipelineData passedPipelineData, bool passedPlateDetected){
 		pipeline_data = passedPipelineData;
 		plateDetected = passedPlateDetected;
-	}
-	SplitReturn3();
+  }
+  SplitReturn3::SplitReturn3(){
+		
+  }
 	
-	PipelineData get_pipeline_data();
-	bool get_plate_detected();
-	
-  };*/
+  PipelineData SplitReturn3::get_pipeline_data(){
+		return pipeline_data;
+  }
+  bool SplitReturn3::get_plate_detected(){
+		return plateDetected;
+  }
   
 
   AlprImpl::AlprImpl(const std::string country, const std::string configFile, const std::string runtimeDir)
@@ -412,10 +416,9 @@ namespace alpr
 	
  //AlprFullDetails AlprImpl::split3impl(cv::Mat grayImg, std::queue<PlateRegion> plateQueue,
 	//AlprRecognizers country_recognizers, std::vector<PlateRegion> warpedPlateRegions)
-  AlprFullDetails AlprImpl::split3impl(SplitReturn2 split2return)
+  SplitReturn3 AlprImpl::split3impl(SplitReturn2 split2return)
   {
 	std::cout << "==========================split 3 Start=============================" << std::endl;
-	std::cout << "=========================Input PlateQueue===========================" << std::endl;
 	std::cout << "check for possible characters in plates" << std::endl;
 	std::cout << "====================================================================" << std::endl;
  	AlprFullDetails response;
@@ -435,8 +438,8 @@ namespace alpr
 	std::cout<<pqsize<<std::endl;
 	int platecount = 0;
 	
-    while(!plateQueue.empty())
-    {
+    //while(!plateQueue.empty())
+    //{
       PlateRegion plateRegion = plateQueue.front();
       plateQueue.pop();
       cv::Mat colorImg = grayImg;
@@ -450,9 +453,9 @@ namespace alpr
         cout << "Disqualify reason: " << pipeline_data.disqualify_reason << endl;
       }
 	  
-	  //if (!pipeline_data.disqualified){
+	  if (!pipeline_data.disqualified){
 		  
-	  //}
+	  }
 	//}
   
 	  
@@ -467,8 +470,14 @@ namespace alpr
 	  std::cout << "   " <<std::endl;
 	  std::cout << "   " <<std::endl;
 	  std::cout << "   " <<std::endl;
-  //}
-	//AlprFullDetails AlprImpl::split4impl(){
+	  
+	  SplitReturn3 split3return(pipeline_data, plateDetected);
+	  //AlprFullDetails details = AlprImpl::split4impl(split3return, split2return);
+	  
+	  return split3return;
+  }
+  
+	AlprFullDetails AlprImpl::split4impl(SplitReturn3 split3return, SplitReturn2 split2return){
 		
 
 	  std::cout << "=======================split 4 Start============================" << std::endl;
@@ -479,6 +488,21 @@ namespace alpr
 	  timespec startTime;
 	  timespec platestarttime;
       getTimeMonotonic(&startTime);
+	  int platecount = 0;
+	  AlprFullDetails response;
+	  
+	  PipelineData pipeline_data = split3return.get_pipeline_data();
+	  bool plateDetected = split3return.get_plate_detected();
+		
+	  cv::Mat grayImg = split2return.get_image();
+	  std::queue<PlateRegion> plateQueue = split2return.get_queue();
+	  AlprRecognizers country_recognizers = split2return.get_country_recognizers();
+	  std::vector<PlateRegion> warpedPlateRegions = split2return.get_warped_regions();
+	  PlateRegion plateRegion = plateQueue.front();
+
+
+	  
+	  
 	  
 	  if (!pipeline_data.disqualified)
       {
@@ -634,7 +658,6 @@ namespace alpr
         }
       }
 
-    }
 	
 	std::cout << "ALPR_IMPL 11" << std::endl;
 
@@ -681,7 +704,8 @@ namespace alpr
       std::vector<cv::Rect> rois = convertRects(regionsOfInterest);
 	  SplitReturn splitDetails = recognizeFullDetails(img,rois);
 	  SplitReturn2 split2return = split2impl(splitDetails);
-	  AlprFullDetails fullDetails = split3impl(split2return);
+	  SplitReturn3 split3return = split3impl(split2return);
+	  AlprFullDetails fullDetails = split4impl(split3return, split2return);
       //AlprFullDetails fullDetails = recognizeFullDetails(img, rois);
 
       return fullDetails.results;
@@ -726,7 +750,8 @@ namespace alpr
 	std::cout << "++++++++++++++++++++ALPR_IMPL 15 recognize END+++++++++++++++++++++" <<std::endl;
     SplitReturn splitresults = recognize(img, regionsOfInterest);
 	SplitReturn2 split2return = split2impl(splitresults);
-	AlprFullDetails fullDetails = split3impl(split2return);
+	SplitReturn3 split3return = split3impl(split2return);
+	AlprFullDetails fullDetails = split4impl(split3return, split2return);
 	return fullDetails.results;
   }
 	

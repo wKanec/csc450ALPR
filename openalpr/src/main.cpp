@@ -52,7 +52,8 @@ bool do_motiondetection = true;
 std::vector<AlprRegionOfInterest> getROI(Alpr* alpr, cv::Mat frame, std::string region, bool writeJson);
 SplitReturn split1 ( Alpr* alpr, cv::Mat frame, std::string region, bool writeJson, AlprImpl* impl);
 SplitReturn2 split2 (SplitReturn split1return, AlprImpl* impl);
-AlprFullDetails split3 (SplitReturn2 split2return, AlprImpl* impl);
+SplitReturn3 split3 (SplitReturn2 split2return, AlprImpl* impl);
+AlprFullDetails split4 (SplitReturn2 split2return, SplitReturn3 split3return, AlprImpl* impl);
 AlprResults split6 (AlprFullDetails details, AlprImpl* impl, SplitReturn split1return);
 
 
@@ -177,8 +178,12 @@ int main( int argc, const char** argv )
 		std::cout<<"====================================================================="<<std::endl;
 		SplitReturn2 split2return = split2(split1return,impl);
 		
-		std::cout << "==================================Third SPLIT===================================" <<std::endl;
-		AlprFullDetails details = split3(split2return,impl);
+		std::cout << "==================================SPLIT 3===================================" <<std::endl;
+		SplitReturn3 split3return = split3(split2return,impl);
+		
+		std::cout << "==================================SPLIT 4===================================" <<std::endl;
+		AlprFullDetails details = split4(split2return, split3return,impl);
+		
 		std::cout << "==========================split 6 Start===========================================" << std::endl;
 	    std::cout << "=======================Input response===================" << std::endl;
 	
@@ -224,11 +229,17 @@ SplitReturn2 split2 (SplitReturn split1return, AlprImpl* impl){
 	split2return = impl->split2impl(split1return);
 	return split2return;
 }
-AlprFullDetails split3 (SplitReturn2 split2return, AlprImpl* impl){
+SplitReturn3 split3 (SplitReturn2 split2return, AlprImpl* impl){
+	SplitReturn3 split3return;
+	//add code to call split3-5 a second time for a second plate
+	split3return = impl->split3impl(split2return);
+	return split3return;
+}
+AlprFullDetails split4 (SplitReturn2 split2return, SplitReturn3 split3return, AlprImpl* impl){
 	AlprResults results;
 	AlprFullDetails details;
 	
-	details = impl->split3impl(split2return);
+	details = impl->split4impl(split3return, split2return);
 	
 	//results = details.results;
 	return details;
