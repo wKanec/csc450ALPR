@@ -105,6 +105,7 @@ int main( int argc, const char** argv )
   getTimeMonotonic(&startTime);
   SplitReturn split1return;
   
+
   //SplitSettings attempt
   std::vector<std::string> filenames;
   std::string configFile = "";
@@ -133,6 +134,7 @@ int main( int argc, const char** argv )
   TCLAP::SwitchArg detectRegionSwitch("d","detect_region","Attempt to detect the region of the plate image.  [Experimental]  Default=off", cmd, false);
   TCLAP::SwitchArg clockSwitch("","clock","Measure/print the total time to process image and all plates.  Default=off", cmd, false);
   TCLAP::SwitchArg motiondetect("", "motion", "Use motion detection on video file or stream.  Default=off", cmd, false);
+  
   try
   {
     cmd.add( templatePatternArg );
@@ -168,23 +170,48 @@ int main( int argc, const char** argv )
     return 1;
   }
 
+
+  timespec startTime3;
+  getTimeMonotonic(&startTime3);
   std::cout << "Main 2" <<std::endl;
   cv::Mat frame;
-
+  //40ms
   Alpr alpr(country, configFile);
-  AlprImpl* impl = new AlprImpl(country, configFile);
-  alpr.setTopN(topn);
   
+  timespec endTime3;
+  getTimeMonotonic(&endTime3);
+  double totalProcessingTime3 = diffclock(startTime3, endTime3);
+  std::cout << "Total Time to process setup3: " << totalProcessingTime3 << "ms." << std::endl;  
+  //40ms
+  AlprImpl* impl = new AlprImpl(country, configFile);
+  
+  timespec endTime4;
+  getTimeMonotonic(&endTime4);
+  double totalProcessingTime4 = diffclock(startTime3, endTime4);
+  std::cout << "Total Time to process setup4: " << totalProcessingTime4 << "ms." << std::endl;  
+
+  alpr.setTopN(topn);
+  timespec endTime5;
+  getTimeMonotonic(&endTime5);
+  double totalProcessingTime5 = diffclock(startTime3, endTime5);
+  std::cout << "Total Time to process setup5: " << totalProcessingTime4 << "ms." << std::endl;  
+ 
+  timespec startTime6;
+  getTimeMonotonic(&startTime6);
+
   if (debug_mode)
   {
     alpr.getConfig()->setDebug(true);
   }
+
 
   if (detectRegion)
     alpr.setDetectRegion(detectRegion);
 
   if (templatePattern.empty() == false)
     alpr.setDefaultRegion(templatePattern);
+	
+
 
   if (alpr.isLoaded() == false)
   {
@@ -201,8 +228,15 @@ int main( int argc, const char** argv )
       if (fileExists(filename.c_str()))
       {
         frame = cv::imread(filename);
+		
+		timespec endTime6;
+        getTimeMonotonic(&endTime6);
+		double totalProcessingTime6 = diffclock(startTime6, endTime6);
+		std::cout << "Total Time to process setup5: " << totalProcessingTime6 << "ms." << std::endl;  
+
 		//SplitSettings splitSettings(frame, impl);
 	//Add code for seperation of functions
+
 		timespec endTime;
 	    getTimeMonotonic(&endTime);
 		double totalProcessingTime = diffclock(startTime, endTime);

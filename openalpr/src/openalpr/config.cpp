@@ -32,7 +32,8 @@ namespace alpr
 
   Config::Config(const std::string country, const std::string config_file, const std::string runtime_dir)
   {
-	  
+	timespec startTime1;
+    getTimeMonotonic(&startTime1);
 	cout<<"Config 1"<<endl;
     string debug_message = "";
 
@@ -114,6 +115,11 @@ namespace alpr
       std::cout << debug_message << endl;
     }
 
+	timespec endTime1;
+    getTimeMonotonic(&endTime1);
+    double totalProcessingTime1 = diffclock(startTime1, endTime1);
+    std::cout << "Total Time to process config 1: " << totalProcessingTime1 << "ms." << std::endl;  
+  
     this->loaded = countries_loaded;
   }
   
@@ -149,6 +155,9 @@ namespace alpr
   
   void Config::loadCommonValues(string configFile)
   {
+	timespec startTime2;
+    getTimeMonotonic(&startTime2);
+	
 	cout<<"Config 3"<<endl;
     CSimpleIniA* ini = NULL;
     CSimpleIniA iniObj;
@@ -236,6 +245,11 @@ namespace alpr
     debugShowImages = 	getBoolean(ini, defaultIni, "", "debug_show_images",	false);
     debugPauseOnFrame = 	getBoolean(ini, defaultIni, "", "debug_pause_on_frame",	false);
 
+	timespec endTime2;
+    getTimeMonotonic(&endTime2);
+    double totalProcessingTime2 = diffclock(startTime2, endTime2);
+    std::cout << "Total Time to process config 3: " << totalProcessingTime2 << "ms." << std::endl;  
+  
   }
   
   
