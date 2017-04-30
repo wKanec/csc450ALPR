@@ -32,22 +32,45 @@ namespace alpr
   TesseractOcr::TesseractOcr(Config* config)
   : OCR(config)
   {
-	cout<<"tesseract_ocr 1"<<endl;
+	//start time
+	timespec startTime1;
+	getTimeMonotonic(&startTime1);
+	//========================================================
+	
     const string MINIMUM_TESSERACT_VERSION = "3.03";
-
     this->postProcessor.setConfidenceThreshold(config->postProcessMinConfidence, config->postProcessConfidenceSkipLevel);
-    
+	
+	
     if (cmpVersion(tesseract.Version(), MINIMUM_TESSERACT_VERSION.c_str()) < 0)
     {
       std::cerr << "Warning: You are running an unsupported version of Tesseract." << endl;
       std::cerr << "Expecting at least " << MINIMUM_TESSERACT_VERSION << ", your version is: " << tesseract.Version() << endl;
     }
-
+	timespec startTimeconfig;
+	getTimeMonotonic(&startTimeconfig);
     // Tesseract requires the prefix directory to be set as an env variable
-    tesseract.Init(config->getTessdataPrefix().c_str(), config->ocrLanguage.c_str() 	);
-    tesseract.SetVariable("save_blob_choices", "T");
+    //takes times 26MS
+	std::string ocrLanguage;
+	std::string tessdataPrefix;
+	tessdataPrefix = config->getTessdataPrefix().c_str();
+	ocrLanguage = config->ocrLanguage.c_str();
+	cout << "ocrLanguage: " << ocrLanguage  << endl;
+	cout << "tessdataPrefix: " << tessdataPrefix  << endl;
+	tesseract.Init(config->getTessdataPrefix().c_str(), config->ocrLanguage.c_str() 	);
+	timespec endTimeconfig;
+    getTimeMonotonic(&endTimeconfig);
+	cout << "TesseractOcr config: " << diffclock(startTimeconfig, endTimeconfig) << "ms." << endl;
+    
+	tesseract.SetVariable("save_blob_choices", "T");
     tesseract.SetVariable("debug_file", "/dev/null");
     tesseract.SetPageSegMode(PSM_SINGLE_CHAR);
+	
+	//endTime
+	//=====================================================================
+	timespec endTime1;
+    getTimeMonotonic(&endTime1);
+	cout << "TesseractOcr 1: " << diffclock(startTime1, endTime1) << "ms." << endl;
+    
   }
 
   TesseractOcr::~TesseractOcr()
@@ -56,7 +79,6 @@ namespace alpr
   }
   
   std::vector<OcrChar> TesseractOcr::recognize_line(int line_idx, PipelineData* pipeline_data) {
-	cout<<"tesseract_ocr 2"<<endl;
     const int SPACE_CHAR_CODE = 32;
     
     std::vector<OcrChar> recognized_chars;
@@ -138,7 +160,6 @@ namespace alpr
           }
 
           if (this->config->debugOcr)
-            printf("---------------------------------------------\n");
 
           delete[] symbol;
         }
@@ -154,7 +175,6 @@ namespace alpr
     return recognized_chars;
   }
   void TesseractOcr::segment(PipelineData* pipeline_data) {
-	cout<<"tesseract_ocr 3"<<endl;
     CharacterSegmenter segmenter(pipeline_data);
     segmenter.segment();
   }

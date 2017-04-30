@@ -31,7 +31,6 @@ namespace alpr
 
   Rect expandRect(Rect original, int expandXPixels, int expandYPixels, int maxX, int maxY)
   {
-	cout<<"Utility 1 expandRect if needed"<<endl;
     Rect expandedRegion = Rect(original);
 
     float halfX = round((float) expandXPixels / 2.0);
@@ -53,7 +52,6 @@ namespace alpr
 
   Mat drawImageDashboard(vector<Mat> images, int imageType, unsigned int numColumns)
   {
-	cout<<"Utility 2"<<endl;
     unsigned int numRows = ceil((float) images.size() / (float) numColumns);
 
     Mat dashboard(Size(images[0].cols * numColumns, images[0].rows * numRows), imageType);
@@ -74,7 +72,6 @@ namespace alpr
 
   Mat addLabel(Mat input, string label)
   {
-	cout<<"Utility 3"<<endl;
     const int border_size = 1;
     const Scalar border_color(0,0,255);
     const int extraHeight = 20;
@@ -124,7 +121,6 @@ namespace alpr
 
   vector<Mat> produceThresholds(const Mat img_gray, Config* config)
   {
-	cout<<"Utility 4"<<endl;
     const int THRESHOLD_COUNT = 3;
     //Mat img_equalized = equalizeBrightness(img_gray);
 
@@ -178,7 +174,6 @@ namespace alpr
 
   double median(int array[], int arraySize)
   {
-	cout<<"Utility 5"<<endl;
     if (arraySize == 0)
     {
       //std::cerr << "Median calculation requested on empty array" << endl;
@@ -191,7 +186,6 @@ namespace alpr
 
   Mat equalizeBrightness(Mat img)
   {
-	cout<<"Utility 6"<<endl;
     // Divide the image by its morphologically closed counterpart
     Mat kernel = getStructuringElement(MORPH_ELLIPSE, Size(19,19));
     Mat closed;
@@ -207,7 +201,6 @@ namespace alpr
 
   void drawRotatedRect(Mat* img, RotatedRect rect, Scalar color, int thickness)
   {
-	cout<<"Utility 7"<<endl;
     Point2f rect_points[4];
     rect.points( rect_points );
     for( int j = 0; j < 4; j++ )
@@ -216,7 +209,6 @@ namespace alpr
 
   void fillMask(Mat img, const Mat mask, Scalar color)
   {
-	cout<<"Utility 8"<<endl;
     for (int row = 0; row < img.rows; row++)
     {
       for (int col = 0; col < img.cols; col++)
@@ -237,7 +229,6 @@ namespace alpr
 
   void drawX(Mat img, Rect rect, Scalar color, int thickness)
   {
-	cout<<"Utility 9"<<endl;
     Point tl(rect.x, rect.y);
     Point tr(rect.x + rect.width, rect.y);
     Point bl(rect.x, rect.y + rect.height);
@@ -266,7 +257,6 @@ namespace alpr
 
   Size getSizeMaintainingAspect(Mat inputImg, int maxWidth, int maxHeight)
   {
-	cout<<"Utility 11"<<endl;
     float aspect = ((float) inputImg.cols) / ((float) inputImg.rows);
 
     if (maxWidth / aspect > maxHeight)
@@ -285,7 +275,6 @@ namespace alpr
 // max is the cutoff (i.e., max distance) where we stop trying to find distance
 int levenshteinDistance (const std::string &s1, const std::string &s2, int max)
 {
-	cout<<"Utility 12"<<endl;
     const char* word1 = s1.c_str();
     int len1 = s1.length();
     const char* word2 = s2.c_str();
@@ -548,7 +537,6 @@ int levenshteinDistance (const std::string &s1, const std::string &s2, int max)
   
   cv::Point findClosestPoint(cv::Point2f* polygon_points, int num_points, cv::Point position)
   {
-	cout<<"Utility 18"<<endl;
     int closest_point_index = 0;
     unsigned int smallest_distance = INT_MAX;
     for (unsigned int i = 0; i < num_points; i++)
@@ -568,7 +556,6 @@ int levenshteinDistance (const std::string &s1, const std::string &s2, int max)
   
   std::vector<cv::Point> sortPolygonPoints(cv::Point2f* polygon_points, cv::Size surrounding_image)
   {
-    cout<<"Utility 19"<<endl;
     vector<Point> return_points;
     
     // Find top-left
@@ -583,7 +570,6 @@ int levenshteinDistance (const std::string &s1, const std::string &s2, int max)
   // is inside the masked area. 
   float getContourAreaPercentInsideMask(cv::Mat mask, std::vector<std::vector<cv::Point> > contours, std::vector<cv::Vec4i> hierarchy, int contourIndex)
   {
-	cout<<"Utility 20"<<endl;
 
     Mat innerArea = Mat::zeros(mask.size(), CV_8U);
 
@@ -640,7 +626,6 @@ int levenshteinDistance (const std::string &s1, const std::string &s2, int max)
   }
 
   std::string replaceAll(std::string str, const std::string& from, const std::string& to) {
-    cout<<"Utility 21"<<endl;
 	size_t start_pos = 0;
     while((start_pos = str.find(from, start_pos)) != std::string::npos) {
         str.replace(start_pos, from.length(), to);

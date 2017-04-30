@@ -29,7 +29,6 @@ namespace alpr
     this->bigImage = bigImage;
     this->smallImage = smallImage;
     this->regionInBigImage = regionInBigImage;
-	cout<<"transformation 1"<<endl;
   }
 
 
@@ -39,7 +38,6 @@ namespace alpr
   // Re-maps the coordinates from the smallImage to the coordinate space of the bigImage.
   vector<Point2f> Transformation::transformSmallPointsToBigImage(vector<Point> points)
   {
-	cout<<"transformation 2"<<endl;
     vector<Point2f> floatPoints;
     for (unsigned int i = 0; i < points.size(); i++)
       floatPoints.push_back(points[i]);
@@ -51,7 +49,6 @@ namespace alpr
   // Re-maps the coordinates from the smallImage to the coordinate space of the bigImage.
   vector<Point2f> Transformation::transformSmallPointsToBigImage(vector<Point2f> points)
   {
-	cout<<"transformation 3"<<endl;
     vector<Point2f> bigPoints;
     for (unsigned int i = 0; i < points.size(); i++)
     {
@@ -70,7 +67,6 @@ namespace alpr
 
   Mat Transformation::getTransformationMatrix(vector<Point2f> corners, Size outputImageSize)
   {
-	cout<<"transformation 4"<<endl;
     // Corners of the destination image
     vector<Point2f> quad_pts;
     quad_pts.push_back(Point2f(0, 0));
@@ -83,7 +79,6 @@ namespace alpr
 
   Mat Transformation::getTransformationMatrix(vector<Point2f> corners, vector<Point2f> outputCorners)
   {
-	cout<<"transformation 5"<<endl;
     // Get transformation matrix
     Mat transmtx = getPerspectiveTransform(corners, outputCorners);
 
@@ -94,7 +89,6 @@ namespace alpr
   Mat Transformation::crop(Size outputImageSize, Mat transformationMatrix)
   {
 
-	cout<<"transformation 6"<<endl;
     Mat deskewed(outputImageSize, this->bigImage.type());
 
     // Apply perspective transformation to the image
@@ -108,7 +102,6 @@ namespace alpr
 
   vector<Point2f> Transformation::remapSmallPointstoCrop(vector<Point> smallPoints, cv::Mat transformationMatrix)
   {
-	cout<<"transformation 7"<<endl;
     vector<Point2f> floatPoints;
     for (unsigned int i = 0; i < smallPoints.size(); i++)
       floatPoints.push_back(smallPoints[i]);
@@ -118,7 +111,6 @@ namespace alpr
 
   vector<Point2f> Transformation::remapSmallPointstoCrop(vector<Point2f> smallPoints, cv::Mat transformationMatrix)
   {
-	cout<<"transformation 8"<<endl;
     vector<Point2f> remappedPoints;
     perspectiveTransform(smallPoints, remappedPoints, transformationMatrix);
 
@@ -127,7 +119,6 @@ namespace alpr
 
   Size Transformation::getCropSize(vector<Point2f> areaCorners, Size targetSize)
   {
-	cout<<"transformation 9"<<endl;
     // Figure out the approximate width/height of the license plate region, so we can maintain the aspect ratio.
     LineSegment leftEdge(round(areaCorners[3].x), round(areaCorners[3].y), round(areaCorners[0].x), round(areaCorners[0].y));
     LineSegment rightEdge(round(areaCorners[2].x), round(areaCorners[2].y), round(areaCorners[1].x), round(areaCorners[1].y));

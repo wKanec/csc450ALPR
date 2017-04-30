@@ -27,7 +27,6 @@ namespace alpr
 
   Histogram::Histogram()
   {
-	cout<<"Histogram 1"<<endl;
   }
   
   Histogram::~Histogram()

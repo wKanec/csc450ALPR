@@ -28,7 +28,6 @@ namespace alpr
 
   DetectorCPU::DetectorCPU(Config* config, PreWarp* prewarp) : Detector(config, prewarp) {
 
-	cout<<"detectorcpu 1"<<endl;
     
     if( this->plate_cascade.load( get_detector_file() ) )
     {
@@ -50,7 +49,6 @@ namespace alpr
   
   vector<Rect> DetectorCPU::find_plates(Mat frame, cv::Size min_plate_size, cv::Size max_plate_size)
   {
-	cout<<"detectorcpu 2 find_plates(frame,minsize,maxsize"<<endl;
     vector<Rect> plates;
    
     //-- Detect plates

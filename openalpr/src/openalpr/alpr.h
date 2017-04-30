@@ -26,7 +26,6 @@
 #include <fstream> 
 #include <stdint.h>
 #include <opencv2/core/core.hpp>
-//#include <alpr_impl.h>
 
 
 #ifdef WIN32

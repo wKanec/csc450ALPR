@@ -8,7 +8,6 @@ namespace alpr
 
   PipelineData::PipelineData(Mat colorImage, Rect regionOfInterest, Config* config)
   {
-	cout<<"pipeline_data 1"<<endl;
     Mat grayImage;
 
     if (colorImage.channels() > 2)

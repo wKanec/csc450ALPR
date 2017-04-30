@@ -27,7 +27,6 @@ namespace alpr
 
   ResultAggregator::ResultAggregator(ResultMergeStrategy merge_strategy, int topn, Config* config)
   {
-	cout<<"Result_Aggregator 1"<<endl;
 	cout<<"		define...new prewarp,merge_strategy,topN,config"<<endl;
 
     this->prewarp = new PreWarp(config);
@@ -48,7 +47,6 @@ namespace alpr
   
 
   cv::Mat ResultAggregator::applyImperceptibleChange(cv::Mat image, int index) {
-    cout<<"Result_Aggregator 2 applyImperceptibleChange(Mat image, index)"<<endl;
     const float WIDTH_HEIGHT = 600;
     const float NO_MOVE_WIDTH_DIST = 1.0;
     const float NO_PAN_VAL = 0;
@@ -87,7 +85,6 @@ namespace alpr
   
   AlprFullDetails ResultAggregator::getAggregateResults()
   {
-	cout<<"Resulst_Aggregator 3"<<endl;
     assert(all_results.size() > 0);
 
     if (all_results.size() == 1)
@@ -116,7 +113,6 @@ namespace alpr
 
     if (merge_strategy == MERGE_PICK_BEST)
     {
-	  cout<<"Resulst_Aggregator 3.1"<<endl;
       // Assume we have multiple results, one cluster for each unique train data (e.g., eu, eu2)
 
       // Now for each cluster of plates, pick the best one
@@ -138,7 +134,6 @@ namespace alpr
     }
     else if (merge_strategy == MERGE_COMBINE)
     {
-	  cout<<"Resulst_Aggregator 3.2"<<endl;
       // Each cluster is the same plate, just analyzed from a slightly different 
       // perspective.  Merge them together and score them as if they are one
 
@@ -208,7 +203,6 @@ namespace alpr
         // output the sorted list for debugging:
         if (config->debugGeneral)
         {
-          cout << "Result Aggregator Scores: " << endl;
           cout << "  " << std::setw(14) << "Plate Num"
               << std::setw(15) << "Score"
               << std::setw(10) << "Count"
@@ -260,7 +254,6 @@ namespace alpr
   }
   
   ResultRegionScore ResultAggregator::findBestRegion(std::vector<AlprPlateResult> cluster) {
-	cout<<"Resulst_Aggregator 4"<<endl;
     const float MIN_REGION_CONFIDENCE = 60;
     
     std::map<std::string, float> score_hash;
@@ -316,7 +309,6 @@ namespace alpr
   // Returns an array containing "clusters" (overlapping plates)
   std::vector<std::vector<AlprPlateResult> > ResultAggregator::findClusters()
   {
-	cout<<"Resulst_Aggregator 5"<<endl;
     std::vector<std::vector<AlprPlateResult> > clusters;
 
     for (unsigned int i = 0; i < all_results.size(); i++)
@@ -344,7 +336,6 @@ namespace alpr
 
   PlateShapeInfo ResultAggregator::getShapeInfo(AlprPlateResult plate)
   {
-	cout<<"Resulst_Aggregator 6"<<endl;
     int NUM_POINTS = 4;
     Moments mu;
 
@@ -372,7 +363,6 @@ namespace alpr
   int ResultAggregator::overlaps(AlprPlateResult plate,
                                  std::vector<std::vector<AlprPlateResult> > clusters)
   {
-	cout<<"Resulst_Aggregator 7"<<endl;
     // Check the center positions to see how close they are to each other
     // Also compare the size.  If it's much much larger/smaller, treat it as a separate cluster
 

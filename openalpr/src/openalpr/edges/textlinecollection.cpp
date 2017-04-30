@@ -15,7 +15,6 @@ namespace alpr
 
   TextLineCollection::TextLineCollection(std::vector<TextLine> textLines) {
 
-	cout<<"textLineCollection 1"<<endl;
     charHeight = 0;
     charAngle = 0;
     for (unsigned int i = 0; i < textLines.size(); i++)
@@ -56,7 +55,6 @@ namespace alpr
   }
 
   cv::Mat TextLineCollection::getDebugImage(cv::Size imageSize) {
-	cout<<"textLineCollection 2"<<endl;
     Mat debugImage = Mat::zeros(imageSize, CV_8U);
     line(debugImage, this->centerHorizontalLine.p1, this->centerHorizontalLine.p2, Scalar(255,255,255), 2);
     line(debugImage, this->centerVerticalLine.p1, this->centerVerticalLine.p2, Scalar(255,255,255), 2);
@@ -125,7 +123,6 @@ namespace alpr
     // left and right 
 
 
-	cout<<"textLineCollection 5"<<endl;
     Point leftP1 =  shorterSegment.closestPointOnSegmentTo(longerSegment.p1);
     Point leftP2 = longerSegment.p1;
     LineSegment left = LineSegment(leftP1, leftP2);
@@ -150,7 +147,6 @@ namespace alpr
     // Get the midpoint
     // Draw a line up/down using the closest point on the bottom line
 
-	cout<<"textLineCollection 6"<<endl;
     Point p1 = longerSegment.midpoint();
 
     Point p2 = shorterSegment.closestPointOnSegmentTo(p1);

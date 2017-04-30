@@ -28,7 +28,6 @@ namespace alpr
   PlateCorners::PlateCorners(Mat inputImage, PlateLines* plateLines, PipelineData* pipelineData, vector<TextLine> textLines) :
       tlc(textLines)
   {
-	cout<<"platecorners 1"<<endl;
     this->pipelineData = pipelineData;
 
     if (pipelineData->config->debugPlateCorners)
@@ -50,7 +49,6 @@ namespace alpr
 
   vector<Point> PlateCorners::findPlateCorners()
   {
-	cout<<"platecorners 2"<<endl;
     if (pipelineData->config->debugPlateCorners)
       cout << "PlateCorners::findPlateCorners" << endl;
 

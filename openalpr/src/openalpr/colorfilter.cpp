@@ -28,7 +28,6 @@ namespace alpr
 
   ColorFilter::ColorFilter(Mat image, Mat characterMask, Config* config)
   {
-	cout<< "ColorFilter 1"<< endl;
     timespec startTime;
     getTimeMonotonic(&startTime);
 
@@ -65,7 +64,6 @@ namespace alpr
 
   bool ColorFilter::imageIsGrayscale(Mat image)
   {
-	cout<< "ColorFilter 2"<< endl;
     // Check whether the original image is grayscale.  If it is, we shouldn't attempt any color filter
     for (int row = 0; row < image.rows; row++)
     {
@@ -92,7 +90,6 @@ namespace alpr
 
   void ColorFilter::preprocessImage()
   {
-	cout<< "ColorFilter 3"<< endl;
     // Equalize the brightness on the HSV channel "V"
     vector<Mat> channels;
     split(this->hsv,channels);
@@ -104,7 +101,6 @@ namespace alpr
   // Then uses that to filter the whole image and provide a mask.
   void ColorFilter::findCharColors()
   {
-	cout<< "ColorFilter 4"<< endl;
     int MINIMUM_SATURATION = 45;
 
     if (this->debug)
@@ -376,7 +372,6 @@ namespace alpr
   // Return -1 if it fails.
   int ColorFilter::getMajorityOpinion(vector<float> values, float minPercentAgreement, float maxValDifference)
   {
-	cout<< "ColorFilter 5"<< endl;
     float bestPercentAgreement = 0;
     float lowestOverallDiff = 1000000000;
     int bestPercentAgreementIndex = -1;

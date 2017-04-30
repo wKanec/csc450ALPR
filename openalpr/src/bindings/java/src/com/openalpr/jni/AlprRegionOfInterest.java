@@ -9,6 +9,7 @@ public class AlprRegionOfInterest {
     private final int y;
     private final int width;
     private final int height;
+	
 
     AlprRegionOfInterest(JSONObject roiObj) throws JSONException
     {

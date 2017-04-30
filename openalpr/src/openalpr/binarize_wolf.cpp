@@ -45,7 +45,6 @@ namespace alpr
   // *************************************************************
 
   double calcLocalStats (Mat &im, Mat &map_m, Mat &map_s, int winx, int winy) {
-	  cout<<"wolf 1"<<endl;
       Mat im_sum, im_sum_sq;
       cv::integral(im,im_sum,im_sum_sq,CV_64F);
 
@@ -100,7 +99,6 @@ namespace alpr
 void NiblackSauvolaWolfJolion (Mat im, Mat output, NiblackVersion version,
 	int winx, int winy, double k, double dR) {
 
-	cout<<"wolf 2"<<endl;
 	double m, s, max_s;
 	double th=0;
 	double min_I, max_I;

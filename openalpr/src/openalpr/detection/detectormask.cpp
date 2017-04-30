@@ -28,7 +28,6 @@ namespace alpr
   
 
   DetectorMask::DetectorMask(Config* config, PreWarp* prewarp) {
-	cout<<"detectorMask 1"<<endl;
     mask_loaded = false;
     resized_mask_loaded = false;
     this->config = config;
@@ -40,7 +39,6 @@ namespace alpr
   }
 
   void DetectorMask::setMask(Mat orig_mask) {
-	cout<<"detectorMask 2"<<endl;
     if (orig_mask.cols <= 0 || orig_mask.rows <= 0)
     {
       resized_mask_loaded = false;
@@ -75,7 +73,6 @@ namespace alpr
   // Checks if the provided region is partially covered by the mask
   // If so, it is disqualified
   bool DetectorMask::region_is_masked(cv::Rect region) {
-	cout<<"detectorMask 3"<<endl;
     int MIN_WHITENESS = 248;
     
     // If the mean pixel value over the crop is very white (e.g., > 253 out of 255)
@@ -94,7 +91,6 @@ namespace alpr
   }
   
   void DetectorMask::resize_mask(cv::Mat image) {
-    cout<<"detectorMask 4"<<endl;
     resize(mask, resized_mask, image.size());
 
     if (prewarp->valid) 
@@ -141,7 +137,6 @@ namespace alpr
   }
 
   Mat DetectorMask::apply_mask(Mat image) {
-	cout<<"detectorMask 5"<<endl;
     if (!mask_loaded)
       return image;
        

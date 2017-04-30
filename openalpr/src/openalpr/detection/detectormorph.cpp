@@ -25,7 +25,6 @@ using namespace std;
 namespace alpr {
 
   DetectorMorph::DetectorMorph(Config* config, PreWarp* prewarp) : Detector(config, prewarp) {
-	cout<<"detectorMorph 1"<<endl;
     this->loaded = true;
   }
 
@@ -33,7 +32,6 @@ namespace alpr {
   }
 
   bool  DetectorMorph::ValidateCharAspect(Rect& r0, float idealAspect) {
-	    cout<<"detectorMorph 2"<<endl;
 		if ((r0.width < 5 || r0.width > 20)
 			|| (r0.height < 15 || r0.height > 40)) return false;
 
@@ -50,7 +48,6 @@ namespace alpr {
 	
   std::vector<cv::Rect> DetectorMorph::find_plates(cv::Mat frame_gray, cv::Size min_plate_size, cv::Size max_plate_size)
   {
-	cout<<"detectorMorph 3"<<endl;
     Mat frame_gray_cp(frame_gray.size(), frame_gray.type());
     frame_gray.copyTo(frame_gray_cp);
     blur(frame_gray, frame_gray, Size(5, 5));
@@ -205,7 +202,6 @@ namespace alpr {
   }
 
   bool DetectorMorph::CheckSizes(RotatedRect& mr) {
-	cout<<"detectorMorph 4"<<endl;
     float error = 1.2;
 
     float aspect = config->plateWidthMM / config->plateHeightMM;

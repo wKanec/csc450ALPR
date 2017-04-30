@@ -31,7 +31,6 @@ namespace alpr
   DetectorCUDA::DetectorCUDA(Config* config, PreWarp* prewarp) : Detector(config, prewarp) {
 
 
-	cout<<"detectorCuda 1"<<endl;
     if( this->cuda_cascade.load( get_detector_file() ) )
     {
       this->loaded = true;
@@ -50,7 +49,6 @@ namespace alpr
 
   vector<Rect> DetectorCUDA::find_plates(Mat frame, cv::Size min_plate_size, cv::Size max_plate_size)
   {
-	cout<<"detectorCuda 2"<<endl;
     //-- Detect plates
     vector<Rect> plates;
     

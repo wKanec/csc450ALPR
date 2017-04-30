@@ -27,7 +27,6 @@ namespace alpr
 
   Detector::Detector(Config* config, PreWarp* prewarp) : detector_mask(config, prewarp)
   {
-	cout<<"detector 1"<<endl;
     this->config = config;
 
     // Load the mask specified in the config if it exists
@@ -83,20 +82,19 @@ namespace alpr
 
     // Apply the detection mask if it has been specified by the user
     if (detector_mask.mask_loaded){
-		cout<<"		apply detection mask if specified"<<endl;
+		//cout<<"		apply detection mask if specified"<<endl;
       frame_gray = detector_mask.apply_mask(frame_gray);
 	}
     // Setup debug mask image
     Mat mask_debug_img;
     if (detector_mask.mask_loaded && config->debugDetector)
     {
-		cout<<"		if mask loaded and debugDetector"<<endl;
+		//cout<<"		if mask loaded and debugDetector"<<endl;
       frame_gray.copyTo(mask_debug_img);
       cvtColor(frame_gray, mask_debug_img, CV_GRAY2BGR);
     }
     
     vector<PlateRegion> detectedRegions;
-	cout<<"regions of interest size ========================="<<endl;
 	cout<<regionsOfInterest.size()<<endl;
     for (int i = 0; i < regionsOfInterest.size(); i++)
     {
@@ -107,19 +105,19 @@ namespace alpr
       
       // Adjust the ROI to be inside the detection mask (if it exists)
       if (detector_mask.mask_loaded){
-	  	cout<<"		adjust ROI to be inside detection mask"<<endl;
+	  	//cout<<"		adjust ROI to be inside detection mask"<<endl;
         roi = detector_mask.getRoiInsideMask(roi);
 	  }
       // Draw ROIs on debug mask image
       if (detector_mask.mask_loaded && config->debugDetector){
-		  cout<<"	draw ROI on debug mask image"<<endl;
+		  //cout<<"	draw ROI on debug mask image"<<endl;
         rectangle(mask_debug_img, roi, Scalar(0,255,255), 3);
       }
       // Sanity check.  If roi width or height is less than minimum possible plate size,
       // then skip it
       if ((roi.width < config->minPlateSizeWidthPx) || 
           (roi.height < config->minPlateSizeHeightPx)){
-		cout<<"		if ROI width or height is less than minium plate size then skip"<<endl;
+		//cout<<"		if ROI width or height is less than minium plate size then skip"<<endl;
         continue;
 		  }
 	  //timespec endTime2;
@@ -147,14 +145,13 @@ namespace alpr
     
 	  timespec startTime3;
       getTimeMonotonic(&startTime3);
-	  cout << "splits-------------------------------------------------------." << endl;
 
 	  
       vector<Rect> allRegions = find_plates(cropped, minPlateSize, maxPlateSize);
       
 	  timespec endTime3;
 	  getTimeMonotonic(&endTime3);
-	  cout << "Total Time to process warpedRegions 3 " << diffclock(startTime3, endTime3) << "ms." << endl;
+	  //cout << "Total Time to process warpedRegions 3 " << diffclock(startTime3, endTime3) << "ms." << endl;
 	 
 	
       // Aggregate the Rect regions into a hierarchical representation
@@ -166,7 +163,7 @@ namespace alpr
         allRegions[i].height = allRegions[i].height / scale_factor;
 
         // Ensure that the rectangle isn't < 0 or > maxWidth/Height
-		cout<<"		check rectangle sizes"<<endl;
+		//cout<<"		check rectangle sizes"<<endl;
         allRegions[i] = expandRect(allRegions[i], 0, 0, w, h);
 
         allRegions[i].x = allRegions[i].x + offset_x;
@@ -174,7 +171,7 @@ namespace alpr
       }
       
       // Check the rectangles and make sure that they're definitely not masked
-	  cout<<"		make sure rectangle isnt masked"<<endl;
+	  //cout<<"		make sure rectangle isnt masked"<<endl;
       vector<Rect> regions_not_masked;
       for (unsigned int i = 0; i < allRegions.size(); i++)
       {
@@ -210,7 +207,7 @@ namespace alpr
   }
   
   std::string Detector::get_detector_file() {
-	cout<<"detector 3"<<endl;
+	//cout<<"detector 3"<<endl;
     if (config->detectorFile.length() == 0)
       return config->getCascadeRuntimeDir() + config->country + ".xml";
     
@@ -219,15 +216,15 @@ namespace alpr
 
 
   float Detector::computeScaleFactor(int width, int height) {
-    cout<<"detector 4 computeScaleFactor(width,Height)"<<endl;
-	    cout<<"		scale factor 1"<<endl;
+    //cout<<"detector 4 computeScaleFactor(width,Height)"<<endl;
+	    //cout<<"		scale factor 1"<<endl;
 
     float scale_factor = 1.0;
     
     if (width > config->maxDetectionInputWidth)
     {
       // The frame is too wide
-	  cout<<"		The frame is too wide edit scale_factor"<<endl;
+	  //cout<<"		The frame is too wide edit scale_factor"<<endl;
       scale_factor = ((float) config->maxDetectionInputWidth) / ((float) width);
 
       if (config->debugDetector)
@@ -251,9 +248,9 @@ namespace alpr
 
   vector<PlateRegion> Detector::aggregateRegions(vector<Rect> regions)
   {
-	cout<<"detector 5 create parent child rectRegions"<<endl;
-	cout<<"		bigger rect = parents and if rect inside of parent it is child"<<endl;
-	cout<<"		only check child if plate not found in parent."<<endl;
+	//cout<<"detector 5 create parent child rectRegions"<<endl;
+	//cout<<"		bigger rect = parents and if rect inside of parent it is child"<<endl;
+	//cout<<"		only check child if plate not found in parent."<<endl;
 
 
     // Combines overlapping regions into a parent->child order.

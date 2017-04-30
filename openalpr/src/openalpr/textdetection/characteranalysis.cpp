@@ -32,7 +32,6 @@ namespace alpr
 
   CharacterAnalysis::CharacterAnalysis(PipelineData* pipeline_data)
   {
-	cout << "Starting CharacterAnalysis" << endl;
     this->pipeline_data = pipeline_data;
     this->config = pipeline_data->config;
 
@@ -49,7 +48,6 @@ namespace alpr
 
   void CharacterAnalysis::analyze()
   {
-	cout << "Starting CharacterAnalysis analyze" << endl;
     timespec startTime;
     getTimeMonotonic(&startTime);
 
@@ -81,7 +79,6 @@ namespace alpr
 
     timespec filterStartTime;
     getTimeMonotonic(&filterStartTime);
-	cout << "CharacterAnalysis 2" << endl;
     for (unsigned int i = 0; i < pipeline_data->thresholds.size(); i++)
     {
       this->filter(pipeline_data->thresholds[i], allTextContours[i]);
@@ -102,7 +99,6 @@ namespace alpr
 
     pipeline_data->hasPlateBorder = plateMask.hasPlateMask;
     pipeline_data->plateBorderMask = plateMask.getMask();
-	cout << "CharacterAnalysis 3" << endl;
     if (plateMask.hasPlateMask)
     {
       // Filter out bad contours now that we have an outer box mask...
@@ -146,7 +142,6 @@ namespace alpr
 
       displayImage(config, "Matching Contours", img_contours);
     }
-	cout << "CharacterAnalysis 4" << endl;
     if (config->auto_invert)
       pipeline_data->plate_inverted = isPlateInverted();
     else
@@ -185,7 +180,6 @@ namespace alpr
 
     // Sort the lines from top to bottom.
     std::sort(tempTextLines.begin(), tempTextLines.end(), sort_text_line);
-	cout << "CharacterAnalysis 5" << endl;
 
     // Now that we've filtered a few more contours, re-do the text area.
     for (unsigned int i = 0; i < tempTextLines.size(); i++)
@@ -199,7 +193,6 @@ namespace alpr
 
     }
 
-	cout << "CharacterAnalysis 6" << endl;
     if (pipeline_data->textLines.size() > 0)
     {
       int confidenceDrainers = 0;
@@ -240,7 +233,6 @@ namespace alpr
         pipeline_data->disqualified = true;
         pipeline_data->disqualify_reason = "No text lines found in characteranalysis";
     }
-	cout << "CharacterAnalysis 7" << endl;
     if (config->debugTiming)
     {
       timespec endTime;
@@ -282,7 +274,6 @@ namespace alpr
 
   Mat CharacterAnalysis::getCharacterMask()
   {
-	cout << "CharacterAnalysis getMask" << endl;
     Mat charMask = Mat::zeros(bestThreshold.size(), CV_8U);
 
     for (unsigned int i = 0; i < bestContours.size(); i++)
@@ -350,7 +341,6 @@ namespace alpr
   // Goes through the contours for the plate and picks out possible char segments based on min/max height
   void CharacterAnalysis::filterByBoxSize(TextContours& textContours, int minHeightPx, int maxHeightPx)
   {
-	cout << "CharacterAnalysis filter by BoxSize" << endl;
     // For multiline plates, we want to target the biggest line for character analysis, since it should be easier to spot.
     float larger_char_height_mm = 0;
     float larger_char_width_mm = 0;
@@ -395,7 +385,6 @@ namespace alpr
 
   void CharacterAnalysis::filterContourHoles(TextContours& textContours)
   {
-	cout << "CharacterAnalysis filter Contour Holes" << endl;
     for (unsigned int i = 0; i < textContours.size(); i++)
     {
       if (textContours.goodIndices[i] == false)
@@ -425,7 +414,6 @@ namespace alpr
   // returns a vector of indices corresponding to valid contours
   void CharacterAnalysis::filterByParentContour( TextContours& textContours)
   {
-	cout << "CharacterAnalysis filterByParentContour" << endl;
     vector<int> parentIDs;
     vector<int> votes;
 
@@ -492,7 +480,6 @@ namespace alpr
 
   void CharacterAnalysis::filterBetweenLines(Mat img, TextContours& textContours, vector<TextLine> textLines )
   {
-	cout << "CharacterAnalysis filterBetweenLines" << endl;
     static float MIN_AREA_PERCENT_WITHIN_LINES = 0.88;
     static float MAX_DISTANCE_PERCENT_FROM_LINES = 0.15;
 
@@ -572,7 +559,6 @@ namespace alpr
 
   void CharacterAnalysis::filterByOuterMask(TextContours& textContours)
   {
-	cout << "CharacterAnalysis filterByOuterMask" << endl;
     float MINIMUM_PERCENT_LEFT_AFTER_MASK = 0.1;
     float MINIMUM_PERCENT_OF_CHARS_INSIDE_PLATE_MASK = 0.6;
 
@@ -649,7 +635,6 @@ namespace alpr
 
   vector<Point> CharacterAnalysis::getCharArea(LineSegment topLine, LineSegment bottomLine)
   {
-	cout << "CharacterAnalysis getCharArea" << endl;
 
     const int MAX = 100000;
     const int MIN= -1;

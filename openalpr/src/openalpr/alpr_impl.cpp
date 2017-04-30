@@ -83,56 +83,14 @@ namespace alpr
   std::vector<PlateRegion> SplitReturn2::get_warped_regions(){
 	  return warpedPlateRegions;
   }
-  
-  //split3-----------------------------------------------------------------------------
-	
-  /*SplitReturn3::SplitReturn3(PipelineData passedPipelineData, bool passedPlateDetected){
-		pipeline_data = passedPipelineData;
-		plateDetected = passedPlateDetected;
-  }
-  SplitReturn3::SplitReturn3(){
-		
-  }
-	
-  PipelineData SplitReturn3::get_pipeline_data(){
-		return pipeline_data;
-  }
-  bool SplitReturn3::get_plate_detected(){
-		return plateDetected;
-  }
-  //split4-------------------------------------------------------------------------
-  SplitReturn4::SplitReturn4(std::vector<PPResult> passedPPResults, AlprPlateResult passedPlateResult, PipelineData passedPipelineData, bool passedPlateDetected){
-	  PPResults = passedPPResults;
-	  plateResult = passedPlateResult;
-	  pipeline_data = passedPipelineData;
-	  plateDetected = passedPlateDetected;
-  }
-  SplitReturn4::SplitReturn4(){
-		
-  }
-	
-  std::vector<PPResult> SplitReturn4::get_ppresults(){
-		return PPResults;
-  }
-  AlprPlateResult SplitReturn4::get_plate_results(){
-		return plateResult;
-  }
-    PipelineData SplitReturn4::get_pipeline_data(){
-		return pipeline_data;
-  }
-  bool SplitReturn4::get_plate_detected(){
-		return plateDetected;
-  }*/
+
   
 
   AlprImpl::AlprImpl(const std::string country, const std::string configFile, const std::string runtimeDir)
   {
 	  
-    timespec startTime;
-    getTimeMonotonic(&startTime);
+	config = new Config(country, configFile, runtimeDir);
     
-    config = new Config(country, configFile, runtimeDir);
-
     prewarp = ALPR_NULL_PTR;
     
     // Config file or runtime dir not found.  Don't process any further.
@@ -145,15 +103,11 @@ namespace alpr
     
     loadRecognizers();
     setNumThreads(0);
+ 
 
     setDetectRegion(DEFAULT_DETECT_REGION);
     this->topN = DEFAULT_TOPN;
     setDefaultRegion("");
-    
-    timespec endTime;
-    getTimeMonotonic(&endTime);
-    if (config->debugTiming)
-      cout << "OpenALPR Initialization Time: " << diffclock(startTime, endTime) << "ms." << endl;
     
   }
 
@@ -226,12 +180,6 @@ namespace alpr
 
 	SplitReturn split1return(grayImg, warpedRegionsOfInterest, response, regionsOfInterest);
 	
-	timespec endTime;
-    getTimeMonotonic(&endTime);
-    if (config->debugTiming)
-    {
-      cout << "Total Time to process split1: " << diffclock(startTime, endTime) << "ms." << endl;
-    }
 
 	return split1return;
   }
@@ -300,7 +248,6 @@ namespace alpr
 
     if (config->debugGeneral && config->debugShowImages)
     {
-	  std::cout << "ALPR_IMPL 5 if debug and show image" << std::endl;
       for (unsigned int i = 0; i < regionsOfInterest.size(); i++)
       {
         rectangle(img, regionsOfInterest[i], Scalar(0,255,0), 2);
@@ -361,7 +308,6 @@ namespace alpr
   SplitReturn2 AlprImpl::analyzeSingleCountry(cv::Mat grayImg, std::vector<cv::Rect> warpedRegionsOfInterest)
   {
 	//std::cout << "ALPR_IMPL 6 analyzeSingleCountry (colorImg,grayImg,warpedRegionofInterest" << std::endl;
-	std::cout << "-----------Create a que of the plate regions----------------------" << std::endl;
 	AlprFullDetails response;
     
     AlprRecognizers country_recognizers = recognizers[config->country];
@@ -371,15 +317,9 @@ namespace alpr
     if (config->skipDetection == false)
     {
 		
-	timespec startTime;
-    getTimeMonotonic(&startTime);
-	
 	warpedPlateRegions = country_recognizers.plateDetector->detect(grayImg, warpedRegionsOfInterest);
 	
-	timespec endTime;
-	getTimeMonotonic(&endTime);
-	cout << "Total Time to process warpedRegions " << diffclock(startTime, endTime) << "ms." << endl;
-	  
+ 
         
 	}
     else
@@ -424,7 +364,6 @@ namespace alpr
 	std::vector<PlateRegion> warpedPlateRegions = split2return.get_warped_regions();
 	
 	int pqsize = plateQueue.size();
-	std::cout<<"PlateQueue size **********************************************************"<<std::endl;
 	std::cout<<pqsize<<std::endl;
 	int platecount = 0;
 	
@@ -948,7 +887,8 @@ namespace alpr
   
   
   void AlprImpl::loadRecognizers() {
-	//std::cout << "ALPR_IMPL 26" << std::endl;
+	timespec startTime1;
+	getTimeMonotonic(&startTime1);
     for (unsigned int i = 0; i < config->loaded_countries.size(); i++)
     {
       config->setCountry(config->loaded_countries[i]);
@@ -958,8 +898,18 @@ namespace alpr
         // Country training data has not already been loaded.  Load it.
         AlprRecognizers recognizer;
         recognizer.plateDetector = createDetector(config, prewarp);
-        recognizer.ocr = createOcr(config);
+		
 
+		timespec startTime4;
+		getTimeMonotonic(&startTime4);
+		
+		//takes time
+		recognizer.ocr = createOcr(config);
+		
+		timespec endTime4;
+		getTimeMonotonic(&endTime4);
+		cout << "OpenALPR loadRecognizers4: " << diffclock(startTime4, endTime4) << "ms." << endl;
+    
         #ifndef SKIP_STATE_DETECTION
         recognizer.stateDetector = new StateDetector(this->config->country, this->config->config_file_path, this->config->runtimeBaseDir);
         #else
@@ -974,7 +924,6 @@ namespace alpr
 
   
   cv::Mat AlprImpl::getCharacterTransformMatrix(PipelineData* pipeline_data ) {
-	std::cout << "ALPR_IMPL 26" << std::endl;
     std::vector<Point2f> crop_corners;
     crop_corners.push_back(Point2f(0,0));
     crop_corners.push_back(Point2f(pipeline_data->crop_gray.cols,0));

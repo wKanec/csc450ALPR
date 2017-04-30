@@ -51,7 +51,7 @@ bool do_motiondetection = true;
 //split headers
 
 std::vector<AlprRegionOfInterest> getROI(cv::Mat frame);
-SplitReturn split1 (cv::Mat frame, AlprImpl* impl);
+SplitReturn split1 (std::string filename, AlprImpl* impl);
 //SplitReturn split1 (SplitSettings splitSettings);
 SplitReturn2 split2 (SplitReturn split1return, AlprImpl* impl);
 AlprFullDetails split3 (SplitReturn2 split2return, AlprImpl* impl);
@@ -171,69 +171,32 @@ int main( int argc, const char** argv )
   }
 
 
-  timespec startTime3;
-  getTimeMonotonic(&startTime3);
-  std::cout << "Main 2" <<std::endl;
+
   cv::Mat frame;
+
   //40ms
-  Alpr alpr(country, configFile);
-  
-  timespec endTime3;
-  getTimeMonotonic(&endTime3);
-  double totalProcessingTime3 = diffclock(startTime3, endTime3);
-  std::cout << "Total Time to process setup3: " << totalProcessingTime3 << "ms." << std::endl;  
+  //Alpr alpr(country, configFile);  
   //40ms
   AlprImpl* impl = new AlprImpl(country, configFile);
   
-  timespec endTime4;
-  getTimeMonotonic(&endTime4);
-  double totalProcessingTime4 = diffclock(startTime3, endTime4);
-  std::cout << "Total Time to process setup4: " << totalProcessingTime4 << "ms." << std::endl;  
-
-  alpr.setTopN(topn);
-  timespec endTime5;
-  getTimeMonotonic(&endTime5);
-  double totalProcessingTime5 = diffclock(startTime3, endTime5);
-  std::cout << "Total Time to process setup5: " << totalProcessingTime4 << "ms." << std::endl;  
- 
-  timespec startTime6;
-  getTimeMonotonic(&startTime6);
-
-  if (debug_mode)
-  {
-    alpr.getConfig()->setDebug(true);
-  }
+  impl->setTopN(topn);
+  //alpr.setTopN(topn);
 
 
   if (detectRegion)
-    alpr.setDetectRegion(detectRegion);
+	impl->setDetectRegion(detectRegion);
+    //alpr.setDetectRegion(detectRegion);
 
   if (templatePattern.empty() == false)
-    alpr.setDefaultRegion(templatePattern);
+	  impl->setDefaultRegion(templatePattern);
+    //alpr.setDefaultRegion(templatePattern);
 	
-
-
-  if (alpr.isLoaded() == false)
-  {
-    std::cerr << "Error loading OpenALPR" << std::endl;
-    return 1;
-  }
 
   for (unsigned int i = 0; i < filenames.size(); i++)
   {
     std::string filename = filenames[i];
 
-    if (is_supported_image(filename))
-    {
-      if (fileExists(filename.c_str()))
-      {
-        frame = cv::imread(filename);
 		
-		timespec endTime6;
-        getTimeMonotonic(&endTime6);
-		double totalProcessingTime6 = diffclock(startTime6, endTime6);
-		std::cout << "Total Time to process setup5: " << totalProcessingTime6 << "ms." << std::endl;  
-
 		//SplitSettings splitSettings(frame, impl);
 	//Add code for seperation of functions
 
@@ -242,11 +205,13 @@ int main( int argc, const char** argv )
 		double totalProcessingTime = diffclock(startTime, endTime);
 		std::cout << "Total Time to process setup: " << totalProcessingTime << "ms." << std::endl;  
 
+		
 	
 		std::cout << "=============================FIRST SPLIT===============================" <<std::endl;
 		std::cout << "Find regions of interest and edit image." <<std::endl;
 		std::cout << "=====================================================================" <<std::endl;
-		SplitReturn split1return = split1(frame, impl);
+		SplitReturn split1return = split1(filename, impl);
+		//SplitReturn split1return = split1(frame, impl);
 		std::cout<<"================================SPLIT 2================================"<<std::endl;
 		std::cout<<"Locate possible plates in Regions of Interst and load country info"<<std::endl;
 		std::cout<<"====================================================================="<<std::endl;
@@ -268,31 +233,44 @@ int main( int argc, const char** argv )
 	/*SplitSettings attempt*/
 	   if (!plate_found && !outputJson)
           std::cout << "No license plates found." << std::endl;
-      }
-      else
-      {
-        std::cerr << "Image file not found: " << filename << std::endl;
-      }
-    }
-	else
-    {
-      std::cerr << "Unknown file type" << std::endl;
-      return 1;
-    }
+      //}
+      //else
+      //{
+        //std::cerr << "Image file not found: " << filename << std::endl;
+      //}
+    //}
+	//else
+    //{
+      //std::cerr << "Unknown file type" << std::endl;
+      //return 1;
+    //}
   }
 	
 
   return 0;
 }
 
-/*SplitReturn splitSetup( int argc, const char** argv){
-  
-}*/
 
-SplitReturn split1 (cv::Mat frame, AlprImpl* impl){
+SplitReturn split1 (std::string filename, AlprImpl* impl){
+	
 	timespec startTime;
 	getTimeMonotonic(&startTime);
 	SplitReturn split1return;
+	cv::Mat frame;
+	
+	if (is_supported_image(filename)){
+			if (fileExists(filename.c_str()))
+			{
+			frame = cv::imread(filename);}
+			else{
+			std::cerr << "Image file not found: " << filename << std::endl;
+			}
+	}
+    
+	else{
+		std::cerr << "Unknown file type" << std::endl;
+		}
+		
 	
     std::vector<AlprRegionOfInterest> regionsOfInterest = getROI(frame);
 	if (regionsOfInterest.size()>0) split1return = impl->recognize(frame.data, frame.elemSize(), frame.cols, frame.rows, regionsOfInterest);

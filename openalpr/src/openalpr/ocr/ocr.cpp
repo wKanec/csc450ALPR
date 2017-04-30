@@ -24,7 +24,6 @@ namespace alpr
   
   OCR::OCR(Config* config) : postProcessor(config) {
     this->config = config;
-	std::cout<<"ocr 1"<<std::endl;
   }
 
 
@@ -34,7 +33,6 @@ namespace alpr
   
   void OCR::performOCR(PipelineData* pipeline_data)
   {
-    std::cout<<"ocr 2"<<std::endl;
     timespec startTime;
     getTimeMonotonic(&startTime);
 
@@ -56,7 +54,6 @@ namespace alpr
         absolute_charpos++;
       }
     }
-	std::cout<<"ocr 2 END-----------------------------------"<<std::endl;
 
     
 

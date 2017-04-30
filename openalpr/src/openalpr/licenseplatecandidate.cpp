@@ -31,7 +31,6 @@ namespace alpr
 
   LicensePlateCandidate::LicensePlateCandidate(PipelineData* pipeline_data)
   {
-	cout<<"LicensePlateCandidate 1 constructor"<<endl;
     this->pipeline_data = pipeline_data;
     this->config = pipeline_data->config;
 
@@ -44,7 +43,6 @@ namespace alpr
   // Must delete this pointer in parent class
   void LicensePlateCandidate::recognize()
   {
-	cout<<"LicensePlateCandidate 2 recognize"<<endl;
     pipeline_data->isMultiline = config->multiline;
 
 

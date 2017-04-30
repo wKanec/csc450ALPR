@@ -29,7 +29,6 @@ namespace alpr
 
   CharacterSegmenter::CharacterSegmenter(PipelineData* pipeline_data)
   {
-	cout<<"characterSegmenter 1"<<endl;
     this->pipeline_data = pipeline_data;
     this->config = pipeline_data->config;
 
@@ -56,7 +55,6 @@ namespace alpr
   }
   
   void CharacterSegmenter::segment() {
-	cout<<"characterSegmenter 2"<<endl;
     timespec startTime;
     getTimeMonotonic(&startTime);
     
@@ -226,7 +224,6 @@ namespace alpr
   // Scores the histogram quality as well based on num chars, char volume, and even separation
   vector<Rect> CharacterSegmenter::getHistogramBoxes(HistogramVertical histogram, float avgCharWidth, float avgCharHeight, float* score)
   {
-	cout<<"characterSegmenter 3"<<endl;
     float MIN_HISTOGRAM_HEIGHT = avgCharHeight * config->segmentationMinCharHeightPercent;
 
     float MAX_SEGMENT_WIDTH = avgCharWidth * config->segmentationMaxCharWidthvsAverage;
@@ -281,7 +278,6 @@ namespace alpr
 
   vector<Rect> CharacterSegmenter::getBestCharBoxes(Mat img, vector<Rect> charBoxes, float avgCharWidth)
   {
-    cout<<"characterSegmenter 4"<<endl;
 	float MAX_SEGMENT_WIDTH = avgCharWidth * config->segmentationMaxCharWidthvsAverage;
 
     // This histogram is based on how many char boxes (from ALL of the many thresholded images) are covering each column
@@ -398,7 +394,6 @@ namespace alpr
 
   void CharacterSegmenter::removeSmallContours(vector<Mat> thresholds, float avgCharHeight,  TextLine textLine)
   {
-	cout<<"characterSegmenter 5"<<endl;
     //const float MIN_CHAR_AREA = 0.02 * avgCharWidth * avgCharHeight;	// To clear out the tiny specks
     const float MIN_CONTOUR_HEIGHT = config->segmentationMinSpeckleHeightPercent * avgCharHeight;
 
@@ -432,13 +427,11 @@ namespace alpr
   int CharacterSegmenter::getCharGap(cv::Rect leftBox, cv::Rect rightBox) {
       int right_midpoint = (rightBox.x + (rightBox.width / 2));
       int left_midpoint = (leftBox.x + (leftBox.width / 2));
-	  cout<<"characterSegmenter 6"<<endl;
       return  right_midpoint - left_midpoint;
   }
 
   vector<Rect> CharacterSegmenter::combineCloseBoxes( vector<Rect> charBoxes)
   {
-	cout<<"characterSegmenter 7"<<endl;
     // Don't bother combining if there are fewer than the min number of characters
     if (charBoxes.size() < config->postProcessMinCharacters)
       return charBoxes;
@@ -533,7 +526,6 @@ namespace alpr
 
   void CharacterSegmenter::cleanCharRegions(vector<Mat> thresholds, vector<Rect> charRegions)
   {
-	cout<<"characterSegmenter 8"<<endl;
     const float MIN_SPECKLE_HEIGHT_PERCENT = 0.13;
     const float MIN_SPECKLE_WIDTH_PX = 3;
     const float MIN_CONTOUR_AREA_PERCENT = 0.1;
@@ -650,7 +642,6 @@ namespace alpr
   {
     // If I knock out x% of the contour area from this thing (after applying the color filter)
     // Consider it a bad news bear.  REmove the whole area.
-    cout<<"characterSegmenter 9"<<endl;
 	const float MIN_PERCENT_CHUNK_REMOVED = 0.6;
 
     for (unsigned int i = 0; i < thresholds.size(); i++)
@@ -702,7 +693,6 @@ namespace alpr
 
   vector<Rect> CharacterSegmenter::filterMostlyEmptyBoxes(vector<Mat> thresholds, const vector<Rect> charRegions)
   {
-	cout<<"characterSegmenter 10"<<endl;
     // Of the n thresholded images, if box 3 (for example) is empty in half (for example) of the thresholded images,
     // clear all data for every box #3.
 
@@ -799,7 +789,6 @@ namespace alpr
 
   Mat CharacterSegmenter::filterEdgeBoxes(vector<Mat> thresholds, const vector<Rect> charRegions, float avgCharWidth, float avgCharHeight)
   {
-	cout<<"characterSegmenter 11"<<endl;
     const float MIN_ANGLE_FOR_ROTATION = 0.4;
     int MIN_CONNECTED_EDGE_PIXELS = (avgCharHeight * 1.5);
 
@@ -1014,7 +1003,6 @@ namespace alpr
   // Returns the contour index if true.  -1 otherwise
   int CharacterSegmenter::isSkinnyLineInsideBox(Mat threshold, Rect box, vector<vector<Point> > contours, vector<Vec4i> hierarchy, float avgCharWidth, float avgCharHeight)
   {
-	cout<<"characterSegmenter 13"<<endl;
     float MIN_EDGE_CONTOUR_HEIGHT = avgCharHeight * 1.25;
 
     // Sometimes the threshold is smaller than the MIN_EDGE_CONTOUR_HEIGHT.
@@ -1073,7 +1061,6 @@ namespace alpr
 
   Mat CharacterSegmenter::getCharBoxMask(Mat img_threshold, vector<Rect> charBoxes)
   {
-	cout<<"characterSegmenter 14"<<endl;
     Mat mask = Mat::zeros(img_threshold.size(), CV_8U);
     for (unsigned int i = 0; i < charBoxes.size(); i++)
       rectangle(mask, charBoxes[i], Scalar(255, 255, 255), -1);

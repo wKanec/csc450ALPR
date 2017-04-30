@@ -113,36 +113,6 @@ namespace alpr
 	std::vector<PlateRegion> get_warped_regions();
   };
   
-  /*class SplitReturn3{
-    private:
-	PipelineData pipeline_data;
-	bool plateDetected;
-
-    public:
-	SplitReturn3(PipelineData, bool);
-	SplitReturn3();
-	
-	PipelineData get_pipeline_data();
-	bool get_plate_detected();
-	
-  };
-  	  
-  class SplitReturn4{
-	private:
-	  std::vector<PPResult> PPResults;
-	  AlprPlateResult plateResult;
-	  PipelineData pipeline_data;
-	  bool plateDetected;
-	public:
-	SplitReturn4(std::vector<PPResult>, AlprPlateResult, PipelineData pipeline_data, bool plateDetected);
-	SplitReturn4();
-	
-	std::vector<PPResult> get_ppresults();
-	AlprPlateResult get_plate_results();
-	PipelineData get_pipeline_data();
-	bool get_plate_detected();
-	
-  };*/
 
   class AlprImpl
   {
@@ -150,7 +120,6 @@ namespace alpr
     public:
       AlprImpl* impl;
       AlprImpl(const std::string country, const std::string configFile = "", const std::string runtimeDir = "");
-      //AlprImpl();
       virtual ~AlprImpl();
 
       /*was AlprResults*/

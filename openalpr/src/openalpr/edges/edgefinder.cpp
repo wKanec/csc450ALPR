@@ -28,7 +28,6 @@ namespace alpr
 {
 
   EdgeFinder::EdgeFinder(PipelineData* pipeline_data) {
-	cout<<"edgefinder 1"<<endl;
     this->pipeline_data = pipeline_data;
 
     // First re-crop the area from the original picture knowing the text position
@@ -40,7 +39,6 @@ namespace alpr
   }
 
   std::vector<cv::Point2f> EdgeFinder::findEdgeCorners() {
-	cout<<"edgefinder 2"<<endl;
     bool high_contrast = is_high_contrast(pipeline_data->crop_gray);
     
     vector<Point2f> returnPoints;
@@ -61,7 +59,6 @@ namespace alpr
   }
   
   std::vector<cv::Point2f> EdgeFinder::detection(bool high_contrast) {
-    cout<<"edgefinder 3"<<endl;
 	TextLineCollection tlc(pipeline_data->textLines);
 
     vector<Point> corners;
@@ -181,7 +178,6 @@ namespace alpr
 
   vector<cv::Point> EdgeFinder::normalDetection(Mat newCrop, vector<TextLine> newLines)
   {
-	cout<<"edgefinder 4"<<endl;
     // Find the PlateLines for this crop
     PlateLines plateLines(pipeline_data);
     plateLines.processImage(newCrop, newLines, 1.05);
@@ -193,7 +189,6 @@ namespace alpr
   
   vector<cv::Point> EdgeFinder::highContrastDetection(Mat newCrop, vector<TextLine> newLines) {
     
-    cout<<"edgefinder 5"<<endl;
     vector<Point> smallPlateCorners;
     
     if (pipeline_data->config->debugGeneral)
@@ -303,7 +298,6 @@ namespace alpr
   
   
   bool EdgeFinder::is_high_contrast(const cv::Mat crop) {
-	cout<<"edgefinder 6"<<endl;
     int stride = 2;
     
     int rows = crop.rows;

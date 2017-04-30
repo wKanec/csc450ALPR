@@ -33,7 +33,6 @@ namespace alpr
 
 
   DetectorOCL::DetectorOCL(Config* config, PreWarp* prewarp) : Detector(config, prewarp) {
-	cout<<"detectorOCL 1"<<endl;
     tthread::lock_guard<tthread::mutex> guard(ocl_detector_mutex_m);
 
     cv::ocl::setUseOpenCL(true);
@@ -101,7 +100,6 @@ namespace alpr
 
   vector<Rect> DetectorOCL::find_plates(Mat orig_frame, cv::Size min_plate_size, cv::Size max_plate_size)
   {
-	cout<<"detectorOCL 2"<<endl;
 	
     vector<Rect> plates;
 

@@ -30,7 +30,6 @@ namespace alpr
 
   PreWarp::PreWarp(Config* config)
   {
-	cout<<"prewarp 1 construct"<<endl;
     this->config = config;
     initialize(config->prewarp);
   }
@@ -38,7 +37,6 @@ namespace alpr
 
   void PreWarp::initialize(std::string prewarp_config) {
 	
-	cout<<"prewarp 2 initialize"<<endl;
     timespec startTime;
     getTimeMonotonic(&startTime);
     
@@ -127,7 +125,6 @@ namespace alpr
 
   void PreWarp::setTransform(float w, float h, float rotationx, float rotationy, float rotationz, float panX, float panY, float stretchX, float dist)
   {
-	cout<<"prewarp 3"<<endl;
     this->w = w;
     this->h = h;
     this->rotationx = rotationx;
@@ -147,9 +144,7 @@ namespace alpr
       if (this->config->debugPrewarp)
         cout << "prewarp skipped due to missing prewarp config" << endl;
       return image;
-    }
-	cout<<"prewarp 4"<<endl;
-    
+    }    
       
     float width_ratio = w / ((float)image.cols);
     float height_ratio = h / ((float)image.rows);
@@ -179,7 +174,6 @@ namespace alpr
   // The rect needs to be converted to points, warped, then converted back into a 
   // bounding rectangle
   vector<Rect> PreWarp::projectRects(vector<Rect> rects, int maxWidth, int maxHeight, bool inverse) {
-    cout<<"prewarp 5(warp if needed)"<<endl;
     if (!this->valid){
 		cout<<"		not valid..no warp"<<endl;
 		return rects;
@@ -198,7 +192,6 @@ namespace alpr
   }
   
   Rect PreWarp::projectRect(Rect rect, int maxWidth, int maxHeight, bool inverse) {
-      cout<<"prewarp 6"<<endl;
 	  vector<Point2f> points;
       points.push_back(Point(rect.x, rect.y));
       points.push_back(Point(rect.x + rect.width, rect.y));
@@ -230,7 +223,6 @@ namespace alpr
   
 
   void PreWarp::projectPlateRegions(vector<PlateRegion>& plateRegions, int maxWidth, int maxHeight, bool inverse){
-    cout<<"prewarp 8"<<endl;
     if (!this->valid)
       return;
     
@@ -251,7 +243,6 @@ namespace alpr
   cv::Mat PreWarp::getTransform(float w, float h, 
           float rotationx, float rotationy, float rotationz, 
           float panX, float panY, float stretchX, float dist) {
-	cout<<"prewarp 9"<<endl;
     float alpha = rotationx;
     float beta = rotationy;
     float gamma = rotationz;

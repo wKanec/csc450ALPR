@@ -32,9 +32,7 @@ namespace alpr
 
   Config::Config(const std::string country, const std::string config_file, const std::string runtime_dir)
   {
-	timespec startTime1;
-    getTimeMonotonic(&startTime1);
-	cout<<"Config 1"<<endl;
+
     string debug_message = "";
 
     this->loaded = false;
@@ -115,11 +113,7 @@ namespace alpr
       std::cout << debug_message << endl;
     }
 
-	timespec endTime1;
-    getTimeMonotonic(&endTime1);
-    double totalProcessingTime1 = diffclock(startTime1, endTime1);
-    std::cout << "Total Time to process config 1: " << totalProcessingTime1 << "ms." << std::endl;  
-  
+
     this->loaded = countries_loaded;
   }
   
@@ -130,7 +124,6 @@ namespace alpr
   
   bool Config::load_countries(const std::string countries) {
 	
-	cout<<"Config 2"<<endl;
     this->loaded_countries = this->parse_country_string(countries);
 
     if (this->loaded_countries.size() == 0)
@@ -155,10 +148,7 @@ namespace alpr
   
   void Config::loadCommonValues(string configFile)
   {
-	timespec startTime2;
-    getTimeMonotonic(&startTime2);
-	
-	cout<<"Config 3"<<endl;
+
     CSimpleIniA* ini = NULL;
     CSimpleIniA iniObj;
     if (fileExists(configFile.c_str()))
@@ -245,19 +235,12 @@ namespace alpr
     debugShowImages = 	getBoolean(ini, defaultIni, "", "debug_show_images",	false);
     debugPauseOnFrame = 	getBoolean(ini, defaultIni, "", "debug_pause_on_frame",	false);
 
-	timespec endTime2;
-    getTimeMonotonic(&endTime2);
-    double totalProcessingTime2 = diffclock(startTime2, endTime2);
-    std::cout << "Total Time to process config 3: " << totalProcessingTime2 << "ms." << std::endl;  
-  
+
   }
   
   
   void Config::loadCountryValues(string configFile, string country)
   {
-	cout<<"Config 4 load country values"<<endl;
-	cout<<"		Get country plate and char size and width"<<endl;
-	cout<<"		Get pate info(min/max char, spaces, etc..."<<endl;
     CSimpleIniA iniObj;
     iniObj.SetMultiKey(true);
     iniObj.LoadFile(configFile.c_str());
@@ -325,6 +308,8 @@ namespace alpr
 
     detectorFile = getString(ini, "", "detector_file", "");
     
+	
+	//takes time called by tesseract_ocr
     ocrLanguage = getString(ini, "", "ocr_language", "none");
 
     postProcessRegexLetters = getString(ini, "", "postprocess_regex_letters", "\\pL");
@@ -341,7 +326,6 @@ namespace alpr
 
   void Config::setDebug(bool value)
   {
-	cout<<"Config 5"<<endl;
     debugGeneral = value;
     debugTiming = value;
     debugPrewarp = value;
@@ -371,6 +355,8 @@ namespace alpr
   {
     return this->runtimeBaseDir + POSTPROCESS_DIR;
   }
+  
+  //takes time called by tesseract_ocr
   string Config::getTessdataPrefix()
   {
     return this->runtimeBaseDir + "/ocr/";
@@ -379,7 +365,6 @@ namespace alpr
 
   std::vector<std::string> Config::parse_country_string(std::string countries)
   {
-	cout<<"Config 6"<<endl;
     std::istringstream ss(countries);
     std::string token;
 
@@ -394,7 +379,6 @@ namespace alpr
   }
 
   bool Config::country_is_loaded(std::string country) {
-	cout<<"Config 7 country is loaded"<<endl;
     for (uint32_t i = 0; i < loaded_countries.size(); i++)
     {
       if (loaded_countries[i] == country)
@@ -406,7 +390,6 @@ namespace alpr
 
   bool Config::setCountry(std::string country)
   {
-	cout<<"Config 8 Set Country"<<endl;
     this->country = country;
     
     

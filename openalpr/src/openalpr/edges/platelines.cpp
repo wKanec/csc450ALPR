@@ -29,7 +29,6 @@ namespace alpr
 
   PlateLines::PlateLines(PipelineData* pipelineData)
   {
-	cout<<"platelines 1"<<endl;
     this->pipelineData = pipelineData;
 
     this->debug = pipelineData->config->debugPlateLines;
@@ -44,7 +43,6 @@ namespace alpr
 
   void PlateLines::processImage(Mat inputImage, vector<TextLine> textLines, float sensitivity)
   {
-	cout<<"platelines 2"<<endl;
     if (this->debug)
       cout << "PlateLines findLines" << endl;
 
@@ -136,7 +134,6 @@ namespace alpr
 
   vector<PlateLine> PlateLines::getLines(Mat edges, float sensitivityMultiplier, bool vertical)
   {
-	cout<<"platelines 3"<<endl;
     if (this->debug)
       cout << "PlateLines::getLines" << endl;
 
@@ -222,7 +219,6 @@ namespace alpr
 
   Mat PlateLines::customGrayscaleConversion(Mat src)
   {
-	cout<<"platelines 4"<<endl;
     Mat img_hsv;
     cvtColor(src,img_hsv,CV_BGR2HSV);
 

@@ -59,7 +59,6 @@ namespace alpr
 
 
   void ScoreKeeper::printDebugScores() {
-	std::cout<<"scorekeeper 3"<<std::endl;
     int longest_weight_id = 0;
     for (unsigned int i = 0; i < weight_ids.size(); i++)
     {
@@ -69,8 +68,6 @@ namespace alpr
 
     float total = getTotal();
 
-    std::cout << "--------------------" << std::endl;
-    std::cout << "Total: " << total << std::endl;
     for (unsigned int i = 0; i < weight_ids.size(); i++)
     {
       float percent_of_total = (scores[i] * weights[i]) / total * 100;
@@ -81,7 +78,6 @@ namespace alpr
               " (" << percent_of_total << "% of total)" << std::endl;
     }
 
-    std::cout << "--------------------" << std::endl;
   }
   
 }
