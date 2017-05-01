@@ -25,16 +25,20 @@ public class Main {
         }
 
         Alpr alpr = new Alpr(country, configfile, runtimeDataDir);
+		//AlprImpl* impl = new AlprImpl(country, configFile, runtimeDataDir);
+
 
         alpr.setTopN(10);
-        alpr.setDefaultRegion("wa");
+        //alpr.setDefaultRegion("wa");
 
-        // Read an image into a byte array and send it to OpenALPR
+        // Read an image into a byte array and send it to OpenALPR .cpp or .java?
         Path path = Paths.get(licensePlate);
         byte[] imagedata = Files.readAllBytes(path);
 
         AlprResults results = alpr.recognize(imagedata);
-
+		//SplitReturn Splitresults = impl->recognize(imageBytes)
+		
+		
         System.out.println("OpenALPR Version: " + alpr.getVersion());
         System.out.println("Image Size: " + results.getImgWidth() + "x" + results.getImgHeight());
         System.out.println("Processing Time: " + results.getTotalProcessingTimeMs() + " ms");
@@ -55,5 +59,6 @@ public class Main {
 
         // Make sure to call this to release memory
         alpr.unload();
+		//impl.unload();
     }
 }

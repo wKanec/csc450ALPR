@@ -38,6 +38,7 @@ JNIEXPORT void JNICALL Java_com_openalpr_jni_Alpr_dispose
     //printf("Dispose");
     initialized = false;
     delete nativeAlpr;
+	//delete nativeImpl;
   }
 
 
@@ -50,6 +51,7 @@ JNIEXPORT jboolean JNICALL Java_com_openalpr_jni_Alpr_is_1loaded
       return false;
 
     return (jboolean) nativeAlpr->isLoaded();
+	//return (jboolean) nativeImpl->isLoaded();
         
   }
 
@@ -70,7 +72,7 @@ JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_native_1recognize__Ljava_la
     return env->NewStringUTF(json.c_str());
   }
 
-
+//This is the method called by Matt
 JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_native_1recognize___3B
   (JNIEnv *env, jobject thisObj, jbyteArray jimageBytes)
   {

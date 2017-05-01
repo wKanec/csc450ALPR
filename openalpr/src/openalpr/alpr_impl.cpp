@@ -59,12 +59,15 @@ namespace alpr
   }
   
   //split2-----------------------------------------------------------------------------
-  SplitReturn2::SplitReturn2(cv::Mat passedGrayImg, std::queue<PlateRegion> passedQueue,
-  AlprRecognizers passedCountryRecognizers, std::vector<PlateRegion> passedWarpedRegions){
-	
+  //SplitReturn2::SplitReturn2(cv::Mat passedGrayImg, std::queue<PlateRegion> passedQueue,
+  //AlprRecognizers passedCountryRecognizers, std::vector<PlateRegion> passedWarpedRegions){
+
+  SplitReturn2::SplitReturn2(cv::Mat passedGrayImg, std::queue<PlateRegion> passedQueue, 
+  std::vector<PlateRegion> passedWarpedRegions){
+	  
 	grayImg = passedGrayImg;
 	plateQueue = passedQueue;
-	country_recognizers = passedCountryRecognizers;
+	//country_recognizers = passedCountryRecognizers;
 	warpedPlateRegions = passedWarpedRegions;
 	  
   }
@@ -77,9 +80,9 @@ namespace alpr
   std::queue<PlateRegion> SplitReturn2::get_queue(){
 	  return plateQueue;
   }
-  AlprRecognizers SplitReturn2::get_country_recognizers(){
-	  return country_recognizers;
-  }
+  //AlprRecognizers SplitReturn2::get_country_recognizers(){
+	  //return country_recognizers;
+  //}
   std::vector<PlateRegion> SplitReturn2::get_warped_regions(){
 	  return warpedPlateRegions;
   }
@@ -338,7 +341,9 @@ namespace alpr
       plateQueue.push(warpedPlateRegions[i]);
 	
  
-	SplitReturn2 split2return(grayImg, plateQueue, country_recognizers, warpedPlateRegions);
+	//SplitReturn2 split2return(grayImg, plateQueue, country_recognizers, warpedPlateRegions);
+	SplitReturn2 split2return(grayImg, plateQueue, warpedPlateRegions);
+
 	return split2return;
 	
 	//AlprFullDetails results = AlprImpl::split3impl(split2return);
@@ -360,7 +365,8 @@ namespace alpr
 	cv::Mat grayImg = split2return.get_image();
 	cv::Mat colorImg = grayImg;
 	std::queue<PlateRegion> plateQueue = split2return.get_queue();
-	AlprRecognizers country_recognizers = split2return.get_country_recognizers();
+	//AlprRecognizers country_recognizers = split2return.get_country_recognizers();
+	AlprRecognizers country_recognizers = recognizers[config->country];
 	std::vector<PlateRegion> warpedPlateRegions = split2return.get_warped_regions();
 	
 	int pqsize = plateQueue.size();
@@ -527,7 +533,7 @@ namespace alpr
 
     return response;
   }
-
+	//main.java calls here
   AlprResults AlprImpl::recognize( std::vector<char> imageBytes)
   {
 	//std::cout << "ALPR_IMPL 12" << std::endl;
@@ -549,11 +555,14 @@ namespace alpr
 
     try
     {
+		//split 1
       cv::Mat img = cv::imdecode(cv::Mat(imageBytes), 1);
 
       std::vector<cv::Rect> rois = convertRects(regionsOfInterest);
 	  SplitReturn splitDetails = recognizeFullDetails(img,rois);
+	  //split 2
 	  SplitReturn2 split2return = split2impl(splitDetails);
+	  //split3
 	  AlprFullDetails fullDetails = split3impl(split2return);
 	  //SplitReturn4 split4return = split4impl(split3return, split2return);
 	  //AlprFullDetails fullDetails = split5impl(split4return, split2return);
@@ -592,13 +601,16 @@ namespace alpr
 		
 	return splitresults;
   }
-
+	// then comes here
   AlprResults AlprImpl::recognize(cv::Mat img)
   {
+	  //first split
     std::vector<cv::Rect> regionsOfInterest;
     regionsOfInterest.push_back(cv::Rect(0, 0, img.cols, img.rows));
     SplitReturn splitresults = recognize(img, regionsOfInterest);
+	//second split
 	SplitReturn2 split2return = split2impl(splitresults);
+	//third split
 	AlprFullDetails fullDetails = split3impl(split2return);
 	//SplitReturn4 split4return = split4impl(split3return, split2return);
 	//AlprFullDetails fullDetails = split5impl(split4return, split2return);

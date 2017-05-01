@@ -38,7 +38,8 @@ public class Alpr {
     {
         return is_loaded();
     }
-
+	//When does this get called? image is converted to bytes
+	// in main.java.
     public AlprResults recognize(String imageFile) throws AlprException
     {
         try {
@@ -50,10 +51,11 @@ public class Alpr {
         }
     }
 
-
+	//main.java calls here
     public AlprResults recognize(byte[] imageBytes) throws AlprException
     {
         try {
+			// calls openalprjni.cpp??
             String json = native_recognize(imageBytes);
             return new AlprResults(json);
         } catch (JSONException e)
@@ -62,7 +64,7 @@ public class Alpr {
         }
     }
 
-
+	//where is this used
     public AlprResults recognize(long imageData, int bytesPerPixel, int imgWidth, int imgHeight) throws AlprException
     {
         try {

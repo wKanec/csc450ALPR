@@ -100,11 +100,12 @@ namespace alpr
     private:
 	cv::Mat grayImg;
 	std::queue<PlateRegion> plateQueue;
-	AlprRecognizers country_recognizers;
+	//AlprRecognizers country_recognizers;
 	std::vector<PlateRegion> warpedPlateRegions;
 
     public:
-	SplitReturn2(cv::Mat, std::queue<PlateRegion>, AlprRecognizers, std::vector<PlateRegion>);
+	//SplitReturn2(cv::Mat, std::queue<PlateRegion>, AlprRecognizers, std::vector<PlateRegion>);
+	SplitReturn2(cv::Mat, std::queue<PlateRegion>, std::vector<PlateRegion>);
 	SplitReturn2();
 	
 	cv::Mat get_image();
