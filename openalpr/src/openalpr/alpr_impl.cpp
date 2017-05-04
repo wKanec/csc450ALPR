@@ -30,29 +30,28 @@ using namespace cv;
 namespace alpr
 {
 //split1-------------------------------------------------------------------------------
-  SplitReturn::SplitReturn(cv::Mat passedimg, std::vector<cv::Rect> passedwarpedregion, 
-	AlprFullDetails passedresponse, std::vector<cv::Rect>passedregion)
+  SplitReturn::SplitReturn(cv::Mat passedimg, std::vector<cv::Rect>passedregion)
   {
 	img = passedimg;
 	region = passedregion;
-	warpedRegion = passedwarpedregion;
-	response = passedresponse;
+	//warpedRegion = passedwarpedregion;
+	//response = passedresponse;
 	//country_aggregator = passedaggregator
   }
   SplitReturn::SplitReturn(){
 	  
   }
   
-  AlprFullDetails SplitReturn::get_response(){
-	  return response;
-  }
+  //AlprFullDetails SplitReturn::get_response(){
+//	  return response;
+  //}
 
   cv::Mat SplitReturn::get_image(){
 	return img;
   }
-  std::vector<cv::Rect> SplitReturn::get_warped_region(){
-	return warpedRegion;
-  }
+  //std::vector<cv::Rect> SplitReturn::get_warped_region(){
+//	return warpedRegion;
+  //}
   
   std::vector<cv::Rect> SplitReturn::get_region(){
 	  return region;
@@ -181,7 +180,7 @@ namespace alpr
     // and aggregate the results if necessary
 	//std::cout<<"	create ResultAggregator country_agregator(MERGE_PICK_BEST, topN,config)"<<std::endl;
 
-	SplitReturn split1return(grayImg, warpedRegionsOfInterest, response, regionsOfInterest);
+	SplitReturn split1return(grayImg, regionsOfInterest);
 	
 
 	return split1return;
@@ -194,8 +193,8 @@ namespace alpr
 	cv::Mat img = split1return.get_image();
 	cv:: Mat grayImg = img;
 	
-	std::vector<cv::Rect> warpedRegionsOfInterest = split1return.get_warped_region();
-	AlprFullDetails response = split1return.get_response();
+	std::vector<cv::Rect> warpedRegionsOfInterest = split1return.get_region();
+	//AlprFullDetails response = split1return.get_response();
 	std::vector<cv::Rect> regionsOfInterest = split1return.get_region();
 
 	
@@ -533,10 +532,9 @@ namespace alpr
 
     return response;
   }
-	//main.java calls here
+	//alprjni calls here first jni1
   AlprResults AlprImpl::recognize( std::vector<char> imageBytes)
   {
-	//std::cout << "ALPR_IMPL 12" << std::endl;
     try
     {
       cv::Mat img = cv::imdecode(cv::Mat(imageBytes), 1);
@@ -601,13 +599,53 @@ namespace alpr
 		
 	return splitresults;
   }
-	// then comes here
-  AlprResults AlprImpl::recognize(cv::Mat img)
+
+
+
+
+    AlprResults Alpr::recognize(std::string filepath)
+    {
+        std::ifstream ifs(filepath.c_str(), std::ios::binary|std::ios::ate);
+
+        if (ifs)
+        {
+
+            std::ifstream::pos_type pos = ifs.tellg();
+
+            std::vector<char>  buffer(pos);
+
+            ifs.seekg(0, std::ios::beg);
+            ifs.read(&buffer[0], pos);
+
+            return this->recognize( buffer );
+        }
+        else
+        {
+            std::cerr << "file does not exist: " << filepath << std::endl;
+            AlprResults emptyResults;
+            emptyResults.epoch_time = getEpochTimeMs();
+            emptyResults.img_width = 0;
+            emptyResults.img_height = 0;
+            emptyResults.total_processing_time_ms = 0;
+            return emptyResults;
+        }
+    }
+
+
+
+
+
+
+
+    // then comes here JNI1.5
+    AlprResults AlprImpl::recognize(cv::Mat img)
   {
 	  //first split
     std::vector<cv::Rect> regionsOfInterest;
     regionsOfInterest.push_back(cv::Rect(0, 0, img.cols, img.rows));
     SplitReturn splitresults = recognize(img, regionsOfInterest);
+	//need to return SplitReturn
+	
 	//second split
 	SplitReturn2 split2return = split2impl(splitresults);
 	//third split
@@ -616,6 +654,25 @@ namespace alpr
 	//AlprFullDetails fullDetails = split5impl(split4return, split2return);
 	return fullDetails.results;
   }
+  //JNI 2
+  SplitReturn2 AlprImpl::JNISplit2(SplitReturn splitresults){
+	SplitReturn2 split2return = split2impl(splitresults);
+	return split2return;
+  }
+  //JNI 3
+  AlprResults AlprImpl::JNISplit3(SplitReturn2 split2return){
+	AlprFullDetails fullDetails = split3impl(split2return);
+  	return fullDetails.results;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
 	
   SplitReturn AlprImpl::recognize(cv::Mat img, std::vector<cv::Rect> regionsOfInterest)
   {
@@ -756,7 +813,6 @@ namespace alpr
   }
 
   AlprResults AlprImpl::fromJson(std::string json) {
-	//std::cout << "ALPR_IMPL 22" << std::endl;
     AlprResults allResults;
 
     cJSON* root = cJSON_Parse(json.c_str());
@@ -772,7 +828,6 @@ namespace alpr
     int numRois = cJSON_GetArraySize(rois);
     for (int c = 0; c < numRois; c++)
     {
-	  //std::cout << "ALPR_IMPL 23" << std::endl;
       cJSON* roi = cJSON_GetArrayItem(rois, c);
       int x = cJSON_GetObjectItem(roi, "x")->valueint;
       int y = cJSON_GetObjectItem(roi, "y")->valueint;
@@ -788,11 +843,9 @@ namespace alpr
 
     for (int i = 0; i < resultsSize; i++)
     {
-	  //std::cout << "ALPR_IMPL 24" << std::endl;
       cJSON* item = cJSON_GetArrayItem(resultsArray, i);
       AlprPlateResult plate;
 
-      //plate.bestPlate = cJSON_GetObjectItem(item, "plate")->valuestring;
       plate.processing_time_ms = cJSON_GetObjectItem(item, "processing_time_ms")->valuedouble;
       plate.plate_index = cJSON_GetObjectItem(item, "plate_index")->valueint;
       plate.region = std::string(cJSON_GetObjectItem(item, "region")->valuestring);

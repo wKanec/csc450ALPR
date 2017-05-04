@@ -1,11 +1,14 @@
 #include <alpr.h>
+#include <alpr_impl.h>
  
 #include "com_openalpr_jni_Alpr.h"
 
 using namespace alpr;
 
 bool initialized = false;
-static Alpr* nativeAlpr;
+//static Alpr* nativeAlpr;
+AlprImpl* nativeImpl;
+
 
 JNIEXPORT void JNICALL Java_com_openalpr_jni_Alpr_initialize
   (JNIEnv *env, jobject thisObj, jstring jcountry, jstring jconfigFile, jstring jruntimeDir)
@@ -26,7 +29,8 @@ JNIEXPORT void JNICALL Java_com_openalpr_jni_Alpr_initialize
     env->ReleaseStringUTFChars(jruntimeDir, cruntimeDir);
 
 
-    nativeAlpr = new alpr::Alpr(country, configFile, runtimeDir);
+    //nativeAlpr = new alpr::Alpr(country, configFile, runtimeDir);
+	nativeImpl = new AlprImpl(country, configFile, runtimeDir);
 
     initialized = true;
     return;
@@ -37,7 +41,7 @@ JNIEXPORT void JNICALL Java_com_openalpr_jni_Alpr_dispose
   {
     //printf("Dispose");
     initialized = false;
-    delete nativeAlpr;
+    delete nativeImpl;
 	//delete nativeImpl;
   }
 
@@ -50,7 +54,7 @@ JNIEXPORT jboolean JNICALL Java_com_openalpr_jni_Alpr_is_1loaded
     if (!initialized)
       return false;
 
-    return (jboolean) nativeAlpr->isLoaded();
+    return (jboolean) nativeImpl->isLoaded();
 	//return (jboolean) nativeImpl->isLoaded();
         
   }
@@ -65,14 +69,14 @@ JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_native_1recognize__Ljava_la
     std::string imageFile(cimageFile);
     env->ReleaseStringUTFChars(jimageFile, cimageFile);
 
-    AlprResults results = nativeAlpr->recognize(imageFile);
+    AlprResults results = nativeImpl->recognize(imageFile);
 
     std::string json = Alpr::toJson(results);
 
     return env->NewStringUTF(json.c_str());
   }
 
-//This is the method called by Matt
+//This is the method called by Matt will be split 1??
 JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_native_1recognize___3B
   (JNIEnv *env, jobject thisObj, jbyteArray jimageBytes)
   {
@@ -84,8 +88,15 @@ JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_native_1recognize___3B
 
     std::vector<char> cvec(buf, buf+len);
 
-    AlprResults results = nativeAlpr->recognize(cvec);
+	//calls alpr_impl line 537
+	//default
+    AlprResults results = nativeImpl->recognize(cvec);
+	//SplitReturn SplitReturn1J = nativeImpl->recognize(cvec);
+	
+	//turns results to json
+	//default
     std::string json = Alpr::toJson(results);
+	//std::string Json = Alpr::toJson(SplitReturn1J);
 
     delete buf;
     return env->NewStringUTF(json.c_str());
@@ -96,13 +107,17 @@ JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_native_1recognize__JIII
   {
     //printf("Recognize data pointer");
 
-    AlprResults results = nativeAlpr->recognize(
+    SplitReturn splitresults = nativeImpl->recognize(
             reinterpret_cast<unsigned char*>(data),
             static_cast<int>(bytesPerPixel),
             static_cast<int>(width),
             static_cast<int>(height),
             std::vector<AlprRegionOfInterest>());
 
+    SplitReturn2 split2return = nativeImpl-> split2impl(splitresults);
+    //third split
+    AlprFullDetails aFDResults = nativeImpl->split3impl(split2return);
+    AlprResults results = aFDResults.results;
     std::string json = Alpr::toJson(results);
 
     return env->NewStringUTF(json.c_str());
@@ -117,25 +132,25 @@ JNIEXPORT void JNICALL Java_com_openalpr_jni_Alpr_set_1default_1region
     std::string default_region(cdefault_region);
     env->ReleaseStringUTFChars(jdefault_region, cdefault_region);
     
-    nativeAlpr->setDefaultRegion(default_region);
+    nativeImpl->setDefaultRegion(default_region);
   }
 
 JNIEXPORT void JNICALL Java_com_openalpr_jni_Alpr_detect_1region
   (JNIEnv *env, jobject thisObj, jboolean detect_region)
   {
-    nativeAlpr->setDetectRegion(detect_region);
+    nativeImpl->setDetectRegion(detect_region);
   }
 
 JNIEXPORT void JNICALL Java_com_openalpr_jni_Alpr_set_1top_1n
   (JNIEnv *env, jobject thisObj, jint top_n)
   {
-    nativeAlpr->setTopN(top_n);
+    nativeImpl->setTopN(top_n);
   }
 
 JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_get_1version
   (JNIEnv *env, jobject thisObj)
   {
-    std::string version = nativeAlpr->getVersion();
+    std::string version = nativeImpl->getVersion();
 
     return env->NewStringUTF(version.c_str());
   }

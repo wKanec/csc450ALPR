@@ -82,17 +82,19 @@ namespace alpr
 	
     private:
 	cv::Mat img;
-	std::vector<cv::Rect> warpedRegion;
-	AlprFullDetails response;
+	//std::vector<cv::Rect> warpedRegion;
+	//AlprFullDetails response;
 	std::vector<cv::Rect> region;
 
     public:
-	SplitReturn(cv::Mat, std::vector<cv::Rect>, AlprFullDetails, std::vector<cv::Rect>);
-	SplitReturn();
+	//SplitReturn(cv::Mat, std::vector<cv::Rect>, AlprFullDetails, std::vector<cv::Rect>);
+	SplitReturn(cv::Mat, std::vector<cv::Rect>);
+
+	  SplitReturn();
 
 	AlprFullDetails get_response();
 	cv::Mat get_image();
-	std::vector<cv::Rect> get_warped_region();
+	//std::vector<cv::Rect> get_warped_region();
 	std::vector<cv::Rect> get_region();
   };
 
@@ -140,7 +142,11 @@ namespace alpr
 
       SplitReturn recognize( cv::Mat img, std::vector<cv::Rect> regionsOfInterest);
 
-      AlprResults recognize( cv::Mat img);	
+      
+	  //needs to return SplitReturn
+	  AlprResults recognize( cv::Mat img);
+	  SplitReturn2 JNISplit2(SplitReturn splitresults);
+	  AlprResults JNISplit3(SplitReturn2 split2return);
       
       SplitReturn2 analyzeSingleCountry(cv::Mat grayImg, std::vector<cv::Rect> regionsOfInterest);
 
@@ -152,6 +158,13 @@ namespace alpr
       void setTopN(int topn);
       void setDefaultRegion(std::string region);
 
+
+      AlprResults recognize(std::string filepath);
+
+
+      //Splits to JSON
+	  //static std::string toJson( const SplitReturn splitReturn1J);
+	  
       static std::string toJson( const AlprResults results );
       static std::string toJson( const AlprPlateResult result );
       

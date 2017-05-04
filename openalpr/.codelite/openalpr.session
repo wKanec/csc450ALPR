@@ -1,40 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Session Name="/home/kane/csc450ALPR/openalpr/openalpr.workspace">
-  <int Value="1" Name="m_selectedTab"/>
+  <int Value="6" Name="m_selectedTab"/>
   <wxString Value="/home/kane/csc450ALPR/openalpr/openalpr.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
       <wxString Value="/home/kane/csc450ALPR/openalpr/src/main.cpp" Name="FileName"/>
-      <int Value="189" Name="FirstVisibleLine"/>
-      <int Value="191" Name="CurrentLine"/>
+      <int Value="1" Name="FirstVisibleLine"/>
+      <int Value="19" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="/home/kane/csc450ALPR/openalpr/src/openalpr/alpr_impl.cpp" Name="FileName"/>
-      <int Value="365" Name="FirstVisibleLine"/>
-      <int Value="302" Name="CurrentLine"/>
+      <int Value="769" Name="FirstVisibleLine"/>
+      <int Value="718" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="/home/kane/csc450ALPR/openalpr/src/openalpr/alpr_impl.h" Name="FileName"/>
-      <int Value="149" Name="FirstVisibleLine"/>
-      <int Value="173" Name="CurrentLine"/>
+      <int Value="69" Name="FirstVisibleLine"/>
+      <int Value="116" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="/home/kane/csc450ALPR/openalpr/src/openalpr/alpr.cpp" Name="FileName"/>
-      <int Value="79" Name="FirstVisibleLine"/>
-      <int Value="88" Name="CurrentLine"/>
+      <wxString Value="/home/kane/csc450ALPR/openalpr/src/openalpr/alpr.h" Name="FileName"/>
+      <int Value="151" Name="FirstVisibleLine"/>
+      <int Value="168" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="/home/kane/csc450ALPR/openalpr/src/openalpr/detection/detector.cpp" Name="FileName"/>
-      <int Value="116" Name="FirstVisibleLine"/>
-      <int Value="162" Name="CurrentLine"/>
+      <wxString Value="/home/kane/csc450ALPR/openalpr/src/bindings/java/openalprjni.cpp" Name="FileName"/>
+      <int Value="72" Name="FirstVisibleLine"/>
+      <int Value="77" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/kane/csc450ALPR/openalpr/src/bindings/java/com_openalpr_jni_Alpr.h" Name="FileName"/>
+      <int Value="28" Name="FirstVisibleLine"/>
+      <int Value="1" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/kane/csc450ALPR/openalpr/src/bindings/java/src/com/openalpr/jni/AlprSplitReturn.java" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="29" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/kane/csc450ALPR/openalpr/src/bindings/java/src/com/openalpr/jni/AlprRegionOfInterest.java" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="0" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/kane/csc450ALPR/openalpr/src/bindings/java/src/com/openalpr/jni/AlprResults.java" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="0" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>

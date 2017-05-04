@@ -35,7 +35,7 @@ namespace alpr
     delete impl;
   }
 
-  AlprResults Alpr::recognize(std::string filepath)
+  /*AlprResults Alpr::recognize(std::string filepath)
   {    
     std::ifstream ifs(filepath.c_str(), std::ios::binary|std::ios::ate);
     
@@ -61,7 +61,7 @@ namespace alpr
       emptyResults.total_processing_time_ms = 0;
       return emptyResults;
     }
-  }
+  }*/
 
   AlprResults Alpr::recognize(std::vector<char> imageBytes)
   {

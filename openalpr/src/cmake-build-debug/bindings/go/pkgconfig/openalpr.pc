@@ -1,0 +1,10 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${exec_prefix}/include
+
+Name: OpenALPR
+Description: Open source Automatic License Plate Recognition library
+Version: 2.3.0
+Libs: -L${libdir} -lopenalpr -lopenalprgo
+Cflags: -I${includedir}
