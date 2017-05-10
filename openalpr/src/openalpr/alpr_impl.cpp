@@ -85,6 +85,14 @@ namespace alpr
   std::vector<PlateRegion> SplitReturn2::get_warped_regions(){
 	  return warpedPlateRegions;
   }
+  
+    std::vector<cv::Rect> SplitReturn2::get_regions(){
+	  std::vector<cv::Rect> regions;
+	  for (int i = 0; i<warpedPlateRegions.size(); i++){
+		  regions.push_back(warpedPlateRegions[i].rect);
+	  }
+	  return regions;
+  }
 
   
 
@@ -164,8 +172,8 @@ namespace alpr
       return response;
     }*/
 
-    // Convert image to grayscale if required
-    Mat grayImg = img;
+//    // Convert image to grayscale if required
+		Mat grayImg = img;
     if (img.channels() > 2){
 		cvtColor( img, grayImg, CV_BGR2GRAY );
 	}
@@ -173,7 +181,7 @@ namespace alpr
     // Prewarp the image and ROIs if configured]
     std::vector<cv::Rect> warpedRegionsOfInterest = regionsOfInterest;
     // Warp the image if prewarp is provided
-    grayImg = prewarp->warpImage(grayImg);
+    grayImg = prewarp->warpImage(img);
     warpedRegionsOfInterest = prewarp->projectRects(regionsOfInterest, grayImg.cols, grayImg.rows, false);
 
     // Iterate through each country provided (typically just one)
@@ -190,18 +198,16 @@ namespace alpr
   {
 
 	
-	cv::Mat img = split1return.get_image();
-	cv:: Mat grayImg = img;
+	cv::Mat grayImg = split1return.get_image();
+	//cv:: Mat grayImg = img;
 	
 	std::vector<cv::Rect> warpedRegionsOfInterest = split1return.get_region();
 	//AlprFullDetails response = split1return.get_response();
 	std::vector<cv::Rect> regionsOfInterest = split1return.get_region();
 
 	
-	//ResultAggregator country_aggregator(MERGE_PICK_BEST, topN, config);
-      if (config->debugGeneral)
-        cout << "Analyzing: " << config->loaded_countries[0] << endl;
-
+	//ResultAggregator country_aggregator(MERGE_PICK_BEST, topN, config)
+      //config = new Config("us", configFile, runtimeDir);
       config->setCountry(config->loaded_countries[0]);
       // Reapply analysis for each multiple analysis value set in the config,
       // make a minor imperceptible tweak to the input image each time
@@ -468,7 +474,8 @@ namespace alpr
           aplate.matches_template = ppResults[pp].matchesTemplate;
 
           // Grab detailed results for each character
-          for (unsigned int c_idx = 0; c_idx < ppResults[pp].letter_details.size(); c_idx++)
+                   
+		 for (unsigned int c_idx = 0; c_idx < ppResults[pp].letter_details.size(); c_idx++)
           {
             AlprChar character_details;
             Letter l = ppResults[pp].letter_details[c_idx];
@@ -576,7 +583,7 @@ namespace alpr
     }
   }
 
-  SplitReturn AlprImpl::recognize( unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight, std::vector<AlprRegionOfInterest> regionsOfInterest)
+  SplitReturn2 AlprImpl::recognize( unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight, std::vector<AlprRegionOfInterest> regionsOfInterest)
   {
 	timespec startTime;
     getTimeMonotonic(&startTime);
@@ -593,11 +600,10 @@ namespace alpr
         regionsOfInterest.push_back(fullFrame);
       }
 	  SplitReturn splitresults = this->recognize(img, this->convertRects(regionsOfInterest));
-	timespec endTime;
-	getTimeMonotonic(&endTime);
-	//cout << "Total Time to process split 1 " << diffclock(startTime, endTime) << "ms." << endl;
-		
-	return splitresults;
+	
+	  SplitReturn2 split2return = this->split2impl(splitresults);
+	  
+	return split2return;
   }
 
 
@@ -748,7 +754,39 @@ namespace alpr
   }
 
 
+  std::string AlprImpl::toJson( const std::vector<cv::Rect> results )
+  {
+      cJSON *root;
+      root = cJSON_CreateObject();
+      cJSON *rois;
+      cJSON_AddItemToObject(root, "regions_of_interest", 		rois=cJSON_CreateArray());
+    for (unsigned int i=0;i<results.size();i++)
+    {
+      cJSON *roi_object;
+      roi_object = cJSON_CreateObject();
+      cJSON_AddNumberToObject(roi_object, "x",  results[i].x);
+      cJSON_AddNumberToObject(roi_object, "y",  results[i].y);
+      cJSON_AddNumberToObject(roi_object, "width",  results[i].width);
+      cJSON_AddNumberToObject(roi_object, "height",  results[i].height);
 
+      cJSON_AddItemToArray(rois, roi_object);
+    }
+	
+	
+	char *out;
+    out=cJSON_PrintUnformatted(root);
+
+    cJSON_Delete(root);
+
+    string response(out);
+
+    free(out);
+    return response;
+	
+  }
+  
+	  
+	  
   std::string AlprImpl::toJson( const AlprPlateResult result )
   {
 	//std::cout << "ALPR_IMPL 19" << std::endl;

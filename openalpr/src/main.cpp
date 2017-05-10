@@ -51,7 +51,7 @@ bool do_motiondetection = true;
 //split headers
 
 std::vector<AlprRegionOfInterest> getROI(cv::Mat frame);
-SplitReturn split1 (std::string filename, AlprImpl* impl);
+SplitReturn2 split1 (std::string filename, AlprImpl* impl);
 //SplitReturn split1 (SplitSettings splitSettings);
 SplitReturn2 split2 (SplitReturn split1return, AlprImpl* impl);
 AlprFullDetails split3 (SplitReturn2 split2return, AlprImpl* impl);
@@ -210,12 +210,12 @@ int main( int argc, const char** argv )
 		std::cout << "=============================FIRST SPLIT===============================" <<std::endl;
 		std::cout << "Find regions of interest and edit image." <<std::endl;
 		std::cout << "=====================================================================" <<std::endl;
-		SplitReturn split1return = split1(filename, impl);
+		SplitReturn2 split2return = split1(filename, impl);
 		//SplitReturn split1return = split1(frame, impl);
 		std::cout<<"================================SPLIT 2================================"<<std::endl;
 		std::cout<<"Locate possible plates in Regions of Interst and load country info"<<std::endl;
 		std::cout<<"====================================================================="<<std::endl;
-		SplitReturn2 split2return = split2(split1return,impl);
+		//SplitReturn2 split2return = split2(split1return,impl);
 		
 		
 		std::cout << "===============================SPLIT 3===================================" <<std::endl;
@@ -251,11 +251,11 @@ int main( int argc, const char** argv )
 }
 
 
-SplitReturn split1 (std::string filename, AlprImpl* impl){
+SplitReturn2 split1 (std::string filename, AlprImpl* impl){
 	
 	timespec startTime;
 	getTimeMonotonic(&startTime);
-	SplitReturn split1return;
+	SplitReturn2 split1return;
 	cv::Mat frame;
 	
 	if (is_supported_image(filename)){

@@ -84,9 +84,10 @@ namespace alpr
 	cv::Mat img;
 	//std::vector<cv::Rect> warpedRegion;
 	//AlprFullDetails response;
-	std::vector<cv::Rect> region;
+	
 
     public:
+	std::vector<cv::Rect> region;
 	//SplitReturn(cv::Mat, std::vector<cv::Rect>, AlprFullDetails, std::vector<cv::Rect>);
 	SplitReturn(cv::Mat, std::vector<cv::Rect>);
 
@@ -114,6 +115,7 @@ namespace alpr
 	std::queue<PlateRegion> get_queue();
 	AlprRecognizers get_country_recognizers();
 	std::vector<PlateRegion> get_warped_regions();
+	std::vector<cv::Rect> get_regions();
   };
   
 
@@ -131,7 +133,7 @@ namespace alpr
       AlprResults recognize( std::vector<char> imageBytes );
 
       AlprResults recognize( std::vector<char> imageBytes, std::vector<AlprRegionOfInterest> regionsOfInterest );
-      SplitReturn recognize( unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight, std::vector<AlprRegionOfInterest> regionsOfInterest );
+      SplitReturn2 recognize( unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight, std::vector<AlprRegionOfInterest> regionsOfInterest );
       
       SplitReturn2 split2impl(SplitReturn split1return);
 	  AlprFullDetails split3impl(SplitReturn2 split2return);
@@ -166,6 +168,7 @@ namespace alpr
 	  //static std::string toJson( const SplitReturn splitReturn1J);
 	  
       static std::string toJson( const AlprResults results );
+	  static std::string toJson( const std::vector<cv::Rect> results);
       static std::string toJson( const AlprPlateResult result );
       
       static AlprResults fromJson(std::string json);

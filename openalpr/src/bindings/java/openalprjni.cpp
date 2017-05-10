@@ -76,47 +76,104 @@ JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_native_1recognize__Ljava_la
     return env->NewStringUTF(json.c_str());
   }
 
+
+
+/*
+ * extern "C"
+jboolean
+Java_my_project_MyRealTimeImageProcessing_CameraPreview_ImageProcessing(
+    JNIEnv* env, jobject thiz,
+    jint width, jint height,
+    jbyteArray NV21FrameData, jintArray outPixels)
+{
+jbyte * pNV21FrameData = env->GetByteArrayElements(NV21FrameData, 0);
+jint * poutPixels = env->GetIntArrayElements(outPixels, 0);
+
+if ( mCanny == NULL )
+{
+    mCanny = new Mat(height, width, CV_8UC1);
+}
+
+Mat mGray(height, width, CV_8UC1, (unsigned char *)pNV21FrameData);
+Mat mResult(height, width, CV_8UC4, (unsigned char *)poutPixels);
+IplImage srcImg = mGray;
+IplImage CannyImg = *mCanny;
+IplImage ResultImg = mResult;
+
+cvCanny(&srcImg, &CannyImg, 80, 100, 3);
+cvCvtColor(&CannyImg, &ResultImg, CV_GRAY2BGRA);
+
+env->ReleaseByteArrayElements(NV21FrameData, pNV21FrameData, 0);
+env->ReleaseIntArrayElements(outPixels, poutPixels, 0);
+return true;
+ */
+
 //This is the method called by Matt will be split 1??
 JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_native_1recognize___3B
   (JNIEnv *env, jobject thisObj, jbyteArray jimageBytes)
   {
     //printf("Recognize byte array");
 
-    int len = env->GetArrayLength (jimageBytes);
-    unsigned char* buf = new unsigned char[len];
-    env->GetByteArrayRegion (jimageBytes, 0, len, reinterpret_cast<jbyte*>(buf));
+	int width = 1280;
+	int height = 720;
+	int bytesPerPixel = 3;
+    jbyte * pNV21FrameData = env->GetByteArrayElements(jimageBytes, 0);
 
-    std::vector<char> cvec(buf, buf+len);
+    //int len = env->GetArrayLength (jimageBytes);
+    //unsigned char* buf = new unsigned char[len];
+    //env->GetByteArrayRegion (pNV21FrameData, 0, len, reinterpret_cast<jbyte*>(buf));
+    //std::vector<char> cvec(buf, buf+len);
+	std::vector<AlprRegionOfInterest> regionsOfInterest;
+	regionsOfInterest.push_back(AlprRegionOfInterest(0, 0, width, height));
 
-	//calls alpr_impl line 537
-	//default
-    AlprResults results = nativeImpl->recognize(cvec);
-	//SplitReturn SplitReturn1J = nativeImpl->recognize(cvec);
+	SplitReturn2 results = nativeImpl ->recognize((unsigned char *)pNV21FrameData, bytesPerPixel, width, height, regionsOfInterest);
 	
-	//turns results to json
-	//default
-    std::string json = Alpr::toJson(results);
-	//std::string Json = Alpr::toJson(SplitReturn1J);
+	//calls alpr_impl line 537??       			//was cvec
+	//AlprResults results = nativeImpl->recognize(cvec);
+	//std::vector<cv::Rect> SplitReturn1J = nativeImpl->recognize(cvec);
+	
+	//std::vector<cv::Rect> roi = results.get_regions();
 
-    delete buf;
-    return env->NewStringUTF(json.c_str());
+    std::vector<PlateRegion> t = results.get_warped_regions();
+
+    //turns results to json
+	//default
+    //std::string json = AlprImpl::toJson(t);
+	//std::string Json = Alpr::toJson(SplitReturn1J);
+    std::vector<std::string> test;
+    std::string tstring = "this is a test";
+    test.push_back(tstring);
+std::string size = test.size() +" ;dfkjas;ldkfj ";
+
+    //delete buf;
+	env->ReleaseByteArrayElements(jimageBytes, pNV21FrameData, 0);
+	return env->NewStringUTF(size.c_str());
+
+    //return env->NewStringUTF(json.c_str());
   }
+
+JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_split_12_1jni__SV
+        (JNIEnv *, jobject, jstring)
+    {
+
+    }
+
 
 JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_native_1recognize__JIII
   (JNIEnv *env, jobject thisObj, jlong data, jint bytesPerPixel, jint width, jint height)
   {
     //printf("Recognize data pointer");
 
-    SplitReturn splitresults = nativeImpl->recognize(
+    SplitReturn2 splitresults = nativeImpl->recognize(
             reinterpret_cast<unsigned char*>(data),
             static_cast<int>(bytesPerPixel),
             static_cast<int>(width),
             static_cast<int>(height),
             std::vector<AlprRegionOfInterest>());
 
-    SplitReturn2 split2return = nativeImpl-> split2impl(splitresults);
+    //SplitReturn2 split2return = nativeImpl->split2impl(splitresults);
     //third split
-    AlprFullDetails aFDResults = nativeImpl->split3impl(split2return);
+    AlprFullDetails aFDResults = nativeImpl->split3impl(splitresults);
     AlprResults results = aFDResults.results;
     std::string json = Alpr::toJson(results);
 

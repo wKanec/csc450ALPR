@@ -76,8 +76,8 @@ namespace alpr
 
   AlprResults Alpr::recognize(unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight, std::vector<AlprRegionOfInterest> regionsOfInterest)
   {
-	SplitReturn splitreturn = impl->recognize(pixelData, bytesPerPixel, imgWidth, imgHeight, regionsOfInterest);
-	SplitReturn2 split2return = impl->split2impl(splitreturn);
+	SplitReturn2 split2return = impl->recognize(pixelData, bytesPerPixel, imgWidth, imgHeight, regionsOfInterest);
+	//SplitReturn2 split2return = impl->split2impl(splitreturn);
 	AlprFullDetails details = impl->split3impl(split2return);
 	AlprResults results = details.results;
 	return results;
