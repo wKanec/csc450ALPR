@@ -48,7 +48,7 @@
 #include "prewarp.h"
 
 #include <opencv2/core/core.hpp>
-   
+
 #include "support/platform.h"
 #include "support/utf8.h"
 
@@ -128,7 +128,7 @@ namespace alpr
       /*was AlprResults*/
       SplitReturn recognizeFullDetails(cv::Mat img, std::vector<cv::Rect> regionsOfInterest);
 
-      AlprResults recognize( std::vector<char> imageBytes );
+      SplitReturn recognize( std::vector<char> imageBytes );
 
       AlprResults recognize( std::vector<char> imageBytes, std::vector<AlprRegionOfInterest> regionsOfInterest );
       SplitReturn recognize( unsigned char* pixelData, int bytesPerPixel, int imgWidth, int imgHeight, std::vector<AlprRegionOfInterest> regionsOfInterest );
@@ -144,7 +144,7 @@ namespace alpr
 
       
 	  //needs to return SplitReturn
-	  AlprResults recognize( cv::Mat img);
+	  SplitReturn recognize( cv::Mat img);
 	  SplitReturn2 JNISplit2(SplitReturn splitresults);
 	  AlprResults JNISplit3(SplitReturn2 split2return);
       

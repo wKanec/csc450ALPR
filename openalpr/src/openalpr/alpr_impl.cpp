@@ -533,19 +533,11 @@ namespace alpr
     return response;
   }
 	//alprjni calls here first jni1
-  AlprResults AlprImpl::recognize( std::vector<char> imageBytes)
+  SplitReturn AlprImpl::recognize( std::vector<char> imageBytes)
   {
-    try
-    {
       cv::Mat img = cv::imdecode(cv::Mat(imageBytes), 1);
       return this->recognize(img);
-    }
-    catch (cv::Exception& e)
-    {
-      std::cerr << "Caught exception in OpenALPR recognize: " << e.msg << std::endl;
-      AlprResults emptyresults;
-      return emptyresults;
-    }
+
   }
 
   AlprResults AlprImpl::recognize(std::vector<char> imageBytes, std::vector<AlprRegionOfInterest> regionsOfInterest)
@@ -638,7 +630,7 @@ namespace alpr
 
 
     // then comes here JNI1.5
-    AlprResults AlprImpl::recognize(cv::Mat img)
+    SplitReturn AlprImpl::recognize(cv::Mat img)
   {
 	  //first split
     std::vector<cv::Rect> regionsOfInterest;
@@ -652,7 +644,7 @@ namespace alpr
 	AlprFullDetails fullDetails = split3impl(split2return);
 	//SplitReturn4 split4return = split4impl(split3return, split2return);
 	//AlprFullDetails fullDetails = split5impl(split4return, split2return);
-	return fullDetails.results;
+	return splitresults;
   }
   //JNI 2
   SplitReturn2 AlprImpl::JNISplit2(SplitReturn splitresults){
