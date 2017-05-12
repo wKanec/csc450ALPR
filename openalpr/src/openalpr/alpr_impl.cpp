@@ -173,8 +173,8 @@ namespace alpr
     // Prewarp the image and ROIs if configured]
     std::vector<cv::Rect> warpedRegionsOfInterest = regionsOfInterest;
     // Warp the image if prewarp is provided
-    grayImg = prewarp->warpImage(grayImg);
-    warpedRegionsOfInterest = prewarp->projectRects(regionsOfInterest, grayImg.cols, grayImg.rows, false);
+    //grayImg = prewarp->warpImage(grayImg);
+    //warpedRegionsOfInterest = prewarp->projectRects(regionsOfInterest, grayImg.cols, grayImg.rows, false);
 
     // Iterate through each country provided (typically just one)
     // and aggregate the results if necessary
@@ -202,7 +202,7 @@ namespace alpr
       if (config->debugGeneral)
         cout << "Analyzing: " << config->loaded_countries[0] << endl;
 
-      config->setCountry(config->loaded_countries[0]);
+      config->setCountry("us");
       // Reapply analysis for each multiple analysis value set in the config,
       // make a minor imperceptible tweak to the input image each time
       ResultAggregator iter_aggregator(MERGE_COMBINE, topN, config); 

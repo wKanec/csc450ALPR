@@ -41,11 +41,19 @@ JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_native_1recognize__Ljava_la
 
 /*
  * Class:     com_openalpr_jni_Alpr
- * Method:    native_recognize
+ * Method:    native_firstSplit
+ * Signature: ([B)Ljava/lang/byte[];
+ */
+JNIEXPORT jbyteArray JNICALL Java_com_openalpr_jni_Alpr_native_1firstSplit
+  (JNIEnv *, jobject, jbyteArray, jobject);
+
+/*
+ * Class:     com_openalpr_jni_Alpr
+ * Method:    native_nextSplit
  * Signature: ([B)Ljava/lang/String;
  */
-JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_native_1recognize___3B
-  (JNIEnv *, jobject, jbyteArray);
+JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_native_1nextSplit
+        (JNIEnv *, jobject, jbyteArray, jobject);
 
 /*
  * Class:     com_openalpr_jni_Alpr

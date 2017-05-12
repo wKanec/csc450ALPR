@@ -8,6 +8,7 @@ using namespace alpr;
 bool initialized = false;
 //static Alpr* nativeAlpr;
 AlprImpl* nativeImpl;
+typedef unsigned char byte;
 
 
 JNIEXPORT void JNICALL Java_com_openalpr_jni_Alpr_initialize
@@ -77,10 +78,9 @@ JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_native_1recognize__Ljava_la
   }
 
 //This is the method called by Matt will be split 1??
-JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_native_1recognize___3B
-  (JNIEnv *env, jobject thisObj, jbyteArray jimageBytes)
+JNIEXPORT jbyteArray JNICALL Java_com_openalpr_jni_Alpr_native_1firstSplit
+  (JNIEnv *env, jobject thisObj, jbyteArray jimageBytes, jobject rect)
   {
-  jbyte * pNV21FrameData = env->GetByteArrayElements(jimageBytes, 0);
 
   //original
   int len = env->GetArrayLength (jimageBytes);
@@ -102,18 +102,88 @@ JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_native_1recognize___3B
 //  SplitReturn split1results = nativeImpl ->recognize((unsigned char *)pNV21FrameData, bytesPerPixel, width, height, regionsOfInterest);
   SplitReturn2 split2results = nativeImpl->split2impl(split1results);
 
+    // Set rect data
+    // Get the class of the input object
+    jclass clazz = env->GetObjectClass(rect);
 
-  AlprFullDetails fullDetails = nativeImpl->split3impl(split2results);
-  AlprResults results = fullDetails.results;
-  std::string json = Alpr::toJson(results);
+    // Get Field references
+    jfieldID xfid = env->GetFieldID(clazz, "x", "I");
+    jfieldID yfid = env->GetFieldID(clazz, "y", "I");
+    jfieldID heightfid = env->GetFieldID(clazz, "height", "I");
+    jfieldID widthfid = env->GetFieldID(clazz, "width", "I");
 
-	//turns results to json
-	//std::string Json = Alpr::toJson(SplitReturn1J);
+    //Get roi rect
+    cv::Rect r = split2results.get_warped_regions()[0].rect;
 
-    //delete buf;
-    return env->NewStringUTF(json.c_str());
+    // Set fields for object
+    env->SetIntField(rect, xfid, r.x);
+    env->SetIntField(rect, yfid, r.y);
+    env->SetIntField(rect, heightfid, r.height);
+    env->SetIntField(rect, widthfid, r.width);
+
+    // Convert image into byteArray
+    cv::Mat returnImage = split2results.get_image();
+    int size = returnImage.total() * returnImage.elemSize();
+    byte * imageBytes = new byte[size];  // you will have to delete[] that later
+    std::memcpy(imageBytes,returnImage.data,size * sizeof(byte));
+    delete buf;
+
+
+    // Convert byteArray into jbyteArray and return
+    jbyteArray array = env->NewByteArray (size);
+    env->SetByteArrayRegion (array, 0, size, reinterpret_cast<jbyte*>(imageBytes));
+    delete imageBytes;
+
+    return array;
   }
 
+//This is the method called by Matt will be split 1??
+JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_native_1nextSplit
+        (JNIEnv *env, jobject thisObj, jbyteArray jimageBytes, jobject rect)
+{
+    //original
+    int len = env->GetArrayLength (jimageBytes);
+    unsigned char* buf = new unsigned char[len];
+    env->GetByteArrayRegion (jimageBytes, 0, len, reinterpret_cast<jbyte*>(buf));
+
+    //std::vector<char> cvec(buf, buf+len);
+
+    cv::Mat image = cv::Mat(720,1280,CV_8U,buf);
+
+    // Set rect data
+    // Get the class of the input object
+    jclass clazz = env->GetObjectClass(rect);
+
+    // Get Field references
+    jfieldID xfid = env->GetFieldID(clazz, "x", "I");
+    jfieldID yfid = env->GetFieldID(clazz, "y", "I");
+    jfieldID heightfid = env->GetFieldID(clazz, "height", "I");
+    jfieldID widthfid = env->GetFieldID(clazz, "width", "I");
+
+    PlateRegion region;
+    region.rect.x = env->GetIntField(rect, xfid);
+    region.rect.y = env->GetIntField(rect, yfid);
+    region.rect.height = env->GetIntField(rect, heightfid);
+    region.rect.width = env->GetIntField(rect, widthfid);
+
+    std::queue<PlateRegion> queue;
+    queue.push(region);
+
+    std::vector<PlateRegion> roi;
+    roi.push_back(region);
+
+    SplitReturn2 split2results = SplitReturn2(
+            image,
+            queue,
+            roi
+    );
+
+    AlprFullDetails fullDetails = nativeImpl->split3impl(split2results);
+    AlprResults results = fullDetails.results;
+    std::string json = Alpr::toJson(results);
+
+    return env->NewStringUTF(json.c_str());
+}
 JNIEXPORT jstring JNICALL Java_com_openalpr_jni_Alpr_native_1recognize__JIII
   (JNIEnv *env, jobject thisObj, jlong data, jint bytesPerPixel, jint width, jint height)
   {

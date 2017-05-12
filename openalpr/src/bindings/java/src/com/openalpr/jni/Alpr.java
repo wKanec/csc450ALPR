@@ -14,7 +14,9 @@ public class Alpr {
 
     private native boolean is_loaded();
     private native String native_recognize(String imageFile);
-    private native String native_recognize(byte[] imageBytes);
+    //private native byte[] native_recognize(byte[] imageBytes);
+    private native byte[] native_firstSplit(byte[] imageBytes, SplitRect rect);
+    private native String native_nextSplit(byte[] imageBytes, SplitRect rect);
     private native String native_recognize(long imageData, int bytesPerPixel, int imgWidth, int imgHeight);
 
     private native void set_default_region(String region);
@@ -52,17 +54,25 @@ public class Alpr {
     }
 
 	//main.java calls here
-    public AlprResults recognize(byte[] imageBytes) throws AlprException
+    public SplitReturn firstSplit(byte[] imageBytes) throws AlprException
     {
+        SplitRect rect = new SplitRect();
+
+        byte[] img = native_firstSplit(imageBytes, rect);
+
+        return new SplitReturn(img, rect);
+    }
+
+    public AlprResults nextSplit(byte[] imageBytes, SplitRect rect) throws AlprException {
         try {
-			// calls openalprjni.cpp??
-            String json = native_recognize(imageBytes);
+            String json = native_nextSplit(imageBytes, rect);
             return new AlprResults(json);
-        } catch (JSONException e)
-        {
+        } catch (JSONException e) {
+            e.printStackTrace();
             throw new AlprException("Unable to parse ALPR results");
         }
     }
+
 
 	//where is this used
     public AlprResults recognize(long imageData, int bytesPerPixel, int imgWidth, int imgHeight) throws AlprException

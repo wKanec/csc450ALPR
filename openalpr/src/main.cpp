@@ -216,7 +216,8 @@ int main( int argc, const char** argv )
 		std::cout<<"Locate possible plates in Regions of Interst and load country info"<<std::endl;
 		std::cout<<"====================================================================="<<std::endl;
 		SplitReturn2 split2return = split2(split1return,impl);
-		
+
+        cv::Rect r = split2return.get_warped_regions()[0].rect;
 		
 		std::cout << "===============================SPLIT 3===================================" <<std::endl;
 		AlprFullDetails details = split3(split2return,impl);

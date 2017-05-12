@@ -8,18 +8,18 @@
 		<Option virtualFolders="CMake Files\;CMake Files\cmake_modules\;CMake Files\cmake_modules\templates\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\share\;CMake Files\..\..\..\..\..\usr\share\OpenCV\;CMake Files\..\config\;CMake Files\misc_utilities\;CMake Files\tests\;CMake Files\openalpr\;CMake Files\openalpr\simpleini\;CMake Files\openalpr\support\;CMake Files\video\;CMake Files\bindings\;CMake Files\bindings\java\;CMake Files\bindings\python\;CMake Files\bindings\c\;CMake Files\bindings\go\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="alpr">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/alpr" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/alpr" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -32,7 +32,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -43,15 +43,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 alpr"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 alpr"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="alpr/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/alpr" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/alpr" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -64,7 +64,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -75,15 +75,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 alpr/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 alpr/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="alprd">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/alprd" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/alprd" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -96,7 +96,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -107,15 +107,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 alprd"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 alprd"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="alprd/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/alprd" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/alprd" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -128,7 +128,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -139,105 +139,105 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 alprd/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 alprd/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install/strip">
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="list_install_components">
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install">
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="package">
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 package"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 package"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="uninstall">
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 uninstall"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 uninstall"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="package_source">
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 package_source"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 package_source"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install/local">
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr-utils-sortstate">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-sortstate" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-sortstate" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -250,7 +250,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -261,15 +261,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-sortstate"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-sortstate"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr-utils-sortstate/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-sortstate" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-sortstate" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -282,7 +282,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -293,15 +293,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-sortstate/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-sortstate/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr-utils-classifychars">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-classifychars" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-classifychars" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -314,7 +314,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -325,15 +325,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-classifychars"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-classifychars"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr-utils-classifychars/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-classifychars" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-classifychars" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -346,7 +346,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -357,15 +357,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-classifychars/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-classifychars/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr-utils-benchmark">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-benchmark" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-benchmark" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -378,7 +378,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -389,15 +389,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-benchmark"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-benchmark"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr-utils-benchmark/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-benchmark" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-benchmark" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -410,7 +410,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -421,15 +421,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-benchmark/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-benchmark/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr-utils-prepcharsfortraining">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-prepcharsfortraining" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-prepcharsfortraining" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -442,7 +442,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -453,15 +453,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-prepcharsfortraining"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-prepcharsfortraining"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr-utils-prepcharsfortraining/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-prepcharsfortraining" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-prepcharsfortraining" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -474,7 +474,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -485,15 +485,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-prepcharsfortraining/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-prepcharsfortraining/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr-utils-binarizefontsheet">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-binarizefontsheet" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-binarizefontsheet" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -506,7 +506,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -517,15 +517,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-binarizefontsheet"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-binarizefontsheet"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr-utils-binarizefontsheet/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-binarizefontsheet" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-binarizefontsheet" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -538,7 +538,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -549,15 +549,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-binarizefontsheet/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-binarizefontsheet/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr-utils-tagplates">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-tagplates" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-tagplates" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -570,7 +570,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -581,15 +581,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-tagplates"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-tagplates"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr-utils-tagplates/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-tagplates" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-tagplates" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -602,7 +602,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -613,15 +613,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-tagplates/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-tagplates/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr-utils-calibrate">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-calibrate" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-calibrate" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -634,7 +634,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -645,15 +645,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-calibrate"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-calibrate"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr-utils-calibrate/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-calibrate" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/openalpr-utils-calibrate" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -666,7 +666,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -677,25 +677,25 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-calibrate/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 openalpr-utils-calibrate/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/misc_utilities/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="check">
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/tests"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/tests"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 check"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 check"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="unittests">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/tests/unittests" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/tests"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/tests/unittests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/tests"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -706,11 +706,11 @@
 					<Add option="-DINSTALL_PREFIX=&quot;/usr/local&quot;"/>
 					<Add option="-DOPENCV_MAJOR_VERSION=2"/>
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
-					<Add option="-DOPENALPR_TESTING_CONFIG_PATH=&quot;/home/kane/csc450ALPR/openalpr/src/../config/openalpr.conf.defaults&quot;"/>
-					<Add option="-DOPENALPR_TESTING_RUNTIME_DIR=&quot;/home/kane/csc450ALPR/openalpr/src/../runtime_data/&quot;"/>
+					<Add option="-DOPENALPR_TESTING_CONFIG_PATH=&quot;/home/matt/csc450alpr/openalpr/src/../config/openalpr.conf.defaults&quot;"/>
+					<Add option="-DOPENALPR_TESTING_RUNTIME_DIR=&quot;/home/matt/csc450alpr/openalpr/src/../runtime_data/&quot;"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -721,15 +721,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 unittests"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 unittests"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="unittests/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/tests/unittests" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/tests"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/tests/unittests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/tests"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -740,11 +740,11 @@
 					<Add option="-DINSTALL_PREFIX=&quot;/usr/local&quot;"/>
 					<Add option="-DOPENCV_MAJOR_VERSION=2"/>
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
-					<Add option="-DOPENALPR_TESTING_CONFIG_PATH=&quot;/home/kane/csc450ALPR/openalpr/src/../config/openalpr.conf.defaults&quot;"/>
-					<Add option="-DOPENALPR_TESTING_RUNTIME_DIR=&quot;/home/kane/csc450ALPR/openalpr/src/../runtime_data/&quot;"/>
+					<Add option="-DOPENALPR_TESTING_CONFIG_PATH=&quot;/home/matt/csc450alpr/openalpr/src/../config/openalpr.conf.defaults&quot;"/>
+					<Add option="-DOPENALPR_TESTING_RUNTIME_DIR=&quot;/home/matt/csc450alpr/openalpr/src/../runtime_data/&quot;"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -755,15 +755,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 unittests/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 unittests/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/tests/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/libopenalpr.so" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/libopenalpr.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr"/>
 				<Option object_output="./"/>
 				<Option type="3"/>
 				<Option compiler="gcc"/>
@@ -777,7 +777,7 @@
 					<Add option="-DDEFAULT_CONFIG_FILE=&quot;/etc/openalpr/openalpr.conf&quot;"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -788,15 +788,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 openalpr"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 openalpr"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/libopenalpr.so" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/libopenalpr.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr"/>
 				<Option object_output="./"/>
 				<Option type="3"/>
 				<Option compiler="gcc"/>
@@ -810,7 +810,7 @@
 					<Add option="-DDEFAULT_CONFIG_FILE=&quot;/etc/openalpr/openalpr.conf&quot;"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -821,15 +821,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 openalpr/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 openalpr/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr-static">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/libopenalpr-static.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/libopenalpr-static.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
@@ -843,7 +843,7 @@
 					<Add option="-DDEFAULT_CONFIG_FILE=&quot;/etc/openalpr/openalpr.conf&quot;"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -854,15 +854,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 openalpr-static"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 openalpr-static"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalpr-static/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/libopenalpr-static.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/libopenalpr-static.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
@@ -876,7 +876,7 @@
 					<Add option="-DDEFAULT_CONFIG_FILE=&quot;/etc/openalpr/openalpr.conf&quot;"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -887,15 +887,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 openalpr-static/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 openalpr-static/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="simpleini">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/simpleini/libsimpleini.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/simpleini"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/simpleini/libsimpleini.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/simpleini"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
@@ -908,7 +908,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -919,15 +919,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/simpleini/Makefile&quot;  VERBOSE=1 simpleini"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/simpleini/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/simpleini/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/simpleini/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/simpleini/Makefile&quot;  VERBOSE=1 simpleini"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/simpleini/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/simpleini/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/simpleini/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="simpleini/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/simpleini/libsimpleini.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/simpleini"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/simpleini/libsimpleini.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/simpleini"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
@@ -940,7 +940,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -951,15 +951,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/simpleini/Makefile&quot;  VERBOSE=1 simpleini/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/simpleini/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/simpleini/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/simpleini/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/simpleini/Makefile&quot;  VERBOSE=1 simpleini/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/simpleini/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/simpleini/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/simpleini/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="support">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/support/libsupport.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/support"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/support/libsupport.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/support"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
@@ -972,8 +972,8 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/openalpr/support/."/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/openalpr/support/."/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -984,15 +984,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/support/Makefile&quot;  VERBOSE=1 support"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/support/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/support/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/support/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/support/Makefile&quot;  VERBOSE=1 support"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/support/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/support/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/support/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="support/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/support/libsupport.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/support"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/support/libsupport.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/support"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
@@ -1005,8 +1005,8 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/openalpr/support/."/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/openalpr/support/."/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -1017,15 +1017,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/support/Makefile&quot;  VERBOSE=1 support/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/support/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/support/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/openalpr/support/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/support/Makefile&quot;  VERBOSE=1 support/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/support/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/support/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/openalpr/support/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="video">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/video/libvideo.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/video"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/video/libvideo.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/video"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
@@ -1038,7 +1038,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -1049,15 +1049,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/video/Makefile&quot;  VERBOSE=1 video"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/video/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/video/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/video/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/video/Makefile&quot;  VERBOSE=1 video"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/video/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/video/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/video/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="video/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/video/libvideo.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/video"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/video/libvideo.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/video"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
@@ -1070,7 +1070,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -1081,15 +1081,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/video/Makefile&quot;  VERBOSE=1 video/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/video/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/video/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/video/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/video/Makefile&quot;  VERBOSE=1 video/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/video/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/video/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/video/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalprjni">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/java/libopenalprjni.so" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/java"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/java/libopenalprjni.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/java"/>
 				<Option object_output="./"/>
 				<Option type="3"/>
 				<Option compiler="gcc"/>
@@ -1102,9 +1102,10 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/bindings/java/../../openalpr"/>
-					<Add directory="/usr/lib/jvm/java-7-openjdk-amd64/include"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/bindings/java/../../openalpr"/>
+					<Add directory="/usr/lib/jvm/java-8-oracle/include"/>
+					<Add directory="/usr/lib/jvm/java-8-oracle/include/linux"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -1115,15 +1116,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/java/Makefile&quot;  VERBOSE=1 openalprjni"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/java/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/java/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/java/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/java/Makefile&quot;  VERBOSE=1 openalprjni"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/java/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/java/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/java/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalprjni/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/java/libopenalprjni.so" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/java"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/java/libopenalprjni.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/java"/>
 				<Option object_output="./"/>
 				<Option type="3"/>
 				<Option compiler="gcc"/>
@@ -1136,9 +1137,10 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/bindings/java/../../openalpr"/>
-					<Add directory="/usr/lib/jvm/java-7-openjdk-amd64/include"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/bindings/java/../../openalpr"/>
+					<Add directory="/usr/lib/jvm/java-8-oracle/include"/>
+					<Add directory="/usr/lib/jvm/java-8-oracle/include/linux"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -1149,15 +1151,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/java/Makefile&quot;  VERBOSE=1 openalprjni/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/java/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/java/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/java/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/java/Makefile&quot;  VERBOSE=1 openalprjni/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/java/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/java/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/java/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalprpy">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/python/libopenalprpy.so" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/python"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/python/libopenalprpy.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/python"/>
 				<Option object_output="./"/>
 				<Option type="3"/>
 				<Option compiler="gcc"/>
@@ -1170,8 +1172,8 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/bindings/python/../../openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/bindings/python/../../openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -1182,15 +1184,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/python/Makefile&quot;  VERBOSE=1 openalprpy"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/python/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/python/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/python/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/python/Makefile&quot;  VERBOSE=1 openalprpy"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/python/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/python/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/python/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalprpy/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/python/libopenalprpy.so" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/python"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/python/libopenalprpy.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/python"/>
 				<Option object_output="./"/>
 				<Option type="3"/>
 				<Option compiler="gcc"/>
@@ -1203,8 +1205,8 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/bindings/python/../../openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/bindings/python/../../openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -1215,15 +1217,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/python/Makefile&quot;  VERBOSE=1 openalprpy/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/python/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/python/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/python/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/python/Makefile&quot;  VERBOSE=1 openalprpy/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/python/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/python/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/python/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="alprc_test">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/alprc_test" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/alprc_test" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -1236,8 +1238,8 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/bindings/c/../../openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/bindings/c/../../openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -1248,15 +1250,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 alprc_test"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 alprc_test"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="alprc_test/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/alprc_test" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/alprc_test" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -1269,8 +1271,8 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/bindings/c/../../openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/bindings/c/../../openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -1281,15 +1283,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 alprc_test/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 alprc_test/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalprc">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/libopenalprc.so" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/libopenalprc.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c"/>
 				<Option object_output="./"/>
 				<Option type="3"/>
 				<Option compiler="gcc"/>
@@ -1302,8 +1304,8 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/bindings/c/../../openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/bindings/c/../../openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -1314,15 +1316,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 openalprc"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 openalprc"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalprc/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/libopenalprc.so" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/libopenalprc.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c"/>
 				<Option object_output="./"/>
 				<Option type="3"/>
 				<Option compiler="gcc"/>
@@ -1335,8 +1337,8 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/bindings/c/../../openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/bindings/c/../../openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -1347,15 +1349,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 openalprc/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 openalprc/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/c/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalprgo">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/go/libopenalprgo.so" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/go"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/go/libopenalprgo.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/go"/>
 				<Option object_output="./"/>
 				<Option type="3"/>
 				<Option compiler="gcc"/>
@@ -1368,7 +1370,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -1379,15 +1381,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/go/Makefile&quot;  VERBOSE=1 openalprgo"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/go/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/go/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/go/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/go/Makefile&quot;  VERBOSE=1 openalprgo"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/go/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/go/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/go/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="openalprgo/fast">
-				<Option output="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/go/libopenalprgo.so" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/go"/>
+				<Option output="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/go/libopenalprgo.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/go"/>
 				<Option object_output="./"/>
 				<Option type="3"/>
 				<Option compiler="gcc"/>
@@ -1400,7 +1402,7 @@
 					<Add option="-DSKIP_STATE_DETECTION=1"/>
 					<Add directory="/usr/include/tesseract"/>
 					<Add directory="/usr/include/opencv"/>
-					<Add directory="/home/kane/csc450ALPR/openalpr/src/./openalpr"/>
+					<Add directory="/home/matt/csc450alpr/openalpr/src/./openalpr"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -1411,628 +1413,628 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/go/Makefile&quot;  VERBOSE=1 openalprgo/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/go/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/go/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kane/csc450ALPR/openalpr/src/cmake-build-debug/bindings/go/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/go/Makefile&quot;  VERBOSE=1 openalprgo/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/go/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/go/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/matt/csc450alpr/openalpr/src/cmake-build-debug/bindings/go/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/bindings/c/alpr_c.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/bindings/c/alpr_c.cpp">
 			<Option target="openalprc"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/bindings/c/alpr_c.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/bindings/c/alpr_c.h">
 			<Option target="openalprc"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/bindings/c/alprc_test.c">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/bindings/c/alprc_test.c">
 			<Option target="alprc_test"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/bindings/go/openalprgo.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/bindings/go/openalprgo.cpp">
 			<Option target="openalprgo"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/bindings/go/openalprgo.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/bindings/go/openalprgo.h">
 			<Option target="openalprgo"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/bindings/java/openalprjni.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/bindings/java/openalprjni.cpp">
 			<Option target="openalprjni"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/bindings/python/openalprpy.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/bindings/python/openalprpy.cpp">
 			<Option target="openalprpy"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/daemon.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/daemon.cpp">
 			<Option target="alprd"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/daemon/beanstalk.c">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/daemon/beanstalk.c">
 			<Option target="alprd"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/daemon/beanstalk.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/daemon/beanstalk.cc">
 			<Option target="alprd"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/daemon/beanstalk.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/daemon/beanstalk.h">
 			<Option target="alprd"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/daemon/daemonconfig.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/daemon/daemonconfig.cpp">
 			<Option target="alprd"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/daemon/daemonconfig.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/daemon/daemonconfig.h">
 			<Option target="alprd"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/main.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/main.cpp">
 			<Option target="alpr"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/misc_utilities/binarizefontsheet.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/misc_utilities/binarizefontsheet.cpp">
 			<Option target="openalpr-utils-binarizefontsheet"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/misc_utilities/calibrate.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/misc_utilities/calibrate.cpp">
 			<Option target="openalpr-utils-calibrate"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/misc_utilities/classifychars.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/misc_utilities/classifychars.cpp">
 			<Option target="openalpr-utils-classifychars"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/misc_utilities/prepcharsfortraining.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/misc_utilities/prepcharsfortraining.cpp">
 			<Option target="openalpr-utils-prepcharsfortraining"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/misc_utilities/sortstate.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/misc_utilities/sortstate.cpp">
 			<Option target="openalpr-utils-sortstate"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/misc_utilities/tagplates.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/misc_utilities/tagplates.cpp">
 			<Option target="openalpr-utils-tagplates"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/alpr.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/alpr.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/alpr.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/alpr.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/alpr_impl.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/alpr_impl.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/alpr_impl.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/alpr_impl.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/binarize_wolf.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/binarize_wolf.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/binarize_wolf.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/binarize_wolf.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/cjson.c">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/cjson.c">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/cjson.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/cjson.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/colorfilter.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/colorfilter.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/colorfilter.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/colorfilter.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/config.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/config.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/config.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/config.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/config_helper.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/config_helper.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/config_helper.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/config_helper.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/detection/detector.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/detection/detector.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/detection/detector.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/detection/detector.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/detection/detectorcpu.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/detection/detectorcpu.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/detection/detectorcpu.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/detection/detectorcpu.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/detection/detectorcuda.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/detection/detectorcuda.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/detection/detectorcuda.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/detection/detectorcuda.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/detection/detectorfactory.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/detection/detectorfactory.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/detection/detectorfactory.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/detection/detectorfactory.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/detection/detectormask.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/detection/detectormask.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/detection/detectormask.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/detection/detectormask.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/detection/detectormorph.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/detection/detectormorph.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/detection/detectormorph.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/detection/detectormorph.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/detection/detectorocl.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/detection/detectorocl.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/detection/detectorocl.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/detection/detectorocl.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/edges/edgefinder.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/edges/edgefinder.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/edges/edgefinder.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/edges/edgefinder.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/edges/platecorners.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/edges/platecorners.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/edges/platecorners.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/edges/platecorners.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/edges/platelines.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/edges/platelines.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/edges/platelines.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/edges/platelines.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/edges/scorekeeper.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/edges/scorekeeper.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/edges/scorekeeper.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/edges/scorekeeper.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/edges/textlinecollection.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/edges/textlinecollection.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/edges/textlinecollection.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/edges/textlinecollection.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/licenseplatecandidate.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/licenseplatecandidate.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/licenseplatecandidate.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/licenseplatecandidate.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/motiondetector.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/motiondetector.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/motiondetector.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/motiondetector.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/ocr/ocr.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/ocr/ocr.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/ocr/ocr.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/ocr/ocr.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/ocr/ocrfactory.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/ocr/ocrfactory.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/ocr/ocrfactory.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/ocr/ocrfactory.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/ocr/segmentation/charactersegmenter.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/ocr/segmentation/charactersegmenter.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/ocr/segmentation/charactersegmenter.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/ocr/segmentation/charactersegmenter.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/ocr/segmentation/histogram.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/ocr/segmentation/histogram.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/ocr/segmentation/histogram.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/ocr/segmentation/histogram.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/ocr/segmentation/histogramhorizontal.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/ocr/segmentation/histogramhorizontal.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/ocr/segmentation/histogramhorizontal.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/ocr/segmentation/histogramhorizontal.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/ocr/segmentation/histogramvertical.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/ocr/segmentation/histogramvertical.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/ocr/segmentation/histogramvertical.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/ocr/segmentation/histogramvertical.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/ocr/tesseract_ocr.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/ocr/tesseract_ocr.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/ocr/tesseract_ocr.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/ocr/tesseract_ocr.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/pipeline_data.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/pipeline_data.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/pipeline_data.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/pipeline_data.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/postprocess/postprocess.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/postprocess/postprocess.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/postprocess/postprocess.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/postprocess/postprocess.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/postprocess/regexrule.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/postprocess/regexrule.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/postprocess/regexrule.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/postprocess/regexrule.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/prewarp.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/prewarp.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/prewarp.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/prewarp.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/result_aggregator.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/result_aggregator.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/result_aggregator.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/result_aggregator.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/simpleini/ConvertUTF.c">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/simpleini/ConvertUTF.c">
 			<Option target="simpleini"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/simpleini/ConvertUTF.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/simpleini/ConvertUTF.h">
 			<Option target="simpleini"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/filesystem.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/filesystem.cpp">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/filesystem.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/filesystem.h">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/platform.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/platform.cpp">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/platform.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/platform.h">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/bitstate.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/bitstate.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/compile.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/compile.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/dfa.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/dfa.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/filtered_re2.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/filtered_re2.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/filtered_re2.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/filtered_re2.h">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/mimics_pcre.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/mimics_pcre.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/nfa.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/nfa.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/onepass.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/onepass.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/parse.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/parse.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/perl_groups.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/perl_groups.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/prefilter.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/prefilter.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/prefilter.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/prefilter.h">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/prefilter_tree.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/prefilter_tree.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/prefilter_tree.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/prefilter_tree.h">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/prog.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/prog.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/prog.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/prog.h">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/re2.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/re2.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/regexp.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/regexp.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/regexp.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/regexp.h">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/set.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/set.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/set.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/set.h">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/simplify.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/simplify.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/stringpiece.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/stringpiece.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/stringpiece.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/stringpiece.h">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/tostring.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/tostring.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/unicode_casefold.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/unicode_casefold.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/unicode_casefold.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/unicode_casefold.h">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/unicode_groups.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/unicode_groups.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/unicode_groups.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/unicode_groups.h">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/util/hash.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/util/hash.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/util/rune.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/util/rune.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/util/stringprintf.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/util/stringprintf.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/util/strutil.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/util/strutil.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/util/valgrind.cc">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/util/valgrind.cc">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/re2/util/valgrind.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/re2/util/valgrind.h">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/timing.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/timing.cpp">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/timing.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/timing.h">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/tinythread.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/tinythread.cpp">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/tinythread.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/tinythread.h">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/utf8.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/utf8.cpp">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/utf8.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/utf8.h">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/version.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/version.cpp">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/version.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/version.h">
 			<Option target="support"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/textdetection/characteranalysis.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/textdetection/characteranalysis.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/textdetection/characteranalysis.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/textdetection/characteranalysis.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/textdetection/linefinder.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/textdetection/linefinder.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/textdetection/linefinder.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/textdetection/linefinder.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/textdetection/platemask.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/textdetection/platemask.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/textdetection/platemask.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/textdetection/platemask.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/textdetection/textcontours.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/textdetection/textcontours.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/textdetection/textcontours.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/textdetection/textcontours.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/textdetection/textline.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/textdetection/textline.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/textdetection/textline.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/textdetection/textline.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/transformation.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/transformation.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/transformation.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/transformation.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/utility.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/utility.cpp">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/utility.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/utility.h">
 			<Option target="openalpr"/>
 			<Option target="openalpr-static"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/tests/test_api.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/tests/test_api.cpp">
 			<Option target="unittests"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/tests/test_config.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/tests/test_config.cpp">
 			<Option target="unittests"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/tests/test_regex.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/tests/test_regex.cpp">
 			<Option target="unittests"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/tests/test_utility.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/tests/test_utility.cpp">
 			<Option target="unittests"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/video/videobuffer.cpp">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/video/videobuffer.cpp">
 			<Option target="video"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/video/videobuffer.h">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/video/videobuffer.h">
 			<Option target="video"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/CMakeLists.txt">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/cmake_modules/FindTesseract.cmake">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/cmake_modules/FindTesseract.cmake">
 			<Option virtualFolder="CMake Files\cmake_modules\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/cmake_modules/LibFindMacros.cmake">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/cmake_modules/LibFindMacros.cmake">
 			<Option virtualFolder="CMake Files\cmake_modules\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/cmake_modules/Findlog4cplus.cmake">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/cmake_modules/Findlog4cplus.cmake">
 			<Option virtualFolder="CMake Files\cmake_modules\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/cmake_modules/templates/cmake_uninstall.cmake.in">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/cmake_modules/templates/cmake_uninstall.cmake.in">
 			<Option virtualFolder="CMake Files\cmake_modules\templates\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/cmake_modules/templates/openalpr.pc.in">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/cmake_modules/templates/openalpr.pc.in">
 			<Option virtualFolder="CMake Files\cmake_modules\templates\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/../../../../../usr/share/OpenCV/OpenCVConfig-version.cmake">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/../../../../../usr/share/OpenCV/OpenCVConfig-version.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\share\OpenCV\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/../../../../../usr/share/OpenCV/OpenCVConfig.cmake">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/../../../../../usr/share/OpenCV/OpenCVConfig.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\share\OpenCV\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/../../../../../usr/share/OpenCV/OpenCVModules.cmake">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/../../../../../usr/share/OpenCV/OpenCVModules.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\share\OpenCV\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/../../../../../usr/share/OpenCV/OpenCVModules-release.cmake">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/../../../../../usr/share/OpenCV/OpenCVModules-release.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\share\OpenCV\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/../config/openalpr.conf.user">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/../config/openalpr.conf.user">
 			<Option virtualFolder="CMake Files\..\config\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/../config/openalpr.conf.defaults">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/../config/openalpr.conf.defaults">
 			<Option virtualFolder="CMake Files\..\config\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/../config/alprd.conf.user">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/../config/alprd.conf.user">
 			<Option virtualFolder="CMake Files\..\config\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/../config/alprd.conf.defaults">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/../config/alprd.conf.defaults">
 			<Option virtualFolder="CMake Files\..\config\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/misc_utilities/CMakeLists.txt">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/misc_utilities/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\misc_utilities\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/tests/CMakeLists.txt">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/tests/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\tests\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/CMakeLists.txt">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\openalpr\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/simpleini/CMakeLists.txt">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/simpleini/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\openalpr\simpleini\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/openalpr/support/CMakeLists.txt">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/openalpr/support/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\openalpr\support\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/video/CMakeLists.txt">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/video/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\video\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/bindings/java/CMakeLists.txt">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/bindings/java/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\bindings\java\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/bindings/python/CMakeLists.txt">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/bindings/python/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\bindings\python\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/bindings/c/CMakeLists.txt">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/bindings/c/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\bindings\c\"/>
 		</Unit>
-		<Unit filename="/home/kane/csc450ALPR/openalpr/src/bindings/go/CMakeLists.txt">
+		<Unit filename="/home/matt/csc450alpr/openalpr/src/bindings/go/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\bindings\go\"/>
 		</Unit>
 	</Project>
