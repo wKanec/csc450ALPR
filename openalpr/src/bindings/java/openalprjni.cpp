@@ -100,7 +100,7 @@ JNIEXPORT jbyteArray JNICALL Java_com_openalpr_jni_Alpr_native_1firstSplit
 //  regionsOfInterest.push_back(AlprRegionOfInterest(0, 0, width, height));
 //
 //  SplitReturn split1results = nativeImpl ->recognize((unsigned char *)pNV21FrameData, bytesPerPixel, width, height, regionsOfInterest);
-  SplitReturn2 split2results = nativeImpl->split2impl(split1results);
+    SplitReturn2 split2results = nativeImpl->split2impl(split1results);
 
     // Set rect data
     // Get the class of the input object
